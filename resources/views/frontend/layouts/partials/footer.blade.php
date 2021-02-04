@@ -1,4 +1,3 @@
-@include('frontend.layouts.partials.scripts')
 <footer class="footer">
     <div class="container">
         <div class="footer-links p-relative">
@@ -44,9 +43,8 @@
                         <h4 class="footer-title">Contact</h4>
                         <p><strong>T</strong> <span>:</span> +001 225 3351</p>
                         <p><strong>F</strong> <span>:</span>+001 225 3351</p>
-                        <p class="over-hidden"><strong>E</strong> <span>:</span><a class="link-hover"
-                                                                                   data-hover-text="info@dsngrid.com"
-                                                                                   href="#">info@dsngrid.com</a>
+                        <p class="over-hidden"><strong>E</strong> <span>:</span>
+                            <a class="link-hover" data-hover-text="info@dsngrid.com" href="#">info@dsngrid.com</a>
                         </p>
                     </div>
                 </div>
@@ -65,10 +63,9 @@
 
         <div class="copyright">
             <div class="text-center">
-                <p>© 2020 Droow Digital Agency</p>
-                <div class="copright-text over-hidden">Designed by <a class="link-hover"
-                                                                      data-hover-text="DSN Grid" href="#"
-                                                                      target="_blank">DSN Grid</a>
+                <p>© 2021 Digital Agency</p>
+                <div class="copright-text over-hidden">Designed & Developed by
+                    <a class="link-hover" data-hover-text="DSN Grid" href="#" target="_blank">Sabbir Ahmed</a>
                 </div>
             </div>
         </div>
@@ -77,33 +74,13 @@
 </div>
 </main>
 
-<!-- Wait Loader -->
-<div class="wait-loader">
-    <div class="loader-inner">
-        <div class="loader-circle">
-            <div class="loader-layer"></div>
-        </div>
-    </div>
-</div>
-<!-- // Wait Loader -->
 
 
-<!-- cursor -->
-<div class="cursor">
-
-    <div class="cursor-helper cursor-view">
-        <span>VIEW</span>
-    </div>
-
-    <div class="cursor-helper cursor-close">
-        <span>Close</span>
-    </div>
-
-    <div class="cursor-helper cursor-link"></div>
-</div>
-<!-- End cursor -->
-
-@yield('js')
+<!-- Optional JavaScript -->
+<script src="{{asset('frontend/assets/js/jquery-3.1.1.min.js')}}"></script>
+<script src="{{asset('frontend/assets/js/plugins.js')}}"></script>
+<script src="{{asset('frontend/assets/js/dsn-grid.js')}}"></script>
+<script src="{{asset('frontend/assets/js/custom.js')}}"></script>
 </body>
 
 

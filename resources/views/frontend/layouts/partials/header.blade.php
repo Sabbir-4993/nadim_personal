@@ -1,4 +1,16 @@
-@section('css')
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="discrption" content="parallax one page"/>
+    <meta name="keyword"
+          content="agency, business, corporate, creative, freelancer, interior, joomla template, K2 Blog, minimal, modern, multipurpose, personal, portfolio, responsive, simple"/>
+
+    <!--  Title -->
+    <title>Portfolio</title>
 
     <!-- Font Google -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800&amp;display=swap"
@@ -11,13 +23,7 @@
     <!-- custom styles (optional) -->
     <link href="{{asset('frontend/assets/css/plugins.css')}}" rel="stylesheet"/>
     <link href="{{asset('frontend/assets/css/style.css')}}" rel="stylesheet"/>
-@endsection
 
+</head>
 
-@section('js')
-    <!-- Optional JavaScript -->
-    <script src="{{asset('frontend/assets/js/jquery-3.1.1.min.js')}}"></script>
-    <script src="{{asset('frontend/assets/js/plugins.js')}}"></script>
-    <script src="{{asset('frontend/assets/js/dsn-grid.js')}}"></script>
-    <script src="{{asset('frontend/assets/js/custom.js')}}"></script>
-@endsection
+<body class="hamburger-menu dsn-effect-scroll dsn-ajax" data-dsn-mousemove="true">
