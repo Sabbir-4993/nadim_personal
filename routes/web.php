@@ -25,3 +25,7 @@ Route::get('/contact', 'PageController@contact')->name('contact');
 Auth::routes();
 Auth::routes(['register' => false]);
 Route::get('/admin/dashboard', 'HomeController@index')->name('home');
+
+Route::group(['prefix'=>'portfolio','as'=>'admin.'], function(){
+    Route::get('/create', 'Backend\PortfollioController@index')->name('portfolio');
+});
