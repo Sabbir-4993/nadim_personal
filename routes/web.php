@@ -26,6 +26,8 @@ Auth::routes();
 Auth::routes(['register' => false]);
 Route::get('/admin/dashboard', 'HomeController@index')->name('home');
 
-Route::group(['prefix'=>'portfolio','as'=>'admin.'], function(){
-    Route::get('/create', 'Backend\PortfollioController@index')->name('portfolio');
+Route::group(['prefix'=>'/admin/portfolio','as'=>'admin.'], function(){
+    Route::get('/create', 'Backend\PortfolioController@index')->name('portfolio');
+    Route::post('/store', 'Backend\PortfolioController@store')->name('portfolio.store');
+
 });

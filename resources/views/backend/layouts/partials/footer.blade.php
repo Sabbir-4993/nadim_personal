@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="footer-copyright">
-                    <p>2020 @<a href="#">Aazztech</a>
+                    <p>2020 @<a href="#">Sabbir</a>
                     </p>
                 </div>
             </div>

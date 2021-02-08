@@ -18,6 +18,16 @@
 
                 </div>
             </div>
+{{--            @if ($errors->any())--}}
+{{--                <div class="alert alert-danger">--}}
+{{--                    Portfolio Can't Successfully Added, please fill-up form correctly.--}}
+{{--                </div>--}}
+{{--            @endif--}}
+            @if (Session::has('message'))
+                <div class="alert alert-success">
+                    {{ Session::get('message') }}
+                </div>
+            @endif
             <div class="row">
                 <div class="col-lg-12 mb-30">
                     <div class="card">
@@ -58,6 +68,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        @forelse ($portfolios as $key=>$row)
                                             <tr>
                                                 <td>
                                                     <div class="d-flex">
@@ -70,23 +81,24 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <a href="#" class="profile-image rounded-circle d-block m-0 wh-80" style="background-image:url('{{asset('backend/assets/img/tm6.png')}}'); background-size: cover;"></a>
+                                                            <a href="#" class="profile-image rounded-circle d-block m-0 wh-80" style="background-image:url('{{ asset('uploads/portfolios') }}/{{ $row->photo }}'); background-size: cover;"></a>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="userDatatable-content">
-                                                        Business Development
+                                                        {{ $row->title }}
+
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="userDatatable-content">
-                                                        Web Developer
+                                                        {{ $row->category_name }}
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="userDatatable-content">
-                                                        January 20, 2020
+                                                        {{ $row->date }}
                                                     </div>
                                                 </td>
                                                 <td>
@@ -111,6 +123,7 @@
                                                     </ul>
                                                 </td>
                                             </tr>
+                                        @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -122,51 +135,84 @@
         </div>
 
         <div class="modal-basic modal fade show" id="modal-basic" tabindex="-1" role="dialog" aria-hidden="true">
-
-
-            <div class="modal-dialog modal-md" role="document">
-                <div class="modal-content modal-bg-white ">
-                    <div class="modal-header">
-
-
-
-                        <h6 class="modal-title">Basic title</h6>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span data-feather="x"></span></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="card card-default card-md mb-4">
-                            <div class="card-body">
-                                <div class="form-group mb-4">
-                                    <label for="" class="">Title</label> <br>
-                                    <input type="text" class="form-control form-control-lg" placeholder="Username">
-                                </div>
-                                <div class="form-group mb-4">
-                                    <label for="" class="">Category</label> <br>
-                                    <input type="text" class="form-control form-control-lg" placeholder="Username">
-                                </div>
-                                <div class="atbd-tag-wrap">
-                                    <div class="atbd-upload">
-                                        <div class="atbd-upload-avatar">
-                                            <label for="" class="">Upload Image</label> <br>
-                                            <img class="avatrSrc" src="{{asset('backend/assets/img/gallary.svg')}}" alt="Avatar Upload">
+            <form class="mt-4" action="{{ route('admin.portfolio.store') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-dialog modal-md" role="document">
+                    <div class="modal-content modal-bg-white ">
+                        <div class="modal-header">
+                            <h6 class="modal-title">Add Portfolio</h6>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span data-feather="x"></span></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="card card-default card-md mb-4">
+                                <div class="card-body">
+                                    <div class="form-group mb-4">
+                                        <label for="select-2" class="il-gray fs-14 fw-500 align-center">Select Category<span class="text-danger">*</span></label>
+                                        <div class="atbd-select ">
+                                            <select name="select-2" id="select-3" class="form-control" required="">
+                                                <option value="0" disabled selected>Select Category</option>
+                                                <option value="Brand">Brand</option>
+                                                <option value="Design">Design</option>
+                                                <option value="Art">Art</option>
+                                                <option value="Photography">Photography</option>
+                                                <option value="Video">Video</option>
+                                            </select>
                                         </div>
-                                        <div class="avatar-up">
-                                            <input type="file" name="upload-avatar-input" class="upload-avatar-input">
+                                    </div>
+
+                                    <div class="form-group mb-4">
+                                        <label for="a2" class="il-gray fs-14 fw-500 align-center">Title<span class="text-danger">*</span></label>
+                                        <input type="text" id="a2" name="title" class="form-control form-control-lg" placeholder="Enter Title" required="">
+{{--                                        {{ old('title') }}--}}
+                                        @error ('title')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group mb-4">
+                                        <label for="a2" class="il-gray fs-14 fw-500 align-center">Date<span class="text-danger">*</span></label>
+                                        <input type="date" id="a2" name="date" class="form-control form-control-lg" required="">
+{{--                                        {{ old('date') }}--}}
+                                        @error ('date')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group mb-4">
+                                        <label for="a2" class="il-gray fs-14 fw-500 align-center">Website Address (Optional)</label>
+                                        <input type="text" id="a2" name="url" class="form-control form-control-lg" placeholder="Enter Url">
+{{--                                        {{ old('url') }}--}}
+                                        @error ('url')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="atbd-tag-wrap">
+                                        <div class="atbd-upload">
+                                            <div class="atbd-upload-avatar">
+                                                <label for="tag2" class="il-gray fs-14 fw-500 align-center">Upload Image [Image Resolution (1800x1200px)]<span class="text-danger">*</span></label>
+                                                <img class="avatrSrc" src="{{asset('backend/assets/img/gallery.png')}}" alt="Avatar Upload">
+                                            </div>
+                                            <div class="avatar-up">
+                                                <input type="file" name="image" class="upload-avatar-input" required="">
+                                                @error ('image')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <!-- ends: .card -->
                         </div>
-                        <!-- ends: .card -->
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary btn-sm">Save changes</button>
-                        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary btn-sm">Save</button>
+                            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-
+            </form>
 
         </div>
         <!-- ends: .modal-Basic -->
