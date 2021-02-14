@@ -12,5 +12,6 @@
 
     @yield('css')
 
+
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('backend/assets/img/favicon.png')}}">
 </head>

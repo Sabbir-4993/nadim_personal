@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Client;
 use App\Http\Controllers\Controller;
-use App\Portfolio;
-use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 
-class PortfolioController extends Controller
+class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,8 @@ class PortfolioController extends Controller
      */
     public function index()
     {
-        $portfolio = Portfolio::orderBy('id','desc')->get();
-        return view('backend.portfolio', compact('portfolio'));
+        $client = Client::orderBy('id','desc')->get();
+        return view('backend.client', compact('client'));
     }
 
     /**
@@ -27,7 +26,7 @@ class PortfolioController extends Controller
      */
     public function create()
     {
-        return view('backend.portfolio');
+        return view('backend.client');
     }
 
     /**
@@ -39,9 +38,7 @@ class PortfolioController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'category_name' => 'required',
-            'title' => 'required',
-            'date' => 'required',
+            'name' => 'required',
             'url' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,bmp,gif,svg|max:2048',
         ]);
@@ -50,18 +47,18 @@ class PortfolioController extends Controller
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $name = date('Y-m-d'). "." .time(). "." .'portfolio'. "." .$image->getClientOriginalExtension();
-            $destination = public_path('/storage/uploads/portfolios');
+            $name = date('Y-m-d'). "." .time(). "." .'client'. "." .$image->getClientOriginalExtension();
+            $destination = public_path('/storage/uploads/client');
             $image->move($destination, $name);
             $image_url = $name;
         }else{
-            $image = 'portfolio-sample.png';
+            $image = 'team-sample.png';
         }
 
         $data['image'] = $image_url;
 
-        Portfolio::create($data);
-        return redirect()->back()->with('message','Portfolio Added Successfully');
+        Client::create($data);
+        return redirect()->back()->with('message','Client Added Successfully');
     }
 
     /**
@@ -72,8 +69,7 @@ class PortfolioController extends Controller
      */
     public function show($id)
     {
-//        $portfolio = Portfolio::orderBy('id','desc')->get();
-//        return view('backend.portfolio', compact('portfolio'));
+        //
     }
 
     /**
@@ -107,10 +103,8 @@ class PortfolioController extends Controller
      */
     public function destroy($id)
     {
-        $portfolio = Portfolio::find($id);
-
-        $portfolio->delete();
-        return redirect()->back()->with('message', 'Portfolio Deleted Successfully');
+        $team = Client::find($id);
+        $team->delete();
+        return redirect()->back()->with('message', 'Client Deleted Successfully');
     }
-
 }

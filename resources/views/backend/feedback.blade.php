@@ -2,20 +2,18 @@
 
 @section('content')
     <div class="contents">
-
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
 
                     <div class="breadcrumb-main">
-                        <h4 class="text-capitalize breadcrumb-title">Portfolio</h4>
+                        <h4 class="text-capitalize breadcrumb-title">Feedback</h4>
                         <div class="breadcrumb-action justify-content-center flex-wrap">
                             <div class="action-btn">
                                 <button type="button" class="btn btn-sm btn-primary btn-add" data-toggle="modal" data-target="#modal-basic"><i class="la la-plus"></i> Add New</button>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
             @if (Session::has('message'))
@@ -27,43 +25,43 @@
                 <div class="col-lg-12 mb-30">
                     <div class="card">
                         <div class="card-header color-dark fw-500">
-                            Portfolio List
+                            Feedback List
                         </div>
                         <div class="card-body">
                             <div class="userDatatable global-shadow border-0 bg-white w-100">
                                 <div class="table-responsive">
                                     <table class="table mb-0 table-borderless">
                                         <thead>
-                                            <tr class="userDatatable-header">
-                                                <th>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="custom-checkbox  check-all">
-                                                            <input class="checkbox" type="checkbox" id="check-3">
-                                                            <label for="check-3">
-                                                                <span class="checkbox-text userDatatable-title">Image</span>
-                                                            </label>
-                                                        </div>
+                                        <tr class="userDatatable-header">
+                                            <th>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="custom-checkbox  check-all">
+                                                        <input class="checkbox" type="checkbox" id="check-3">
+                                                        <label for="check-3">
+                                                            <span class="checkbox-text userDatatable-title">Image</span>
+                                                        </label>
                                                     </div>
-                                                </th>
-                                                <th>
-                                                    <span class="userDatatable-title">Title</span>
-                                                </th>
-                                                <th>
-                                                    <span class="userDatatable-title">Category</span>
-                                                </th>
-                                                <th>
-                                                    <span class="userDatatable-title">Date</span>
-                                                </th>
-                                                <th>
-                                                    <span class="userDatatable-title">status</span>
-                                                </th>
-                                                <th>
-                                                    <span class="userDatatable-title float-right">action</span>
-                                                </th>
-                                            </tr>
+                                                </div>
+                                            </th>
+                                            <th>
+                                                <span class="userDatatable-title">Name</span>
+                                            </th>
+                                            <th>
+                                                <span class="userDatatable-title">Designation</span>
+                                            </th>
+                                            <th>
+                                                <span class="userDatatable-title">Company</span>
+                                            </th>
+                                            <th>
+                                                <span class="userDatatable-title">Feedback</span>
+                                            </th>
+                                            <th>
+                                                <span class="userDatatable-title float-right">Action</span>
+                                            </th>
+                                        </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($portfolio as $key=>$row)
+                                        @foreach($feedback as $key=>$row)
                                             <tr>
                                                 <td>
                                                     <div class="d-flex">
@@ -76,29 +74,29 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <a href="#" class="profile-image rounded-circle d-block m-0 wh-100" style="background-image:url('{{asset('storage/uploads/portfolios')}}/{{$row->image}}'); background-size: cover;"></a>
+                                                            <a href="#" class="profile-image rounded-circle d-block m-0 wh-80" style="background-image:url('{{asset('storage/uploads/feedback')}}/{{$row->image}}'); background-size: cover;"></a>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="userDatatable-content">
-                                                        {{ $row->title }}
+                                                        {{ $row->name }}
 
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="userDatatable-content">
-                                                        {{ $row->category_name }}
+                                                        {{ $row->designation }}
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="userDatatable-content">
-                                                        {{ $row->date }}
+                                                        {{ $row->company }}
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <div class="userDatatable-content d-inline-block">
-                                                        <span class="bg-opacity-success  color-success rounded-pill userDatatable-content-status active">active</span>
+                                                    <div class="userDatatable-content">
+                                                        {{ $row->feedback }}
                                                     </div>
                                                 </td>
                                                 <td>
@@ -121,7 +119,7 @@
                                                         <!-- /.modal -->
                                                         <div class="modal fade" id="modal-sm">
                                                             <div class="modal-dialog modal-sm">
-                                                                <form action="{{route('admin.portfolio.destroy',[$row->id])}}" method="post">
+                                                                <form action="{{route('admin.feedback.destroy',[$row->id])}}" method="post">
                                                                     @csrf
                                                                     {{method_field('DELETE')}}
                                                                     <div class="modal-content">
@@ -164,11 +162,11 @@
 
         <div class="modal-basic modal fade show" id="modal-basic" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-md" role="document">
-                <form class="mt-4" action="{{ route('admin.portfolio.store') }}" method="POST" enctype="multipart/form-data">
+                <form class="mt-4" action="{{ route('admin.feedback.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-content modal-bg-white ">
                         <div class="modal-header">
-                            <h6 class="modal-title">Add Portfolio</h6>
+                            <h6 class="modal-title">Add New FeedBack</h6>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span data-feather="x"></span></button>
                         </div>
@@ -176,38 +174,29 @@
                             <div class="card card-default card-md mb-4">
                                 <div class="card-body">
                                     <div class="form-group mb-4">
-                                        <label for="select-2" class="il-gray fs-14 fw-500 align-center">Select Category<span class="text-danger">*</span></label>
-                                        <div class="atbd-select ">
-                                            <select name="category_name"  id="select-3" class="form-control" required="">
-                                                <option value="0" disabled selected>Select Category</option>
-                                                <option value="Brand">Brand</option>
-                                                <option value="Design">Design</option>
-                                                <option value="Art">Art</option>
-                                                <option value="Photography">Photography</option>
-                                                <option value="Video">Video</option>
-                                            </select>
-                                        </div>
+                                        <label for="name" class="il-gray fs-14 fw-500 align-center">Client Name<span class="text-danger">*</span></label>
+                                        <input type="text" id="name" name="name" class="form-control form-control-lg" placeholder="Enter Full Name" required="">
                                     </div>
 
                                     <div class="form-group mb-4">
-                                        <label for="title" class="il-gray fs-14 fw-500 align-center">Title<span class="text-danger">*</span></label>
-                                        <input type="text" id="title" name="title" class="form-control form-control-lg" placeholder="Enter Title" required="">
+                                        <label for="designation" class="il-gray fs-14 fw-500 align-center">Designation<span class="text-danger">*</span></label>
+                                        <input type="text" id="designation" name="designation" class="form-control form-control-lg" placeholder="Enter Designation" required="">
                                     </div>
 
                                     <div class="form-group mb-4">
-                                        <label for="date" class="il-gray fs-14 fw-500 align-center">Date<span class="text-danger">*</span></label>
-                                        <input type="date" id="date" name="date" class="form-control form-control-lg" required="">
+                                        <label for="company" class="il-gray fs-14 fw-500 align-center">Company<span class="text-danger">*</span></label>
+                                        <input type="text" id="company" name="company" class="form-control form-control-lg" placeholder="Enter Company" required="">
                                     </div>
 
                                     <div class="form-group mb-4">
-                                        <label for="url" class="il-gray fs-14 fw-500 align-center">Website Address (Optional)</label>
-                                        <input type="text" id="url" name="url" class="form-control form-control-lg" placeholder="Enter Url">
+                                        <label for="feedback" class="il-gray fs-14 fw-500 align-center">Feedback<span class="text-danger">*</span></label>
+                                        <textarea class="form-control" name="feedback" id="exampleFormControlTextarea1" rows="3"></textarea>
                                     </div>
 
                                     <div class="atbd-tag-wrap">
                                         <div class="atbd-upload">
                                             <div class="atbd-upload-avatar">
-                                                <label for="tag2" class="il-gray fs-14 fw-500 align-center">Upload Image [Image Resolution (1800x1200px)]<span class="text-danger">*</span></label>
+                                                <label for="tag2" class="il-gray fs-14 fw-500 align-center">Upload Client Image [Image Resolution (584x570px)]<span class="text-danger">*</span></label>
                                                 <img class="avatrSrc" src="{{asset('backend/assets/img/gallery.png')}}" alt="Avatar Upload">
                                             </div>
                                             <div class="avatar-up">
@@ -228,6 +217,5 @@
             </div>
         </div>
         <!-- ends: .modal-Basic -->
-
     </div>
 @endsection

@@ -1,6 +1,7 @@
 @include('backend.layouts.partials.header')
 @include('backend.layouts.partials.scripts')
 
+
 <body class="layout-light side-menu">
 <div class="mobile-search"></div>
 
