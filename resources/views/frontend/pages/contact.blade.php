@@ -52,7 +52,8 @@
                     <div class="col-lg-6">
                         <div class="form-box">
                             <h3>Write A Comment</h3>
-                            <form id="contact-form" class="form" method="post" action="http://theme.dsngrid.com/droow/contact.php" data-toggle="validator">
+                            <form method="post" action="{{route('message')}}">
+                                @csrf
                                 <div class="messages"></div>
                                 <div class="input__wrap controls">
                                     <div class="form-group">
@@ -85,12 +86,18 @@
                                     </div>
 
                                     <div class="image-zoom" data-dsn="parallax">
-                                        <button>Send Message</button>
+                                        <button type="submit">Send Message</button>
                                     </div>
+                                    @if (Session::has('message'))
+                                        <div class="">
+                                            <strong>{{ Session::get('message') }}</strong>
+                                        </div>
+                                    @endif
                                 </div>
                             </form>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -98,7 +105,7 @@
         <section class="contact-up section-margin section-padding">
             <div class="container">
                 <div class="c-wapp">
-                    <a href="work.html" class="effect-ajax">
+                    <a href="{{route('portfolio')}}" class="effect-ajax">
                 <span class="hiring">
                   portfolio
                 </span>

@@ -52,7 +52,7 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="">
+                <a href="{{route('admin.newsletter.index')}}" class="">
                     <span data-feather="mail" class="nav-icon"></span>
                     <span class="menu-text">Newsletter</span>
                 </a>

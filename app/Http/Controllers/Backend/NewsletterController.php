@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\NewsLetter;
 use Illuminate\Http\Request;
 
 class NewsletterController extends Controller
@@ -14,7 +15,8 @@ class NewsletterController extends Controller
      */
     public function index()
     {
-        //
+        $newsletter = NewsLetter::orderBy('id','desc')->get();
+        return view('backend.newsletter', compact('newsletter'));
     }
 
     /**
@@ -24,7 +26,7 @@ class NewsletterController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.newsletter');
     }
 
     /**
@@ -80,6 +82,8 @@ class NewsletterController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $newsletter = NewsLetter::find($id);
+        $newsletter->delete();
+        return redirect()->back()->with('message', 'NewsLetter Deleted Successfully');
     }
 }

@@ -14,9 +14,6 @@ class PageController extends Controller
         return view('frontend.pages.about');
     }
 
-    public function contact(){
-        return view('frontend.pages.contact');
-    }
 
     public function portfolio(){
         return view('frontend.pages.portfolio');

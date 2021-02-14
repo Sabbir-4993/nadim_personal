@@ -20,7 +20,8 @@ Route::get('/portfolio', 'PageController@portfolio')->name('portfolio');
 Route::get('/portfolio-details', 'PageController@portfoliodetails')->name('portfolio_details');
 Route::get('/blog', 'PageController@blog')->name('blog');
 Route::get('/blog-details', 'PageController@blogdetails')->name('blog_details');
-Route::get('/contact', 'PageController@contact')->name('contact');
+Route::get('/contact', 'Frontend\ContactController@contact')->name('contact');
+Route::post('/message', 'Frontend\ContactController@store')->name('message');
 
 Auth::routes();
 Auth::routes(['register' => false]);
@@ -33,4 +34,5 @@ Route::group(['prefix'=>'/admin/','as'=>'admin.'], function(){
     Route::resource('/client', 'Backend\ClientController');
     Route::resource('/contact', 'Backend\ContactController');
     Route::resource('/feedback', 'Backend\FeedbackController');
+    Route::resource('/newsletter', 'Backend\NewsletterController');
 });
