@@ -5,28 +5,31 @@
         <div class="dsn-root-slider" id="dsn-hero-parallax-img">
             <div class="slide-inner">
                 <div class="swiper-wrapper">
+                    @foreach($portfolios as $key=>$row)
                     <div class="slide-item swiper-slide">
                         <div class="slide-content">
                             <div class="slide-content-inner">
                                 <div class="project-metas">
                                     <div class="project-meta-box project-work cat">
-                                        <span>Brands</span>
+                                        <span>{{$row->category_name}}</span>
                                     </div>
                                 </div>
 
                                 <div class="title-text-header">
                                     <div class="title-text-header-inner">
                                         <a href="{{route('portfolio_details')}}" class="effect-ajax" data-dsn-ajax="slider">
-                                            Time Tag Watch
+                                            {{$row->title}}
                                         </a>
                                     </div>
                                 </div>
 
                                 <p>Sometimes, we need to check the time, wondering when our work
                                     or meeting will finish, without getting caught by others.</p>
-
+                                @php
+                                    $portfolios = \App\Portfolio::all();
+                                @endphp
                                 <div class="link-custom">
-                                    <a href="{{route('portfolio_details')}}" class="image-zoom effect-ajax" data-dsn="parallax"
+                                    <a href="{{route('portfolio_details',($row->id))}} " class="image-zoom effect-ajax" data-dsn="parallax"
                                        data-dsn-ajax="slider">
                                         <span>View Case</span>
                                     </a>
@@ -35,309 +38,13 @@
                             </div>
                         </div>
                         <div class="image-container">
-                            <div class="image-bg cover-bg" data-image-src="{{asset('frontend/assets/img/project/project9/1.jpg')}}"
+                            <div class="image-bg cover-bg" data-image-src="{{asset('storage/uploads/portfolios')}}/{{$row->image}}"
                                  data-overlay="0">
-                                <img src="{{asset('frontend/assets/img/project/project9/1.jpg')}}" alt="">
+                                <img src="{{asset('storage/uploads/portfolios')}}/{{$row->image}}" alt="">
                             </div>
                         </div>
                     </div>
-
-                    <div class="slide-item swiper-slide">
-                        <div class="slide-content">
-                            <div class="slide-content-inner">
-                                <div class="project-metas">
-                                    <div class="project-meta-box project-work cat">
-                                        <span>Brands</span>
-                                    </div>
-                                </div>
-
-                                <div class="title-text-header">
-                                    <div class="title-text-header-inner">
-                                        <a href="{{route('portfolio_details')}}" class="effect-ajax" data-dsn-ajax="slider">
-                                            Under Armour
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <p>Cal was first. The first public university in the great state
-                                    of California. They are the pioneers. They are the trailblazers who started
-                                    it all.</p>
-
-                                <div class="link-custom">
-                                    <a href="{{route('portfolio_details')}}" class="image-zoom effect-ajax" data-dsn="parallax"
-                                       data-dsn-ajax="slider">
-                                        <span>View Case</span>
-                                    </a>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="image-container">
-                            <div class="image-bg cover-bg" data-image-src="{{asset('frontend/assets/img/project/project4/1.jpg')}}"
-                                 data-overlay="4">
-                                <img src="{{asset('frontend/assets/img/project/project4/1.jpg')}}" alt="">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="slide-item swiper-slide">
-                        <div class="slide-content">
-                            <div class="slide-content-inner">
-                                <div class="project-metas">
-                                    <div class="project-meta-box project-work cat">
-                                        <span>Photography</span>
-                                    </div>
-                                </div>
-
-                                <div class="title-text-header">
-                                    <div class="title-text-header-inner">
-                                        <a href="{{route('portfolio_details')}}" class="effect-ajax" data-dsn-ajax="slider">
-                                            Re Styling
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <p>Once the brand strategy was sharp and real for everyone inside of the
-                                    company, all the brand behavior started to roll out as stationary material.
-                                </p>
-
-                                <div class="link-custom">
-                                    <a href="{{route('portfolio_details')}}" class="image-zoom effect-ajax" data-dsn="parallax"
-                                       data-dsn-ajax="slider">
-                                        <span>View Case</span>
-                                    </a>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="image-container">
-                            <div class="image-bg cover-bg" data-image-src="{{asset('frontend/assets/img/project/project3/1.jpg')}}"
-                                 data-overlay="0">
-                                <img src="{{asset('frontend/assets/img/project/project3/1.jpg')}}" alt="">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="slide-item swiper-slide">
-                        <div class="slide-content">
-                            <div class="slide-content-inner">
-                                <div class="project-metas">
-                                    <div class="project-meta-box project-work cat">
-                                        <span>Photography</span>
-                                    </div>
-                                </div>
-
-                                <div class="title-text-header">
-                                    <div class="title-text-header-inner">
-                                        <a href="{{route('portfolio_details')}}" class="effect-ajax" data-dsn-ajax="slider">
-                                            Toast 2019 Reel
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <p>We are thrilled to share our new reel with you all! Special
-                                    thanks to all of our talented friends.</p>
-
-                                <div class="link-custom">
-                                    <a href="{{route('portfolio_details')}}" class="image-zoom effect-ajax" data-dsn="parallax"
-                                       data-dsn-ajax="slider">
-                                        <span>View Case</span>
-                                    </a>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="image-container">
-                            <div class="image-bg cover-bg" data-image-src="{{asset('frontend/assets/img/project/project8/1.jpg')}}"
-                                 data-overlay="2">
-                                <img src="{{asset('frontend/assets/img/project/project8/1.jpg')}}" alt="">
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="slide-item swiper-slide">
-                        <div class="slide-content">
-                            <div class="slide-content-inner">
-                                <div class="project-metas">
-                                    <div class="project-meta-box project-work cat">
-                                        <span>Photography</span>
-                                    </div>
-                                </div>
-
-                                <div class="title-text-header">
-                                    <div class="title-text-header-inner">
-                                        <a href="{{route('portfolio_details')}}" class="effect-ajax" data-dsn-ajax="slider">
-                                            Nile - Kabutha
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <p>Striking and powerful Aston Martin Vantage captivates you at
-                                    the first sight.</p>
-
-                                <div class="link-custom">
-                                    <a href="{{route('portfolio_details')}}" class="image-zoom effect-ajax" data-dsn="parallax"
-                                       data-dsn-ajax="slider">
-                                        <span>View Case</span>
-                                    </a>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="image-container">
-                            <div class="image-bg cover-bg" data-image-src="{{asset('frontend/assets/img/project/project7/1.jpg')}}"
-                                 data-overlay="2">
-                                <img src="{{asset('frontend/assets/img/project/project7/1.jpg')}}" alt="">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="slide-item swiper-slide">
-                        <div class="slide-content">
-                            <div class="slide-content-inner">
-                                <div class="project-metas">
-                                    <div class="project-meta-box project-work cat">
-                                        <span>Photography</span>
-                                    </div>
-                                </div>
-
-                                <div class="title-text-header">
-                                    <div class="title-text-header-inner">
-                                        <a href="{{route('portfolio_details')}}" class="effect-ajax" data-dsn-ajax="slider">
-                                            Sleep Walker
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="link-custom">
-                                    <a href="{{route('portfolio_details')}}" class="image-zoom effect-ajax" data-dsn="parallax"
-                                       data-dsn-ajax="slider">
-                                        <span>View Case</span>
-                                    </a>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="image-container">
-                            <div class="image-bg cover-bg" data-image-src="{{asset('frontend/assets/img/project/project6/1.jpg')}}"
-                                 data-overlay="5">
-                                <img src="{{asset('frontend/assets/img/project/project6/1.jpg')}}" alt="">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="slide-item swiper-slide">
-                        <div class="slide-content">
-                            <div class="slide-content-inner">
-                                <div class="project-metas">
-                                    <div class="project-meta-box project-work cat">
-                                        <span>Sports</span>
-                                    </div>
-                                </div>
-
-                                <div class="title-text-header">
-                                    <div class="title-text-header-inner">
-                                        <a href="{{route('portfolio_details')}}" class="effect-ajax" data-dsn-ajax="slider">
-                                            Magista
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <p>The Brief team has been sincerely committed to
-                                    designing great communication around our projects. </p>
-
-                                <div class="link-custom">
-                                    <a href="{{route('portfolio_details')}}" class="image-zoom effect-ajax" data-dsn="parallax"
-                                       data-dsn-ajax="slider">
-                                        <span>View Case</span>
-                                    </a>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="image-container">
-                            <div class="image-bg cover-bg" data-image-src="{{asset('frontend/assets/img/project/project1/1.jpg')}}"
-                                 data-overlay="2">
-                                <img src="{{asset('frontend/assets/img/project/project1/1.jpg')}}" alt="">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="slide-item swiper-slide">
-                        <div class="slide-content">
-                            <div class="slide-content-inner">
-                                <div class="project-metas">
-                                    <div class="project-meta-box project-work cat">
-                                        <span>Photography</span>
-                                    </div>
-                                </div>
-
-                                <div class="title-text-header">
-                                    <div class="title-text-header-inner">
-                                        <a href="{{route('portfolio_details')}}" class="effect-ajax" data-dsn-ajax="slider">
-                                            Bastian Bux
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <p>Bastian bux is the consequence of reducing everything
-                                    surrounding a dj and producer to its essential element: the music.</p>
-
-                                <div class="link-custom">
-                                    <a href="{{route('portfolio_details')}}" class="image-zoom effect-ajax" data-dsn="parallax"
-                                       data-dsn-ajax="slider">
-                                        <span>View Case</span>
-                                    </a>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="image-container">
-                            <div class="image-bg cover-bg" data-image-src="{{asset('frontend/assets/img/project/project2/1.jpg')}}"
-                                 data-overlay="0">
-                                <img src="{{asset('frontend/assets/img/project/project2/1.jpg')}}" alt="">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="slide-item swiper-slide">
-                        <div class="slide-content">
-                            <div class="slide-content-inner">
-                                <div class="project-metas">
-                                    <div class="project-meta-box project-work cat">
-                                        <span>Architecture</span>
-                                    </div>
-                                </div>
-
-                                <div class="title-text-header">
-                                    <div class="title-text-header-inner">
-                                        <a href="{{route('portfolio_details')}}" class="effect-ajax" data-dsn-ajax="slider">
-                                            Novara Conic
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <p>Cal was first. The first public university in the great state
-                                    of California. They are the pioneers.</p>
-
-                                <div class="link-custom">
-                                    <a href="{{route('portfolio_details')}}" class="image-zoom effect-ajax" data-dsn="parallax"
-                                       data-dsn-ajax="slider">
-                                        <span>View Case</span>
-                                    </a>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="image-container">
-                            <div class="image-bg cover-bg" data-image-src="{{asset('frontend/assets/img/project/project5/1.jpg')}}"
-                                 data-overlay="4">
-                                <img src="{{asset('frontend/assets/img/project/project5/1.jpg')}}" alt="">
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
 
                 </div>
             </div>
@@ -348,99 +55,18 @@
 
         <div class="nav-slider">
             <div class="swiper-wrapper" role="navigation">
+                @foreach($portfolios as $key=>$row)
                 <div class="swiper-slide">
                     <div class="image-container">
-                        <div class="image-bg cover-bg" data-image-src="{{asset('frontend/assets/img/project/project9/6.jpg')}}"
+                        <div class="image-bg cover-bg" data-image-src="{{asset('storage/uploads/portfolios')}}/{{$row->image}}"
                              data-overlay="2">
                         </div>
                     </div>
                     <div class="content">
-                        <p>01</p>
+                        <p>0{{$key+1}}</p>
                     </div>
                 </div>
-                <div class="swiper-slide">
-                    <div class="image-container">
-                        <div class="image-bg cover-bg" data-image-src="{{asset('frontend/assets/img/project/project4/13.jpg')}}"
-                             data-overlay="2">
-                        </div>
-                    </div>
-                    <div class="content">
-                        <p>02</p>
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="image-container">
-                        <div class="image-bg cover-bg" data-image-src="{{asset('frontend/assets/img/project/project3/3.jpg')}}"
-                             data-overlay="2">
-                        </div>
-                    </div>
-                    <div class="content">
-                        <p>03</p>
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="image-container">
-                        <div class="image-bg cover-bg" data-image-src="{{asset('frontend/assets/img/project/project8/2.jpg')}}"
-                             data-overlay="2">
-                        </div>
-                    </div>
-                    <div class="content">
-                        <p>04</p>
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="image-container">
-                        <div class="image-bg cover-bg" data-image-src="{{asset('frontend/assets/img/project/project7/2.jpg')}}"
-                             data-overlay="2">
-                        </div>
-                    </div>
-                    <div class="content">
-                        <p>05</p>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="image-container">
-                        <div class="image-bg cover-bg" data-image-src="{{asset('frontend/assets/img/project/project6/4.jpg')}}"
-                             data-overlay="2">
-                        </div>
-                    </div>
-                    <div class="content">
-                        <p>06</p>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="image-container">
-                        <div class="image-bg cover-bg" data-image-src="{{asset('frontend/assets/img/project/project1/2.jpg')}}"
-                             data-overlay="2">
-                        </div>
-                    </div>
-                    <div class="content">
-                        <p>07</p>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="image-container">
-                        <div class="image-bg cover-bg" data-image-src="{{asset('frontend/assets/img/project/project2/3.jpg')}}"
-                             data-overlay="2">
-                        </div>
-                    </div>
-                    <div class="content">
-                        <p>08</p>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="image-container">
-                        <div class="image-bg cover-bg" data-image-src="{{asset('frontend/assets/img/project/project5/4.jpg')}}"
-                             data-overlay="2">
-                        </div>
-                    </div>
-                    <div class="content">
-                        <p>09</p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
 

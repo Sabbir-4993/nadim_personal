@@ -18,14 +18,18 @@
                 </a>
                 <ul>
                     <li>
-
                         <a href="{{route('admin.portfolio.index')}}" class="">
                             <span data-feather="plus-circle" class="nav-icon"></span>
                             <span class="menu-text">Create</span>
                         </a>
                     </li>
                     <li>
-
+                        <a href="{{route('admin.portfolio.details')}}" class="">
+                            <span data-feather="plus-circle" class="nav-icon"></span>
+                            <span class="menu-text">Add Image</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{route('admin.gallery')}}" class="">
                             <span data-feather="image" class="nav-icon"></span>
                             <span class="menu-text">View</span>
@@ -55,6 +59,12 @@
                 <a href="{{route('admin.newsletter.index')}}" class="">
                     <span data-feather="mail" class="nav-icon"></span>
                     <span class="menu-text">Newsletter</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{route('admin.career.index')}}" class="">
+                    <span data-feather="mail" class="nav-icon"></span>
+                    <span class="menu-text">Career</span>
                 </a>
             </li>
             <li>

@@ -22,6 +22,8 @@ Route::get('/blog', 'PageController@blog')->name('blog');
 Route::get('/blog-details', 'PageController@blogdetails')->name('blog_details');
 Route::get('/contact', 'Frontend\ContactController@contact')->name('contact');
 Route::post('/message', 'Frontend\ContactController@store')->name('message');
+Route::get('/career', 'Frontend\CareerController@index')->name('career');
+Route::post('/job', 'Frontend\CareerController@job')->name('cv');
 
 Auth::routes();
 Auth::routes(['register' => false]);
@@ -29,10 +31,14 @@ Route::get('/admin/dashboard', 'HomeController@index')->name('home');
 
 Route::group(['prefix'=>'/admin/','as'=>'admin.'], function(){
     Route::resource('/portfolio', 'Backend\PortfolioController');
+    Route::get('/portfolio-details', 'Backend\PortfolioDetailsController@index')->name('portfolio.details');
+    Route::post('/portfolio-store', 'Backend\PortfolioDetailsController@store')->name('portfolio.details.store');
+    Route::post('/portfolio-destroy', 'Backend\PortfolioDetailsController@destroy')->name('portfolio.details.destroy');
     Route::get('/gallery', 'Backend\GalleryController@index')->name('gallery');
     Route::resource('/team', 'Backend\TeamController');
     Route::resource('/client', 'Backend\ClientController');
     Route::resource('/contact', 'Backend\ContactController');
     Route::resource('/feedback', 'Backend\FeedbackController');
     Route::resource('/newsletter', 'Backend\NewsletterController');
+    Route::resource('/career', 'Backend\CareerController');
 });
