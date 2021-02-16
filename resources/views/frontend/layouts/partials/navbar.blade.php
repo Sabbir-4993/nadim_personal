@@ -51,13 +51,18 @@
                     </div>
                 </div>
             </div>
+            @php
+                $contact = \App\Contact::all();
+            @endphp
             <div class="nav-content">
                 <div class="inner-content">
+                    @foreach($contact as $key=>$row)
                     <address class="v-middle">
-                        <span>Egypt</span>
-                        <span>Damietta,El-Mahalla El-Kubra,</span>
-                        <span>01024552406 , 01004392260</span>
+                        <span>{{$row->email}}</span>
+                        <span>{{$row->address}}</span>
+                        <span>{{$row->phone}}</span>
                     </address>
+                    @endforeach
                 </div>
 
             </div>

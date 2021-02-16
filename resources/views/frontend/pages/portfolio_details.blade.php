@@ -6,7 +6,7 @@
         <div class="headefr-fexid" data-dsn-header="project">
             <div class="bg w-100" id="dsn-hero-parallax-img" data-dsn-ajax="img">
                 <div class="bg-image  cover-bg" data-overlay="5"
-                     data-image-src="{{ asset('frontend/assets/img/project/project6/1.jpg')}}"></div>
+                     data-image-src="{{asset('storage/uploads/portfolios')}}/{{$portfolios->image}}"></div>
             </div>
 
             <div class="scroll" data-dsn-animate="ajax">
@@ -17,16 +17,16 @@
 
                 <div class="title-text-header">
                     <div class="cat">
-                        <span>Photography</span>
+                        <span>{{$portfolios->category_name}}</span>
                     </div>
                     <span class="title-text-header-inner">
-                                <span data-dsn-animate="ajax">Sleep Walker</span>
+                                <span data-dsn-animate="ajax">{{$portfolios->title}}</span>
                             </span>
                 </div>
 
                 <div class="sub-text-header" data-dsn-animate="ajax">
                     <h5>Published</h5>
-                    <span>- September 26th 2019</span>
+                    <span>- {{$portfolios->date}}</span>
                 </div>
             </div>
 
@@ -36,7 +36,7 @@
                         <div id="descover-holder" class="col-lg-12 project-meta__content">
                             <div class="link">
                                 <a target="_blank"
-                                   href="https://www.behance.net/gallery/86013005/THE-SLEEPWALKER?tracking_source=curated_galleries">View
+                                   href="http://{{$portfolios->url}}">View
                                     Website</a>
                             </div>
                         </div>
@@ -48,64 +48,36 @@
 
     <div class="wrapper">
         <div class="root-project">
+
+            @foreach($portfoliodetails as $key=>$row)
             <div class="container-fluid">
                 <div class="img-box-small dsn-parallax-full" data-dsn-grid="move-up" data-dsn-triggerhook="0">
-                    <img src="{{ asset('frontend/assets/img/project/project6/2.jpg')}}" alt="" data-dsn-y="30%" data-dsn-scale="1.01">
+                    <img src="{{asset('storage/uploads/portfolio-images')}}/{{$row->image}}" alt="" data-dsn-y="30%" data-dsn-scale="1.01">
                     <div class="cap">
-                        <span>Web Design</span>
+                        <span>{{$portfolios->category_name}}</span>
                     </div>
                 </div>
             </div>
-
-            <div class="container-fluid">
-                <div class="img-box-small dsn-parallax-full" data-dsn-grid="move-up" data-dsn-triggerhook="0">
-                    <img src="{{ asset('frontend/assets/img/project/project6/3.jpg')}}" alt="" data-dsn-y="30%" data-dsn-scale="1.01">
-                    <div class="cap">
-                        <span>Web Design</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="container-fluid">
-                <div class="img-box-small dsn-parallax-full" data-dsn-grid="move-up" data-dsn-triggerhook="0">
-                    <img src="{{ asset('frontend/assets/img/project/project6/4.jpg')}}" alt="" data-dsn-y="30%" data-dsn-scale="1.01">
-                    <div class="cap">
-                        <span>Web Design</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="container-fluid">
-                <div class="img-box-small dsn-parallax-full" data-dsn-grid="move-up" data-dsn-triggerhook="0">
-                    <img src="{{ asset('frontend/assets/img/project/project6/5.jpg')}}" alt="" data-dsn-y="30%" data-dsn-scale="1.01">
-                    <div class="cap">
-                        <span>Web Design</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="container-fluid section-margin mt-0">
-                <div class="img-box-small dsn-parallax-full" data-dsn-grid="move-up" data-dsn-triggerhook="0">
-                    <img src="{{ asset('frontend/assets/img/project/project6/3.jpg')}}" alt="" data-dsn-y="30%" data-dsn-scale="1.08">
-                    <div class="cap">
-                        <span>Web Design</span>
-                    </div>
-                </div>
-            </div>
+            @endforeach
 
         </div>
+        @php
+            use App\Portfolio;
+            $id = $portfolios->id+1;
+            $port = Portfolio::where('id',$id)->first();
+        @endphp
 
-        <div class="next-project" data-dsn-footer="project">
-            <div id="dsn-next-parallax-img" class="bg">
-                <div class="bg-image cover-bg" data-overlay="2"
-                     data-image-src="{{ asset('frontend/assets/img/project/project7/1.jpg')}}"></div>
-            </div>
-
+            @if($port != null)
+            <div class="next-project" data-dsn-footer="project">
+                <div id="dsn-next-parallax-img" class="bg">
+                    <div class="bg-image cover-bg" data-overlay="2"
+                         data-image-src="{{asset('storage/uploads/portfolios')}}/{{$port->image}}"></div>
+                </div>
             <div id="dsn-next-parallax-title" class="project-title">
-                <a href="project-7.html" class="effect-ajax" data-dsn-ajax="next-project">
+                <a href="{{route('portfolio_details',($port->id))}}" class="effect-ajax" data-dsn-ajax="next-project">
                     <div class="title-text-header">
                         <div class="title-text-header-inner">
-                            <span>Nile - Kabutha</span>
+                            <span>Nile - {{$port->category_name}}</span>
                         </div>
                     </div>
                     <div class="sub-text-header">
@@ -113,6 +85,9 @@
                     </div>
                 </a>
             </div>
+            @else
+
+            @endif
         </div>
 
         @yield('footer')

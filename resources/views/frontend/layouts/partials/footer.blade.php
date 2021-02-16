@@ -5,7 +5,7 @@
                 <div class="col-md-3 dsn-col-footer">
                     <div class="footer-block">
                         <div class="footer-logo">
-                            <a href="#"><img src="{{asset('frontend/assets/img/logo.png')}}" alt=""></a>
+                            <a href="{{route('home')}}"><img src="{{asset('frontend/assets/img/logo.png')}}" alt=""></a>
                         </div>
 
                         <div class="footer-social">
@@ -27,24 +27,25 @@
                         <h4 class="footer-title">Navigation</h4>
                         <nav>
                             <ul>
-                                <li><a href="#">Portfolio</a>
-                                </li>
-                                <li><a href="#">About</a></li>
-                                <li><a href="#">News</a></li>
-                                <li><a href="#">Contact</a>
+                                <li><a href="{{route('portfolio')}}">Portfolio</a></li>
+                                <li><a href="{{route('about')}}">About</a></li>
+                                <li><a href="{{route('career')}}">Career</a></li>
+                                <li><a href="{{route('contact')}}">Contact</a>
                                 </li>
                             </ul>
                         </nav>
                     </div>
                 </div>
-
+                @php
+                $address = \App\Contact::all();
+                @endphp
+                @foreach($address as $key=>$row)
                 <div class="col-md-3 dsn-col-footer">
                     <div class="footer-block col-contact">
                         <h4 class="footer-title">Contact</h4>
-                        <p><strong>T</strong> <span>:</span> +001 225 3351</p>
-                        <p><strong>F</strong> <span>:</span>+001 225 3351</p>
+                        <p><strong>T</strong> <span>:</span>{{$row->phone}}</p>
                         <p class="over-hidden"><strong>E</strong> <span>:</span>
-                            <a class="link-hover" data-hover-text="info@dsngrid.com" href="#">info@dsngrid.com</a>
+                            <a class="link-hover" data-hover-text="{{$row->email}}" href="mailto:{{$row->email}}">{{$row->email}}</a>
                         </p>
                     </div>
                 </div>
@@ -52,20 +53,18 @@
                 <div class="col-md-3 dsn-col-footer">
                     <div class="col-address">
                         <h4 class="footer-title">Address</h4>
-
-                        <p>El-Mahalla El-Kubra 37<br>
-                            1776 Damietta<br>
-                            Egypt</p>
+                        <p>{{$row->address}}</p>
                     </div>
                 </div>
+                @endforeach
             </div>
         </div>
 
         <div class="copyright">
             <div class="text-center">
-                <p>© 2021 Digital Agency</p>
+                <p>© 2021 Nadim's Design</p>
                 <div class="copright-text over-hidden">Designed & Developed by
-                    <a class="link-hover" data-hover-text="DSN Grid" href="#" target="_blank">Sabbir Ahmed</a>
+                    <a class="link-hover" data-hover-text="DSN Grid" href="https://www.mrsabbir.website/" target="_blank">Sabbir Ahmed</a>
                 </div>
             </div>
         </div>

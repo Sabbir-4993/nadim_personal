@@ -17,6 +17,7 @@ class AdminTableSeeder extends Seeder
             'name' => 'Nadim',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('12345678'),
+            'image' => 'nadim.jpg',
         ]);
     }
 }

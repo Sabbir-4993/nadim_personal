@@ -11,7 +11,7 @@
                         <h4 class="text-capitalize breadcrumb-title">Message From Client</h4>
                         <div class="breadcrumb-action justify-content-center flex-wrap">
                             <div class="action-btn">
-                                <button type="button" class="btn btn-sm btn-primary btn-add" data-toggle="modal" data-target="#modal-basic"><i class="la la-plus"></i> Add New</button>
+                                <button type="button" class="btn btn-sm btn-primary btn-add" disabled data-toggle="modal" data-target="#modal-basic"><i class="la la-plus"></i> Add New</button>
                             </div>
                         </div>
                     </div>
@@ -88,7 +88,7 @@
                                                         <div class="modal fade" id="modal-sm">
                                                             <div class="modal-dialog modal-sm">
                                                                 <form action="{{route('admin.newsletter.show',[$row->id])}}" method="post">
-                                                                    @csrf  
+                                                                    @csrf
                                                                     <div class="modal-content">
                                                                         <div class="modal-header">
                                                                             <h4 class="modal-title">Delete Confirm!!</h4>

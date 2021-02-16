@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Feedback;
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
 
-class FeedbackController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class FeedbackController extends Controller
      */
     public function index()
     {
-        $feedback = Feedback::orderBy('id','desc')->get();
-        return view('backend.feedback', compact('feedback'));
+        $user = User::orderBy('id','desc')->get();
+        return view('backend.site_settings', compact('user'));
     }
 
     /**
@@ -26,7 +26,7 @@ class FeedbackController extends Controller
      */
     public function create()
     {
-        return view('backend.feedback');
+        //
     }
 
     /**
@@ -37,30 +37,7 @@ class FeedbackController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'name' => 'required',
-            'designation' => 'required',
-            'company' => 'required',
-            'feedback' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,bmp,gif,svg|max:2048',
-        ]);
-
-        $data = $request->all();
-
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $name = date('Y-m-d'). "." .time(). "." .'client'. "." .$image->getClientOriginalExtension();
-            $destination = public_path('/storage/uploads/feedback');
-            $image->move($destination, $name);
-            $image_url = $name;
-        }else{
-            $image = 'team-sample.png';
-        }
-
-        $data['image'] = $image_url;
-
-        Feedback::create($data);
-        return redirect()->back()->with('message','Feedback Added Successfully');
+        //
     }
 
     /**
@@ -71,7 +48,7 @@ class FeedbackController extends Controller
      */
     public function show($id)
     {
-
+        //
     }
 
     /**
@@ -82,7 +59,8 @@ class FeedbackController extends Controller
      */
     public function edit($id)
     {
-        //
+        $settings = User::find($id);
+        return view('backend.site_settings', compact('settings'));
     }
 
     /**
@@ -94,7 +72,29 @@ class FeedbackController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,bmp,gif,svg|max:2048',
+        ]);
+
+        $data = $request->all();
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name = date('Y-m-d'). "." .time(). "." .'user'. "." .$image->getClientOriginalExtension();
+            $destination = public_path('/storage/uploads/User');
+            $image->move($destination, $name);
+            $image_url = $name;
+        }else{
+            $image = 'user.png';
+        }
+        $data['password'] = bcrypt($request->password);
+        $data['image'] = $image_url;
+
+        User::update($data);
+        return redirect()->back()->with('message','Client Added Successfully');
     }
 
     /**
@@ -105,8 +105,6 @@ class FeedbackController extends Controller
      */
     public function destroy($id)
     {
-        $team = Feedback::find($id);
-        $team->delete();
-        return redirect()->back()->with('message', 'Feedback Deleted Successfully');
+        //
     }
 }

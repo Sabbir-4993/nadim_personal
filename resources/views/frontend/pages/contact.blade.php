@@ -31,21 +31,25 @@
                             <h5>Visit our studio at</h5>
                             <p>Sed ut perspiciatis unde omnis iste natus error sit vo
                                 luptatem accusantium natus error sit omnis iste natus</p>
-
+                            @php
+                            $address = \App\Contact::all();
+                            @endphp
+                            @foreach($address as $key=>$row)
                             <ul>
                                 <li>
                                     <span>Phone</span>
-                                    <a href="#">+1 (800) 990 8877</a>
+                                    <a href="tel:{{$row->phone}}">{{$row->phone}}</a>
                                 </li>
                                 <li>
                                     <span>Email</span>
-                                    <a href="#">info@example.com</a>
+                                    <a href="mailto:{{$row->email}}">{{$row->email}}</a>
                                 </li>
                                 <li>
                                     <span>Address</span>
-                                    <a href="#">778 NE 84th St Miami, FL</a>
+                                    <a href="#">{{$row->address}}</a>
                                 </li>
                             </ul>
+                            @endforeach
                         </div>
                     </div>
 

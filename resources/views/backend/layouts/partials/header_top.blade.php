@@ -40,24 +40,12 @@
                             <div class="nav-author__options">
                                 <ul>
                                     <li>
-                                        <a href="#">
+                                        <a href="{{route('home')}}">
                                             <span data-feather="user"></span> Profile</a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="{{route('admin.settings.index')}}">
                                             <span data-feather="settings"></span> Settings</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span data-feather="key"></span> Billing</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span data-feather="users"></span> Activity</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span data-feather="bell"></span> Help</a>
                                     </li>
                                 </ul>
                                 <a class="nav-author__signout" href="{{ route('logout') }}"

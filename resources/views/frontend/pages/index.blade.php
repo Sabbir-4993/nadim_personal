@@ -17,7 +17,7 @@
 
                                 <div class="title-text-header">
                                     <div class="title-text-header-inner">
-                                        <a href="{{route('portfolio_details')}}" class="effect-ajax" data-dsn-ajax="slider">
+                                        <a href="#" class="effect-ajax" data-dsn-ajax="slider">
                                             {{$row->title}}
                                         </a>
                                     </div>
@@ -25,9 +25,6 @@
 
                                 <p>Sometimes, we need to check the time, wondering when our work
                                     or meeting will finish, without getting caught by others.</p>
-                                @php
-                                    $portfolios = \App\Portfolio::all();
-                                @endphp
                                 <div class="link-custom">
                                     <a href="{{route('portfolio_details',($row->id))}} " class="image-zoom effect-ajax" data-dsn="parallax"
                                        data-dsn-ajax="slider">
@@ -45,7 +42,6 @@
                         </div>
                     </div>
                     @endforeach
-
                 </div>
             </div>
         </div>
@@ -229,8 +225,7 @@
                                 <h3>WEB DEVELOPMENT</h3>
                             </div>
                             <p>Web design encompasses many different skills and disciplines in the production of
-                                all
-                                web.</p>
+                                all web.</p>
                         </div>
                     </div>
                 </div>
@@ -248,7 +243,7 @@
                         enthusiasts feel identified. We generated a simple logo that is the basis for
                         generating a geometric and liquid system. </p>
                     <div class="link-custom">
-                        <a class="image-zoom effect-ajax" href="{{route('portfolio_details')}}" data-dsn="parallax">
+                        <a class="image-zoom effect-ajax" href="#" data-dsn="parallax">
                             <span>Learn More</span>
                         </a>
                     </div>
@@ -270,61 +265,21 @@
                     <div class="col-lg-9 offset-lg-3">
                         <div class="work-container">
                             <div class="slick-slider">
+                                @foreach($portfolios as $key=>$row)
                                 <div class="work-item slick-slide">
-                                    <img class="has-top-bottom" src="{{asset('frontend/assets/img/project/project3/1.jpg')}}" alt="">
+                                    <img class="has-top-bottom" src="{{asset('storage/uploads/portfolios')}}/{{$row->image}}" alt="">
                                     <div class="item-border"></div>
                                     <div class="item-info">
-                                        <a href="{{route('portfolio_details')}}" data-dsn-grid="move-up" class="effect-ajax">
+                                        <a href="{{route('portfolio_details',($row->id))}}" data-dsn-grid="move-up" class="effect-ajax">
 
-                                            <h5 class="cat">Photography</h5>
-                                            <h4>Nile - Kabutha</h4>
+                                            <h5 class="cat">{{$row->category_name}}</h5>
+                                            <h4>{{$row->title}}</h4>
                                             <span><span>Veiw Project</span></span>
                                         </a>
 
                                     </div>
                                 </div>
-
-                                <div class="work-item slick-slide">
-                                    <img class="has-top-bottom" src="{{asset('frontend/assets/img/project/project6/1.jpg')}}" alt="">
-                                    <div class="item-border"></div>
-                                    <div class="item-info">
-                                        <a href="{{route('portfolio_details')}}" data-dsn-grid="move-up" class="effect-ajax">
-
-                                            <h5 class="cat">Fashion</h5>
-                                            <h4>Bloawshom</h4>
-                                            <span><span>Veiw Project</span></span>
-                                        </a>
-
-                                    </div>
-                                </div>
-
-                                <div class="work-item slick-slide">
-                                    <img class="has-top-bottom" src="{{asset('frontend/assets/img/project/project4/1.jpg')}}" alt="">
-                                    <div class="item-border"></div>
-                                    <div class="item-info">
-                                        <a href="{{route('portfolio_details')}}" data-dsn-grid="move-up" class="effect-ajax">
-
-                                            <h5 class="cat">Photography</h5>
-                                            <h4>Bastian Bux</h4>
-                                            <span><span>Veiw Project</span></span>
-                                        </a>
-
-                                    </div>
-                                </div>
-
-                                <div class="work-item slick-slide">
-                                    <img class="has-top-bottom" src="{{asset('frontend/assets/img/project/project5/1.jpg')}}" alt="">
-                                    <div class="item-border"></div>
-                                    <div class="item-info">
-                                        <a href="{{route('portfolio_details')}}" data-dsn-grid="move-up" class="effect-ajax">
-
-                                            <h5 class="cat">Fashion</h5>
-                                            <h4>Bloawshom</h4>
-                                            <span><span>Veiw Project</span></span>
-                                        </a>
-
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
 
                         </div>
@@ -368,7 +323,7 @@
                                 the time at the end of your finger without damaging your watch.</p>
 
                             <div class="link-custom" data-dsn-animate="up">
-                                <a class="image-zoom effect-ajax" href="{{route('portfolio_details')}}" data-dsn="parallax">
+                                <a class="image-zoom effect-ajax" href="#" data-dsn="parallax">
                                     <span>Learn More</span>
                                 </a>
                             </div>
@@ -392,56 +347,24 @@
                     <div class="items">
                         <div class="bg"></div>
                         <div class="slick-slider">
+                            @php
+                                $feedback = \App\Feedback::all();
+                            @endphp
+                            @foreach($feedback as $key=>$row)
                             <div class="item">
                                 <div class="quote">
-                                    <p>"The Brief team has been sincerely committed to
-                                        designing great communication around our projects. Our customers love
-                                        their
-                                        creative work - and so do we!"</p>
+                                    <p>"{{$row->feedback}}"</p>
                                 </div>
                                 <div class="bottom">
                                     <div class="avatar">
-                                        <img src="{{asset('frontend/assets/img/avatar/1.jpg')}}" alt="">
+                                        <img src="{{asset('storage/uploads/feedback')}}/{{$row->image}}" alt="">
                                     </div>
                                     <div class="label">
-                                        <div class="cell">- Helen Ginsberg, CEO of Treasure Island</div>
+                                        <div class="cell">- {{$row->name}}, {{$row->designation}} at {{$row->company}}</div>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="item">
-                                <div class="quote">
-                                    <p>"Stage direction, music, ballet, workshops, backstage, the GTG presents
-                                        the
-                                        first
-                                        episode of the series “Les Indes galantes en création"</p>
-                                </div>
-                                <div class="bottom">
-                                    <div class="avatar">
-                                        <img src="{{asset('frontend/assets/img/avatar/2.jpg')}}" alt="">
-                                    </div>
-                                    <div class="label">
-                                        <div class="cell">- Helen Ginsberg, CEO of Treasure Island</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="item">
-                                <div class="quote">
-                                    <p>"The Brief team has been sincerely committed to
-                                        designing great communication around our projects. Our customers love
-                                        their
-                                        creative work - and so do we!"</p>
-                                </div>
-                                <div class="bottom">
-                                    <div class="avatar">
-                                        <img src="{{asset('frontend/assets/img/avatar/3.jpg')}}" alt="">
-                                    </div>
-                                    <div class="label">
-                                        <div class="cell">- Helen Ginsberg, CEO of Treasure Island</div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -526,8 +449,12 @@
                 </div>
 
                 <div class="wapper-client">
+                    @php
+                    $client = \App\Client::all();
+                    @endphp
+                    @foreach($client as $key=>$row)
                     <div class="logo-box">
-                        <img src="{{asset('frontend/assets/img/logo/1.png')}}" alt="">
+                        <img src="{{asset('storage/uploads/client')}}/{{$row->image}}" alt="">
 
                         <div class="info">
                             <div class="content" onclick="javascript:void(0);">
@@ -537,108 +464,14 @@
 
                                 <div class="entry">
                                     <div>
-                                        <h5>Google</h5>
-                                        <a href="#">www.google.com</a>
+                                        <h5>{{$row->name}}</h5>
+                                        <a href="https://{{$row->url}}" target="_blank">{{$row->url}}</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="logo-box">
-                        <img src="{{asset('frontend/assets/img/logo/2.png')}}" alt="">
-
-                        <div class="info">
-                            <div class="content" onclick="javascript:void(0);">
-                                <div class="icon">
-                                    <i class="fas fa-plus"></i>
-                                </div>
-
-                                <div class="entry">
-                                    <div>
-                                        <h5>Google</h5>
-                                        <a href="#">www.google.com</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="logo-box">
-                        <img src="{{asset('frontend/assets/img/logo/3.png')}}" alt="">
-
-                        <div class="info">
-                            <div class="content" onclick="javascript:void(0);">
-                                <div class="icon">
-                                    <i class="fas fa-plus"></i>
-                                </div>
-
-                                <div class="entry">
-                                    <div>
-                                        <h5>Google</h5>
-                                        <a href="#">www.google.com</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="logo-box">
-                        <img src="{{asset('frontend/assets/img/logo/4.png')}}" alt="">
-
-                        <div class="info">
-                            <div class="content" onclick="javascript:void(0);">
-                                <div class="icon">
-                                    <i class="fas fa-plus"></i>
-                                </div>
-
-                                <div class="entry">
-                                    <div>
-                                        <h5>Google</h5>
-                                        <a href="#">www.google.com</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="logo-box">
-                        <img src="{{asset('frontend/assets/img/logo/5.png')}}" alt="">
-
-                        <div class="info">
-                            <div class="content" onclick="javascript:void(0);">
-                                <div class="icon">
-                                    <i class="fas fa-plus"></i>
-                                </div>
-
-                                <div class="entry">
-                                    <div>
-                                        <h5>Google</h5>
-                                        <a href="#">www.google.com</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="logo-box">
-                        <img src="{{asset('frontend/assets/img/logo/6.png')}}" alt="">
-
-                        <div class="info">
-                            <div class="content" onclick="javascript:void(0);">
-                                <div class="icon">
-                                    <i class="fas fa-plus"></i>
-                                </div>
-
-                                <div class="entry">
-                                    <div>
-                                        <h5>Google</h5>
-                                        <a href="#">www.google.com</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>
@@ -646,13 +479,13 @@
         <section class="contact-up section-margin section-padding">
             <div class="container">
                 <div class="c-wapp">
-                    <a href="{{route('contact')}}" class="effect-ajax">
+                    <a href="{{route('career')}}" class="effect-ajax">
                                 <span class="hiring">
                                     We are hiring
                                 </span>
                         <span class="career">
-                                    Dare and contact us immediately!
-                                </span>
+                            Dare and contact us immediately!
+                        </span>
                     </a>
                 </div>
             </div>

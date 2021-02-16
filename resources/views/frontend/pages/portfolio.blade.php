@@ -19,7 +19,7 @@
         <div class="root-work">
             <div class="container">
                 <div class="box-title" data-dsn-title="cover">
-                    <h2 class="title-cover" data-dsn-grid="move-section" data-dsn-move="-70">Projets</h2>
+                    <h2 class="title-cover" data-dsn-grid="move-section" data-dsn-move="-70">Portfolio</h2>
                 </div>
 
                 <div class="filterings">
@@ -29,144 +29,39 @@
                             <button type="button" data-filter="*" class="active">
                                 All
                             </button>
-                            <button type="button" data-filter=".brand">Brand</button>
-                            <button type="button" data-filter=".photography">Photography</button>
-                            <button type="button" data-filter=".architecture">Architecture</button>
-                            <button type="button" data-filter=".video">video</button>
-
+                            @foreach($portfolios as $key=>$row)
+                            <button type="button" data-filter=".{{$row->category_name}}">{{$row->category_name}}</button>
+                            @endforeach
                         </div>
                     </div>
                 </div>
 
                 <div class="projects-list gallery">
-                    <div class="item brand">
-                        <a href="{{route('portfolio_details')}}" class="effect-ajax" data-dsn-ajax="work"
+                    @foreach($portfolios as $key=>$row)
+                    <div class="item {{$row->category_name}}">
+                        <a href="{{route('portfolio_details',($row->id))}}" class="effect-ajax" data-dsn-ajax="work"
                            data-dsn-grid="move-up">
-                            <img class="has-top-bottom" src="{{asset('frontend/assets/img/project/project9/1.jpg')}}" alt="" />
+                            <img class="has-top-bottom" src="{{asset('storage/uploads/portfolios')}}/{{$row->image}}" alt="" />
                             <div class="item-border"></div>
                             <div class="item-info">
-                                <h5 class="cat">Brand</h5>
-                                <h4>Time Tag Watch</h4>
+                                <h5 class="cat">{{$row->category_name}}</h5>
+                                <h4>{{$row->title}}</h4>
                                 <span><span>Veiw Project</span></span>
                             </div>
                         </a>
                     </div>
-
-                    <div class="item brand">
-                        <a href="{{route('portfolio_details')}}" class="effect-ajax" data-dsn-ajax="work"
-                           data-dsn-grid="move-up">
-                            <img class="has-top-bottom" src="{{asset('frontend/assets/img/project/project4/2.jpg')}}" alt="" />
-                            <div class="item-border"></div>
-                            <div class="item-info">
-                                <h5 class="cat">Brand</h5>
-                                <h4>Under Armour</h4>
-                                <span><span>Veiw Project</span></span>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="item photography">
-                        <a href="{{route('portfolio_details')}}" data-dsn-grid="move-up">
-                            <img class="has-top-bottom" src="{{asset('frontend/assets/img/project/project3/1.jpg')}}" alt="" />
-                            <div class="item-border"></div>
-                            <div class="item-info">
-                                <h5 class="cat">Photography</h5>
-                                <h4>Re Styling</h4>
-                                <span><span>Veiw Project</span></span>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="item video">
-                        <a href="{{route('portfolio_details')}}">
-                            <img class="hidden" src="{{asset('frontend/assets/img/project/project8/1.jpg')}}" alt="" />
-                            <div data-dsn="video" data-overlay="4" style="height: 80vh">
-                                <video class="has-top-bottom dsn-video" preload="none"
-                                       poster="{{asset('frontend/assets/img/project/project8/1.jpg')}}" autoplay loop muted>
-                                    <source src="http://theme.dsngrid.com/video/droow.mp4" type="video/mp4"
-                                            type="video/mp4">
-                                    <source src="http://theme.dsngrid.com/video/droow.webm" type="video/webm">
-                                    Your browser does not support HTML5 video.
-                                </video>
-                            </div>
-                            <div class="item-border"></div>
-                            <div class="item-info">
-                                <h5 class="cat">video</h5>
-                                <h4>Toast 2019 Reel</h4>
-                                <span><span>Veiw Project</span></span>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="item photography">
-                        <a href="{{route('portfolio_details')}}" data-dsn-grid="move-up">
-                            <img class="has-top-bottom" src="{{asset('frontend/assets/img/project/project7/1.jpg')}}" alt="" />
-                            <div class="item-border"></div>
-                            <div class="item-info">
-                                <h5 class="cat">Photography</h5>
-                                <h4>Nile - Kabutha</h4>
-                                <span><span>Veiw Project</span></span>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="item photography">
-                        <a href="{{route('portfolio_details')}}" data-dsn-grid="move-up">
-                            <img class="has-top-bottom" src="{{asset('frontend/assets/img/project/project6/1.jpg')}}" alt="" />
-                            <div class="item-border"></div>
-                            <div class="item-info">
-                                <h5 class="cat">Photography</h5>
-                                <h4>Sleep Walker</h4>
-                                <span><span>Veiw Project</span></span>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="item brand">
-                        <a href="{{route('portfolio_details')}}" data-dsn-grid="move-up">
-                            <img class="has-top-bottom" src="{{asset('frontend/assets/img/project/project1/1.jpg')}}" alt="" />
-                            <div class="item-border"></div>
-                            <div class="item-info">
-                                <h5 class="cat">brand</h5>
-                                <h4>Magista</h4>
-                                <span><span>Veiw Project</span></span>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="item photography">
-                        <a href="{{route('portfolio_details')}}" data-dsn-grid="move-up">
-                            <img class="has-top-bottom" src="{{asset('frontend/assets/img/project/project2/1.jpg')}}" alt="" />
-                            <div class="item-border"></div>
-                            <div class="item-info">
-                                <h5 class="cat">Photography</h5>
-                                <h4>Bastian Bux</h4>
-                                <span><span>Veiw Project</span></span>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="item architecture">
-                        <a href="{{route('portfolio_details')}}" data-dsn-grid="move-up">
-                            <img class="has-top-bottom" src="{{asset('frontend/assets/img/project/project5/1.jpg')}}" alt="" />
-                            <div class="item-border"></div>
-                            <div class="item-info">
-                                <h5 class="cat">Architecture</h5>
-                                <h4>Novara Conic</h4>
-                                <span><span>Veiw Project</span></span>
-                            </div>
-                        </a>
-                    </div>
+                    @endforeach
                 </div>
+
             </div>
         </div>
 
         <section class="contact-up section-margin section-padding">
             <div class="container">
                 <div class="c-wapp">
-                    <a href="contact.html" class="effect-ajax">
+                    <a href="{{route('contact')}}" class="effect-ajax">
                                 <span class="hiring">
-                                    We are hiring
+                                    Contact With us
                                 </span>
                         <span class="career">
                                     Dare and contact us immediately!

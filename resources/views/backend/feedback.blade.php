@@ -96,21 +96,11 @@
                                                 </td>
                                                 <td>
                                                     <div class="userDatatable-content">
-                                                        {{ $row->feedback }}
+                                                        {!! \Illuminate\Support\Str::limit($row->feedback, 40)  !!}
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <ul class="orderDatatable_actions mb-0 d-flex flex-wrap">
-                                                        <li>
-                                                            <a href="#" class="view">
-                                                                <span data-feather="eye"></span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="edit">
-                                                                <span data-feather="edit"></span>
-                                                            </a>
-                                                        </li>
                                                         <li>
                                                             <a href="#" class="remove" data-toggle="modal" data-target="#modal-sm">
                                                                 <span data-feather="trash-2"></span>
