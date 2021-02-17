@@ -92,84 +92,87 @@
                                                                 <span data-feather="edit"></span>
                                                             </a>
                                                         </li>
-
-                                                        <!-- /.modal -->
-                                                        <div class="modal fade" id="modal-sm">
-                                                            <div class="modal-dialog modal-sm">
-                                                                <form action="{{route('admin.settings.update',[$settings->id])}}" method="post" enctype="multipart/form-data">
-                                                                    @csrf
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-body">
-                                                                            <div class="form-group row mb-25">
-                                                                                <div class="col-sm-3 d-flex aling-items-center">
-                                                                                    <label for="inputNameIcon" class="col-form-label color-dark fs-14 fw-500 align-center">Name</label>
-                                                                                </div>
-                                                                                <div class="col-sm-9">
-                                                                                    <div class="with-icon">
-                                                                                        <span class="la-user lar color-gray"></span>
-                                                                                        <input type="text" name="name" class="form-control  ih-medium ip-gray radius-xs b-light" id="inputNameIcon" placeholder="Enter Full Name">
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="form-group row mb-25">
-                                                                                <div class="col-sm-3 d-flex aling-items-center">
-                                                                                    <label for="inputEmailIcon" class=" col-form-label color-dark fs-14 fw-500 align-center">Email
-                                                                                        Address</label>
-                                                                                </div>
-                                                                                <div class="col-sm-9">
-                                                                                    <div class="with-icon">
-                                                                                        <span class="lar la-envelope color-gray"></span>
-                                                                                        <input type="email" name="email" class="form-control  ih-medium ip-gray radius-xs b-light" id="inputEmailIcon" placeholder="username@email.com">
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="form-group row mb-25">
-                                                                                <div class="col-sm-3">
-                                                                                    <label for="inputPasswordIcon" class=" col-form-label color-dark fs-14 fw-500 align-center">Password</label>
-                                                                                </div>
-                                                                                <div class="col-sm-9">
-                                                                                    <div class="with-icon">
-                                                                                        <span class="las la-lock color-gray"></span>
-                                                                                        <input type="password" name="password" class="form-control  ih-medium ip-gray radius-xs b-light" id="inputPasswordIcon">
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="form-group row mb-25">
-                                                                                <div class="col-sm-3 d-flex aling-items-center">
-                                                                                    <label for="inputEmailIcon" class=" col-form-label color-dark fs-14 fw-500 align-center">Update Image</label>
-                                                                                </div>
-                                                                                <div class="col-sm-9">
-                                                                                    <div class="atbd-tag-wrap">
-                                                                                        <div class="atbd-upload">
-                                                                                            <div class="atbd-upload-avatar">
-                                                                                                <img class="avatrSrc" src="{{asset('backend/assets/img/gallery.png')}}" alt="Avatar Upload">
-                                                                                            </div>
-                                                                                            <div class="avatar-up">
-                                                                                                <input type="file" name="image" class="upload-avatar-input" required="">
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="modal-footer justify-content-between">
-                                                                            <button type="button" class="btn btn-default" data-dismiss="modal">
-                                                                                Close
-                                                                            </button>
-                                                                            <button type="submit" class="btn btn-success">Update</button>
-                                                                        </div>
-                                                                    </div>
-                                                                </form>
-                                                                <!-- /.modal-content -->
-                                                            </div>
-                                                            <!-- /.modal-dialog -->
-                                                        </div>
-                                                        <!-- /.modal End -->
                                                     </ul>
                                                 </td>
                                             </tr>
                                         @endforeach
                                         </tbody>
+                                        <!-- /.modal -->
+                                        <div class="modal fade" id="modal-sm">
+                                            <div class="modal-dialog modal-sm">
+                                                @php
+                                                    $settings = \App\User::all();
+                                                @endphp
+                                                <form action="#" method="post" enctype="multipart/form-data">
+{{--                                                    {{route('admin.settings.update',[$settings->id])}}--}}
+                                                    @csrf
+                                                    <div class="modal-content">
+                                                        <div class="modal-body">
+                                                            <div class="form-group row mb-25">
+                                                                <div class="col-sm-3 d-flex aling-items-center">
+                                                                    <label for="inputNameIcon" class="col-form-label color-dark fs-14 fw-500 align-center">Name</label>
+                                                                </div>
+                                                                <div class="col-sm-9">
+                                                                    <div class="with-icon">
+                                                                        <span class="la-user lar color-gray"></span>
+                                                                        <input type="text" name="name" class="form-control  ih-medium ip-gray radius-xs b-light" id="inputNameIcon" placeholder="Enter Full Name">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row mb-25">
+                                                                <div class="col-sm-3 d-flex aling-items-center">
+                                                                    <label for="inputEmailIcon" class=" col-form-label color-dark fs-14 fw-500 align-center">Email
+                                                                        Address</label>
+                                                                </div>
+                                                                <div class="col-sm-9">
+                                                                    <div class="with-icon">
+                                                                        <span class="lar la-envelope color-gray"></span>
+                                                                        <input type="email" name="email" class="form-control  ih-medium ip-gray radius-xs b-light" id="inputEmailIcon" placeholder="username@email.com">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row mb-25">
+                                                                <div class="col-sm-3">
+                                                                    <label for="inputPasswordIcon" class=" col-form-label color-dark fs-14 fw-500 align-center">Password</label>
+                                                                </div>
+                                                                <div class="col-sm-9">
+                                                                    <div class="with-icon">
+                                                                        <span class="las la-lock color-gray"></span>
+                                                                        <input type="password" name="password" class="form-control  ih-medium ip-gray radius-xs b-light" id="inputPasswordIcon">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row mb-25">
+                                                                <div class="col-sm-3 d-flex aling-items-center">
+                                                                    <label for="inputEmailIcon" class=" col-form-label color-dark fs-14 fw-500 align-center">Update Image</label>
+                                                                </div>
+                                                                <div class="col-sm-9">
+                                                                    <div class="atbd-tag-wrap">
+                                                                        <div class="atbd-upload">
+                                                                            <div class="atbd-upload-avatar">
+                                                                                <img class="avatrSrc" src="{{asset('backend/assets/img/gallery.png')}}" alt="Avatar Upload">
+                                                                            </div>
+                                                                            <div class="avatar-up">
+                                                                                <input type="file" name="image" class="upload-avatar-input" required="">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer justify-content-between">
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                                Close
+                                                            </button>
+                                                            <button type="submit" class="btn btn-success">Update</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                                <!-- /.modal-content -->
+                                            </div>
+                                            <!-- /.modal-dialog -->
+                                        </div>
+                                        <!-- /.modal End -->
                                     </table>
                                 </div>
                             </div>

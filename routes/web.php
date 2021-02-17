@@ -25,7 +25,11 @@ Route::post('/message', 'Frontend\ContactController@store')->name('message');
 Route::get('/career', 'Frontend\CareerController@index')->name('career');
 Route::post('/job', 'Frontend\CareerController@job')->name('cv');
 
-Auth::routes();
+Auth::routes([
+    'register' => false, // Registration Routes...
+        'reset' => false, // Password Reset Routes...
+    'verify' => false, // Email Verification Routes...
+]);
 Auth::routes(['register' => false]);
 Route::get('/admin/dashboard', 'HomeController@index')->name('home');
 

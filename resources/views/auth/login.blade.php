@@ -18,7 +18,7 @@
                                 <a class="wh-36 bg-primary text-white radius-md mr-10 content-center" href="#">a</a>
                                 <span class="text-dark">admin</span>
                             </div>
-                            <h1>Bootstrap 4 React Web Application</h1>
+                            <h1>Welcome Back Admin</h1>
                         </div><!-- End: .signUP-admin-left__content  -->
                         <div class="signUP-admin-left__img">
                             <img class="img-fluid svg" src="{{ asset('backend/assets/img/svg/signupIllustration.svg')}}" alt="img" />
@@ -27,21 +27,13 @@
                 </div><!-- End: .col-xl-4  -->
                 <div class="col-xl-8 col-lg-7 col-md-7 col-sm-8">
                     <div class="signUp-admin-right signIn-admin-right  p-md-40 p-10">
-                        <div class="signUp-topbar d-flex align-items-center justify-content-md-end justify-content-center mt-md-0 mb-md-0 mt-20 mb-1">
-                            <p class="mb-0">
-                                Don't have an account?
-                                <a href="{{route('register')}}" class="color-primary">
-                                    Sign up
-                                </a>
-                            </p>
-                        </div><!-- End: .signUp-topbar  -->
                         <div class="row justify-content-center">
                             <div class="col-xl-7 col-lg-8 col-md-12">
                                 <div class="edit-profile mt-md-25 mt-0">
                                     <div class="card border-0">
                                         <div class="card-header border-0  pb-md-15 pb-10 pt-md-20 pt-10 ">
                                             <div class="edit-profile__title">
-                                                <h6>Sign up to <span class="color-primary">Admin</span></h6>
+                                                <h6>Sign In to <span class="color-primary">Admin</span></h6>
                                             </div>
                                         </div>
                                         <div class="card-body">
