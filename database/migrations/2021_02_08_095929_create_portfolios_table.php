@@ -17,8 +17,10 @@ class CreatePortfoliosTable extends Migration
             $table->id();
             $table->string('category_name');
             $table->string('title');
+            $table->longText('description')->nullable();
             $table->string('date');
-            $table->string('url');
+            $table->string('url')->nullable();
+            $table->string('status');
             $table->string('image');
             $table->timestamps();
         });

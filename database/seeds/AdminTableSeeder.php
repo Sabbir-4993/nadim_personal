@@ -21,3 +21,4 @@ class AdminTableSeeder extends Seeder
         ]);
     }
 }
+

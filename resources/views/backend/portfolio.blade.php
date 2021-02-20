@@ -52,6 +52,9 @@
                                                     <span class="userDatatable-title">Category</span>
                                                 </th>
                                                 <th>
+                                                    <span class="userDatatable-title">Description</span>
+                                                </th>
+                                                <th>
                                                     <span class="userDatatable-title">Date</span>
                                                 </th>
                                                 <th>
@@ -93,61 +96,168 @@
                                                 </td>
                                                 <td>
                                                     <div class="userDatatable-content">
+                                                        {!! \Illuminate\Support\Str::limit($row->description, 40)  !!}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="userDatatable-content">
                                                         {{ $row->date }}
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="userDatatable-content d-inline-block">
-                                                        <span class="bg-opacity-success  color-success rounded-pill userDatatable-content-status active">active</span>
+                                                        @if($row->status == 'Active')
+                                                        <span class="bg-opacity-success  color-success rounded-pill userDatatable-content-status">Active</span>
+                                                        @elseif(($row->status == 'Inactive'))
+                                                            <span class="bg-opacity-danger  color-danger rounded-pill userDatatable-content-status">Disable</span>
+                                                        @endif
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <ul class="orderDatatable_actions mb-0 d-flex flex-wrap">
                                                         <li>
-                                                            <a href="#" class="view">
+                                                            <a href="#" class="view" data-toggle="modal" data-target="#modal-basic{{$row->id}}">
                                                                 <span data-feather="eye"></span>
                                                             </a>
                                                         </li>
+                                                        <!-- /.modal View -->
+                                                        <div class="modal-basic modal fade show" id="modal-basic{{$row->id}}" tabindex="-1"  aria-hidden="false">
+                                                            <div class="modal-dialog modal-md" role="document">
+                                                                <div class="modal-content modal-bg-white ">
+                                                                    <div class="modal-header">
+                                                                        <h6 class="modal-title">Portfolio</h6>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span data-feather="x"></span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        @php
+                                                                            $portfolio = \App\Portfolio::where('id', $row->id)->first();
+                                                                        @endphp
+                                                                        Title: <p>{{$portfolio->title}}</p>
+                                                                        Category: <p class="text-muted">{{$portfolio->category_name}}</p>
+                                                                        Description: <p class="text-muted" style="word-wrap: break-word; word-break: break-all; text-overflow: ellipsis; white-space: normal">{{$portfolio->description}}</p>
+                                                                        Date: <p class="text-muted">{{$portfolio->date}}</p>
+                                                                        Website: <p class="text-muted">{{$portfolio->url}}</p>
+                                                                        Image: <br>
+                                                                        <img class="" src="{{asset('storage/uploads/portfolios')}}/{{$portfolio->image}}" alt="{{$portfolio->title}}" style="height: 200px; width: 300px">
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="submit" class="btn btn-primary btn-sm">Save changes</button>
+                                                                        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- /.modal view End -->
                                                         <li>
-                                                            <a href="#" class="edit">
+                                                            <a href="#" class="edit" data-toggle="modal" data-target="#modal-basic-edit{{$row->id}}">
                                                                 <span data-feather="edit"></span>
                                                             </a>
                                                         </li>
+                                                        <!-- /.modal Edit -->
+                                                        <div class="modal-basic modal fade show" id="modal-basic-edit{{$row->id}}" tabindex="-1"  aria-hidden="false">
+                                                            <div class="modal-dialog modal-md" role="document">
+                                                                @php
+                                                                    $portfolio = \App\Portfolio::where('id', $row->id)->first();
+                                                                @endphp
+                                                                <form action="{{route('admin.portfolio.update',[$row->id])}}" method="POST" enctype="multipart/form-data">
+                                                                    @csrf
+                                                                    @method('PATCH')
+                                                                    <div class="modal-content modal-bg-white ">
+                                                                        <div class="modal-header">
+                                                                            <h6 class="modal-title">Portfolio Update</h6>
+                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                <span data-feather="x"></span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <div class="form-group">
+                                                                                <label for="exampleFormControlSelect1" class="il-gray fs-14 fw-500 align-center">Category</label>
+                                                                                <select name="category_name"  id="select-3" class="form-control" required="">
+                                                                                    <option @if($row->category_name == 'Brand') selected @endif value="Brand">Brand</option>
+                                                                                    <option @if($row->category_name == 'Design') selected @endif value="Design">Design</option>
+                                                                                    <option @if($row->category_name == 'Art') selected @endif  value="Art">Art</option>
+                                                                                    <option @if($row->category_name == 'Photography') selected @endif  value="Photography">Photography</option>
+                                                                                    <option @if($row->category_name == 'Video') selected @endif  value="Video">Video</option>
+                                                                                    <option @if($row->category_name == '3D') selected @endif  value="3D">3D</option>
+                                                                                </select>
+                                                                            </div>
+                                                                            <div class="form-group mb-4">
+                                                                                <label for="title" class="il-gray fs-14 fw-500 align-center">Portfolio Title<span class="text-danger">*</span></label>
+                                                                                <input type="text" id="title" name="title" class="form-control form-control-lg" placeholder="Enter Title" required="" value="{{$row->title}}">
+                                                                            </div>
+
+                                                                            <div class="form-group mb-4">
+                                                                                <label for="title" class="il-gray fs-14 fw-500 align-center">Description<span class="text-muted">(optional)</span></label>
+                                                                                <textarea class="form-control form-control-lg" type="text" name="description" id="" cols="10" rows="5" placeholder="Enter Description">{{$row->description}}</textarea>
+                                                                            </div>
+
+                                                                            <div class="form-group mb-4">
+                                                                                <label for="date" class="il-gray fs-14 fw-500 align-center">Date<span class="text-danger">*</span></label>
+                                                                                <input type="date" id="date" name="date" class="form-control form-control-lg" required="" value="{{$row->date}}">
+                                                                            </div>
+
+                                                                            <div class="form-group mb-4">
+                                                                                <label for="url" class="il-gray fs-14 fw-500 align-center">Website Address <span class="text-muted">(Optional)</span></label>
+                                                                                <input type="text" id="url" name="url" class="form-control form-control-lg" placeholder="Enter Url" value="{{$row->url}}">
+                                                                            </div>
+
+                                                                            <div class="form-group mb-4 atbd-tag-wrap">
+                                                                                <div class="atbd-upload">
+                                                                                    <div class="atbd-upload-avatar">
+                                                                                        <label for="tag2" class="il-gray fs-14 fw-500 align-center">Upload Image [Image Resolution (1800x1200px)]<span class="text-danger">*</span></label>
+                                                                                        <img class="avatrSrc" src="{{asset('backend/assets/img/gallery.png')}}" alt="Avatar Upload">
+                                                                                    </div>
+                                                                                    <div class="avatar-up">
+                                                                                        <input type="file" name="image" class="upload-avatar-input" required="">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="submit" class="btn btn-primary btn-sm">Save changes</button>
+                                                                            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                        <!-- /.modal Edit End -->
                                                         <li>
-                                                            <a href="#" class="remove" data-toggle="modal" data-target="#modal-sm">
+                                                            <a href="#" class="remove" data-toggle="modal" data-target="#modal-info-confirmed{{$row->id}}">
                                                                 <span data-feather="trash-2"></span>
                                                             </a>
                                                         </li>
                                                         <!-- /.modal -->
-                                                        <div class="modal fade" id="modal-sm">
-                                                            <div class="modal-dialog modal-sm">
+                                                        <div class="modal-info-confirmed modal fade show" id="modal-info-confirmed{{$row->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                                                            <div class="modal-dialog modal-sm modal-info" role="document">
                                                                 <form action="{{route('admin.portfolio.destroy',[$row->id])}}" method="post">
                                                                     @csrf
                                                                     {{method_field('DELETE')}}
                                                                     <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <h4 class="modal-title">Delete Confirm!!</h4>
-                                                                            <button type="button" class="close" data-dismiss="modal"
-                                                                                    aria-label="Close">
-                                                                                <span aria-hidden="true">&times;</span>
-                                                                            </button>
-                                                                        </div>
                                                                         <div class="modal-body">
-                                                                            <p>Do you Want to Delete ?</p>
+                                                                            <div class="modal-info-body d-flex">
+                                                                                <div class="modal-info-icon warning">
+                                                                                    <span data-feather="info"></span>
+                                                                                </div>
+
+                                                                                <div class="modal-info-text">
+                                                                                    <h6>Do you Want to delete this Portfolio?</h6>
+                                                                                    <p>Portfolio won't be available!!</p>
+                                                                                </div>
+
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="modal-footer justify-content-between">
-                                                                            <button type="button" class="btn btn-default" data-dismiss="modal">
-                                                                                Close
-                                                                            </button>
-                                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-danger btn-outlined btn-sm" data-dismiss="modal">No</button>
+                                                                            <button type="submit" class="btn btn-success btn-outlined btn-sm">Yes</button>
                                                                         </div>
                                                                     </div>
                                                                 </form>
-                                                                <!-- /.modal-content -->
                                                             </div>
-                                                            <!-- /.modal-dialog -->
                                                         </div>
-                                                        <!-- /.modal End -->
+                                                        <!-- ends: .modal-info-confirmed -->
                                                     </ul>
                                                 </td>
                                             </tr>
@@ -175,6 +285,7 @@
                         <div class="modal-body">
                             <div class="card card-default card-md mb-4">
                                 <div class="card-body">
+
                                     <div class="form-group mb-4">
                                         <label for="select-2" class="il-gray fs-14 fw-500 align-center">Select Category<span class="text-danger">*</span></label>
                                         <div class="atbd-select ">
@@ -185,13 +296,19 @@
                                                 <option value="Art">Art</option>
                                                 <option value="Photography">Photography</option>
                                                 <option value="Video">Video</option>
+                                                <option value="3D">3D</option>
                                             </select>
                                         </div>
                                     </div>
 
                                     <div class="form-group mb-4">
-                                        <label for="title" class="il-gray fs-14 fw-500 align-center">Title<span class="text-danger">*</span></label>
+                                        <label for="title" class="il-gray fs-14 fw-500 align-center">Portfolio Title<span class="text-danger">*</span></label>
                                         <input type="text" id="title" name="title" class="form-control form-control-lg" placeholder="Enter Title" required="">
+                                    </div>
+
+                                    <div class="form-group mb-4">
+                                        <label for="title" class="il-gray fs-14 fw-500 align-center">Description<span class="text-muted">(optional)</span></label>
+                                        <textarea class="form-control form-control-lg" type="text" name="description" id="" cols="10" rows="5" placeholder="Enter Description"></textarea>
                                     </div>
 
                                     <div class="form-group mb-4">
@@ -200,8 +317,19 @@
                                     </div>
 
                                     <div class="form-group mb-4">
-                                        <label for="url" class="il-gray fs-14 fw-500 align-center">Website Address (Optional)</label>
+                                        <label for="url" class="il-gray fs-14 fw-500 align-center">Website Address <span class="text-muted">(Optional)</span></label>
                                         <input type="text" id="url" name="url" class="form-control form-control-lg" placeholder="Enter Url">
+                                    </div>
+
+                                    <div class="form-group mb-4">
+                                        <label for="select-2" class="il-gray fs-14 fw-500 align-center">Select Status<span class="text-danger">*</span></label>
+                                        <div class="atbd-select ">
+                                            <select name="status"  id="select-3" class="form-control" required="">
+                                                <option value="0" disabled selected>Select Status</option>
+                                                <option value="Active">Active</option>
+                                                <option value="Inactive">Inactive</option>
+                                            </select>
+                                        </div>
                                     </div>
 
                                     <div class="atbd-tag-wrap">
@@ -215,6 +343,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                             <!-- ends: .card -->
@@ -226,8 +355,12 @@
                     </div>
                 </form>
             </div>
-        </div>
+        </div>w
         <!-- ends: .modal-Basic -->
 
     </div>
+@endsection
+
+@section('custom_js')
+
 @endsection

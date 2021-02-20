@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Portfolio;
+use File;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 
@@ -43,6 +44,7 @@ class PortfolioController extends Controller
             'title' => 'required',
             'date' => 'required',
             'url' => 'required',
+            'description' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,bmp,gif,svg|max:2048',
         ]);
 
@@ -50,7 +52,7 @@ class PortfolioController extends Controller
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $name = date('Y-m-d'). "." .time(). "." .'portfolio'. "." .$image->getClientOriginalExtension();
+            $name = ($request->category_name). "." . date('Y-m-d') . "." . time() . "." . 'portfolio' . "." . $image->getClientOriginalExtension();
             $destination = public_path('/storage/uploads/portfolios');
             $image->move($destination, $name);
             $image_url = $name;
@@ -96,8 +98,41 @@ class PortfolioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'category_name' => 'required',
+            'title' => 'required',
+            'date' => 'required',
+            'url' => 'required',
+            'description' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,bmp,gif,svg|max:2048',
+        ]);
+
+//        $data = $request->all();
+
+        $image = Portfolio::findOrFail($id);
+        $image_path = public_path("storage/uploads/portfolios/{$image->image}");
+
+        if (File::exists($image_path)) {
+            unlink($image_path);
+        } elseif($request->hasFile('image')){
+        $image = $request->file('image');
+        $name = ($request->category_name). "." . date('Y-m-d') . "." . time() . "." . 'portfolio' . "." . $image->getClientOriginalExtension();
+        $destination = public_path('/storage/uploads/portfolios');
+        $image->move($destination, $name);
+        $image_url = $name;
+    }else{
+        $image = 'portfolio-sample.png';
     }
+
+        $data['image'] = $image_url;
+
+
+//     dd($data);
+        Portfolio::update($request->all());
+        return redirect()->back()->with('message', 'Portfolio Updated Successfully');
+
+
+}
 
     /**
      * Remove the specified resource from storage.
@@ -107,10 +142,20 @@ class PortfolioController extends Controller
      */
     public function destroy($id)
     {
-        $portfolio = Portfolio::find($id);
 
+        $image = Portfolio::findOrFail($id);
+        $image_path = public_path("storage/uploads/portfolios/{$image->image}");
+
+        if (File::exists($image_path)) {
+            unlink($image_path);
+        }
+
+
+        $portfolio = Portfolio::find($id);
         $portfolio->delete();
         return redirect()->back()->with('message', 'Portfolio Deleted Successfully');
     }
+
+
 
 }

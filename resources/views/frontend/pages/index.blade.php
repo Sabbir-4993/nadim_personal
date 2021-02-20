@@ -23,8 +23,7 @@
                                     </div>
                                 </div>
 
-                                <p>Sometimes, we need to check the time, wondering when our work
-                                    or meeting will finish, without getting caught by others.</p>
+                                <p>{{$row->description}}</p>
                                 <div class="link-custom">
                                     <a href="{{route('portfolio_details',($row->id))}} " class="image-zoom effect-ajax" data-dsn="parallax"
                                        data-dsn-ajax="slider">

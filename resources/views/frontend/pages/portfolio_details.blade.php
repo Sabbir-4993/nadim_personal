@@ -77,7 +77,7 @@
                 <a href="{{route('portfolio_details',($port->id))}}" class="effect-ajax" data-dsn-ajax="next-project">
                     <div class="title-text-header">
                         <div class="title-text-header-inner">
-                            <span>Nile - {{$port->category_name}}</span>
+                            <span>{{$port->title}} - {{$port->category_name}}</span>
                         </div>
                     </div>
                     <div class="sub-text-header">

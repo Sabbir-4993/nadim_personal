@@ -103,6 +103,7 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
+
         $team = Client::find($id);
         $team->delete();
         return redirect()->back()->with('message', 'Client Deleted Successfully');
