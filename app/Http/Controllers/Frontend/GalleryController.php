@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class UserController extends Controller
+class GalleryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::orderBy('id','desc')->get();
-        return view('backend.site_settings', compact('user'));
+
+        $gallery = DB::table('portfoliodetails')
+            ->join('portfolios','portfolios.id','=','portfoliodetails.portfolio_id')
+            ->select('portfolios.category_name','portfolios.title','portfolios.id','portfoliodetails.*')
+            ->get();
+        return view('frontend.pages.gallery',compact('gallery'));
     }
 
     /**
@@ -59,8 +63,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $settings = User::find($id);
-        return view('backend.site_settings', compact('settings'));
+        //
     }
 
     /**
@@ -70,31 +73,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,bmp,gif,svg|max:2048',
-        ]);
-
-        $data = $request->all();
-
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $name = ($request->name). "." .date('Y-m-d'). "." .time(). "." .'user'. "." .$image->getClientOriginalExtension();
-            $destination = public_path('/storage/uploads/User');
-            $image->move($destination, $name);
-            $image_url = $name;
-        }else{
-            $image = 'user.png';
-        }
-        $data['password'] = bcrypt($request->password);
-        $data['image'] = $image_url;
-
-        User::update($data);
-        return redirect()->back()->with('message','Client Added Successfully');
+        //
     }
 
     /**

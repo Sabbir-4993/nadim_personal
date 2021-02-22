@@ -8,7 +8,7 @@
                 <div class="col-lg-12">
 
                     <div class="breadcrumb-main">
-                        <h4 class="text-capitalize breadcrumb-title">Portfolio</h4>
+                        <h4 class="text-capitalize breadcrumb-title">Create Portfolio</h4>
                         <div class="breadcrumb-action justify-content-center flex-wrap">
                             <div class="action-btn">
                                 <button type="button" class="btn btn-sm btn-primary btn-add" data-toggle="modal" data-target="#modal-basic"><i class="la la-plus"></i> Add New</button>
@@ -32,13 +32,13 @@
                         <div class="card-body">
                             <div class="userDatatable global-shadow border-0 bg-white w-100">
                                 <div class="table-responsive">
-                                    <table class="table mb-0 table-borderless">
+                                    <table class="table mb-0 table-borderless" id="portfolio">
                                         <thead>
                                             <tr class="userDatatable-header">
+                                                <th>SN</th>
                                                 <th>
                                                     <div class="d-flex align-items-center">
                                                         <div class="custom-checkbox  check-all">
-                                                            <input class="checkbox" type="checkbox" id="check-3">
                                                             <label for="check-3">
                                                                 <span class="checkbox-text userDatatable-title">Image</span>
                                                             </label>
@@ -68,17 +68,10 @@
                                         <tbody>
                                         @foreach($portfolio as $key=>$row)
                                             <tr>
+                                                <td>{{$key+1}}</td>
                                                 <td>
                                                     <div class="d-flex">
                                                         <div class="userDatatable__imgWrapper d-flex align-items-center">
-                                                            <div class="checkbox-group-wrapper">
-                                                                <div class="checkbox-group d-flex">
-                                                                    <div class="checkbox-theme-default custom-checkbox checkbox-group__single d-flex">
-                                                                        <input class="checkbox" type="checkbox" id="check-grp-12">
-                                                                        <label for="check-grp-12"></label>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
                                                             <a href="#" class="profile-image rounded-circle d-block m-0 wh-100" style="background-image:url('{{asset('storage/uploads/portfolios')}}/{{$row->image}}'); background-size: cover;"></a>
                                                         </div>
                                                     </div>
@@ -229,7 +222,7 @@
                                                                 <span data-feather="trash-2"></span>
                                                             </a>
                                                         </li>
-                                                        <!-- /.modal -->
+                                                        <!-- /.modal delete -->
                                                         <div class="modal-info-confirmed modal fade show" id="modal-info-confirmed{{$row->id}}" tabindex="-1" role="dialog" aria-hidden="true">
                                                             <div class="modal-dialog modal-sm modal-info" role="document">
                                                                 <form action="{{route('admin.portfolio.destroy',[$row->id])}}" method="post">
@@ -355,12 +348,22 @@
                     </div>
                 </form>
             </div>
-        </div>w
+        </div>
         <!-- ends: .modal-Basic -->
 
     </div>
 @endsection
 
-@section('custom_js')
+@section('custom_css')
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
+@endsection
 
+@section('custom_js')
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
+
+    <script>
+        $(document).ready( function () {
+            $('#portfolio').DataTable();
+        } );
+    </script>
 @endsection

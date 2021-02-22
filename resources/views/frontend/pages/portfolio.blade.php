@@ -46,7 +46,7 @@
                             <div class="item-info">
                                 <h5 class="cat">{{$row->category_name}}</h5>
                                 <h4>{{$row->title}}</h4>
-                                <span><span>Veiw Project</span></span>
+                                <span><span>View Project</span></span>
                             </div>
                         </a>
                     </div>
@@ -60,12 +60,12 @@
             <div class="container">
                 <div class="c-wapp">
                     <a href="{{route('contact')}}" class="effect-ajax">
-                                <span class="hiring">
-                                    Contact With us
-                                </span>
+                        <span class="hiring">
+                            Contact With us
+                        </span>
                         <span class="career">
-                                    Dare and contact us immediately!
-                                </span>
+                            Dare and contact us immediately!
+                        </span>
                     </a>
                 </div>
             </div>

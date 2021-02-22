@@ -29,14 +29,4 @@ class PageController extends Controller
         $portfolios = Portfolio::where('id', $id)->first();
         return view('frontend.pages.portfolio_details',compact('portfoliodetails','portfolios'));
     }
-
-    public function blog(){
-
-        return view('frontend.pages.blog');
-    }
-
-    public function blogdetails(){
-
-        return view('frontend.pages.blog_details');
-    }
 }

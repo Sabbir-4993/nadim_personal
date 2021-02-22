@@ -32,7 +32,7 @@
                         <div class="card-body">
                             <div class="userDatatable global-shadow border-0 bg-white w-100">
                                 <div class="table-responsive">
-                                    <table class="table mb-0 table-borderless">
+                                    <table class="table mb-0 table-borderless" id="career">
                                         <thead>
                                         <tr class="userDatatable-header">
                                             <th>
@@ -138,4 +138,18 @@
         </div>
 
     </div>
+@endsection
+
+@section('custom_css')
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
+@endsection
+
+@section('custom_js')
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
+
+    <script>
+        $(document).ready( function () {
+            $('#career').DataTable();
+        } );
+    </script>
 @endsection

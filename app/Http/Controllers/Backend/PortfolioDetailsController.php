@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\PortfolioDetails;
+use File;
 use Illuminate\Http\Request;
 
 class PortfolioDetailsController extends Controller
@@ -39,9 +40,12 @@ class PortfolioDetailsController extends Controller
 
     public function destroy($id){
 
-//        $image = PortfolioDetails::findOrFail($request->id)->image;
-//        $old_photo_location = public_path('/storage/uploads/portfolio-images').$image;
-//        unlink($old_photo_location);
+        $image = PortfolioDetails::findOrFail($id);
+        $image_path = public_path("storage/uploads/portfolio-images/{$image->image}");
+
+        if (File::exists($image_path)) {
+            unlink($image_path);
+        }
 
         $portfoliodetails = PortfolioDetails::find($id);
         $portfoliodetails->delete();

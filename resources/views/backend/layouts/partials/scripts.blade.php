@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{{asset('backend/assets/css/style.css')}}">
 
     <!-- endinject -->
+    @yield('custom_css')
     @jquery
     @toastr_css
 @endsection

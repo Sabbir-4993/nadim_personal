@@ -150,7 +150,6 @@ class PortfolioController extends Controller
             unlink($image_path);
         }
 
-
         $portfolio = Portfolio::find($id);
         $portfolio->delete();
         return redirect()->back()->with('message', 'Portfolio Deleted Successfully');

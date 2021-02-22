@@ -20,8 +20,11 @@
                         <span>{{$portfolios->category_name}}</span>
                     </div>
                     <span class="title-text-header-inner">
-                                <span data-dsn-animate="ajax">{{$portfolios->title}}</span>
-                            </span>
+                        <span data-dsn-animate="ajax">{{$portfolios->title}}</span>
+                    </span>
+                    <div class="container col-4 m-0 pb-2 p-0">
+                        <span>{{$portfolios->description}}</span>
+                    </div>
                 </div>
 
                 <div class="sub-text-header" data-dsn-animate="ajax">

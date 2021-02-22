@@ -18,8 +18,7 @@ Route::get('/', 'PageController@index')->name('index');
 Route::get('/about', 'PageController@about')->name('about');
 Route::get('/portfolio', 'PageController@portfolio')->name('portfolio');
 Route::get('/portfolio-details/{id}', 'PageController@portfoliodetails')->name('portfolio_details');
-Route::get('/blog', 'PageController@blog')->name('blog');
-Route::get('/blog-details', 'PageController@blogdetails')->name('blog_details');
+Route::get('/gallery', 'Frontend\GalleryController@index')->name('gallery');
 Route::get('/contact', 'Frontend\ContactController@contact')->name('contact');
 Route::post('/message', 'Frontend\ContactController@store')->name('message');
 Route::get('/career', 'Frontend\CareerController@index')->name('career');
@@ -37,7 +36,7 @@ Route::group(['prefix'=>'/admin/','as'=>'admin.'], function(){
     Route::resource('/portfolio', 'Backend\PortfolioController');
     Route::get('/portfolio-details', 'Backend\PortfolioDetailsController@index')->name('portfolio.details');
     Route::post('/portfolio-store', 'Backend\PortfolioDetailsController@store')->name('portfolio.details.store');
-    Route::post('/portfolio-destroy', 'Backend\PortfolioDetailsController@destroy')->name('portfolio.details.destroy');
+    Route::post('/portfolio-destroy/{id}', 'Backend\PortfolioDetailsController@destroy')->name('portfolio.details.destroy');
     Route::get('/gallery', 'Backend\GalleryController@index')->name('gallery');
     Route::resource('/team', 'Backend\TeamController');
     Route::resource('/client', 'Backend\ClientController');
