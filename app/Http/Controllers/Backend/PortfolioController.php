@@ -26,7 +26,7 @@ class PortfolioController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Responsew
      */
     public function create()
     {
@@ -47,6 +47,7 @@ class PortfolioController extends Controller
             'date' => 'required',
             'url' => 'required',
             'description' => 'required',
+            'status' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,bmp,gif,svg|max:2048',
         ]);
 
@@ -105,6 +106,7 @@ class PortfolioController extends Controller
             'title' => 'required',
             'date' => 'required',
             'url' => 'required',
+            'status' => 'required',
             'description' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,bmp,gif,svg|max:2048',
         ]);

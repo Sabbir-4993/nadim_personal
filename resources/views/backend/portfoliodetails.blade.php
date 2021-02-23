@@ -1,4 +1,4 @@
-    @extends('backend.layouts.master')
+@extends('backend.layouts.master')
 
 @section('content')
     <div class="contents">
@@ -83,7 +83,7 @@
                                                 </td>
                                                 <td>
                                                     <div class="userDatatable-content">
-                                                        {{ $portfolio->title }}
+                                                        {{ $row->portfolio_id }}
                                                     </div>
                                                 </td>
                                                 <td>

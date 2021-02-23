@@ -12,7 +12,7 @@
                     <li><a href="{{route('index')}}">Home</a></li>
                     <li><a href="{{route('about')}}">About</a></li>
                     <li><a href="{{route('portfolio')}}">Portfolio</a></li>
-                    <li><a href="{{route('gallery')}}">Gallery</a></li>
+                    <li><a href="{{route('gallery.index')}}">Gallery</a></li>
                     <li><a href="{{route('career')}}">career</a></li>
                     <li><a href="{{route('contact')}}">Contact</a></li>
                     <li><a href="{{route('login')}}">Login</a></li>

@@ -129,7 +129,7 @@
                                                         <div class="modal-info-confirmed modal fade show" id="modal-info-confirmed{{$row->id}}" tabindex="-1" role="dialog" aria-hidden="true">
                                                             <div class="modal-dialog modal-sm modal-info" role="document">
                                                                 <form action="{{route('admin.newsletter.show',[$row->id])}}" method="post">
-                                                                    @csrf
+                                                                    @csrfgit
                                                                     {{method_field('DELETE')}}
                                                                     <div class="modal-content">
                                                                         <div class="modal-body">

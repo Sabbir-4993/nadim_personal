@@ -18,7 +18,7 @@ Route::get('/', 'PageController@index')->name('index');
 Route::get('/about', 'PageController@about')->name('about');
 Route::get('/portfolio', 'PageController@portfolio')->name('portfolio');
 Route::get('/portfolio-details/{id}', 'PageController@portfoliodetails')->name('portfolio_details');
-Route::get('/gallery', 'Frontend\GalleryController@index')->name('gallery');
+Route::resource('/gallery', 'Frontend\GalleryController@index');
 Route::get('/contact', 'Frontend\ContactController@contact')->name('contact');
 Route::post('/message', 'Frontend\ContactController@store')->name('message');
 Route::get('/career', 'Frontend\CareerController@index')->name('career');
@@ -26,13 +26,13 @@ Route::post('/job', 'Frontend\CareerController@job')->name('cv');
 
 Auth::routes([
     'register' => false, // Registration Routes...
-        'reset' => false, // Password Reset Routes...
+    'reset' => false, // Password Reset Routes...
     'verify' => false, // Email Verification Routes...
 ]);
 Auth::routes(['register' => false]);
 Route::get('/admin/dashboard', 'HomeController@index')->name('home');
 
-Route::group(['prefix'=>'/admin/','as'=>'admin.'], function(){
+Route::group(['prefix' => '/admin/', 'as' => 'admin.'], function () {
     Route::resource('/portfolio', 'Backend\PortfolioController');
     Route::get('/portfolio-details', 'Backend\PortfolioDetailsController@index')->name('portfolio.details');
     Route::post('/portfolio-store', 'Backend\PortfolioDetailsController@store')->name('portfolio.details.store');
