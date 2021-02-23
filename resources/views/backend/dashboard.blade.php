@@ -14,6 +14,10 @@
                             </div>
 
                         </div>
+                        @php
+                            $user = \App\User::all()->first();
+                            $contact = \App\Contact::all()->first();
+                        @endphp
                         <div class="cos-lg-3 col-md-4  ">
                             <aside class="profile-sider">
                                 <!-- Profile Acoount -->
@@ -23,13 +27,13 @@
                                         <div class="account-profile">
                                             <div class="ap-img w-100 d-flex justify-content-center">
                                                 <!-- Profile picture image-->
-                                                <img class="ap-img__main rounded-circle mb-3  wh-120 d-flex bg-opacity-primary" src="{{ asset('backend/assets/img/author/profile.png')}}" alt="profile">
+                                                <img class="ap-img__main rounded-circle mb-3  wh-120 d-flex bg-opacity-primary" src="{{ asset('storage/uploads/User')}}/{{$user->image}}" alt="profile">
                                             </div>
                                             <div class="ap-nameAddress pb-3 pt-1">
                                                 <h5 class="ap-nameAddress__title">{{auth()->user()->name}}</h5>
-                                                <p class="ap-nameAddress__subTitle fs-14 m-0">UI/UX Designer</p>
+                                                <p class="ap-nameAddress__subTitle fs-14 m-0">{{$user->designation}}</p>
                                                 <p class="ap-nameAddress__subTitle fs-14 m-0">
-                                                    <span data-feather="map-pin"></span>London, England
+                                                    {{$contact->address}}
                                                 </p>
                                             </div>
                                             <div class="ap-button button-group d-flex justify-content-center flex-wrap">
@@ -72,12 +76,7 @@
                                         </div>
                                         <div class="card-body pt-md-1 pt-0">
                                             <div class="user-bio__content">
-                                                <p class="m-0">Nam malesuada dolor tellus pretium amet was hendrerit facilisi id
-                                                    vitae enim
-                                                    sed ornare
-                                                    there suspendisse sed orci neque ac sed aliquet risus faucibus in pretium
-                                                    molestie nisl
-                                                    tempor quis odio habitant.</p>
+                                                <p class="m-0">{{$user->bio}}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -90,14 +89,13 @@
                                         <div class="card-body pt-md-1 pt-0">
                                             <div class="user-content-info">
                                                 <p class="user-content-info__item">
-                                                    <span data-feather="mail"></span>Clayton@example.com
+                                                    <span data-feather="mail"></span><a href="mailto:{{$contact->email}}">{{$contact->email}}</a>
                                                 </p>
                                                 <p class="user-content-info__item">
-                                                    <span data-feather="phone"></span>+44 (0161) 347
-                                                    8854
+                                                    <span data-feather="phone"></span><a href="tel:{{$contact->phone}}">{{$contact->phone}}</a>
                                                 </p>
                                                 <p class="user-content-info__item mb-0">
-                                                    <span data-feather="globe"></span>www.example.com
+                                                    <span data-feather="globe"></span><a href="{{route('index')}}" target="_blank">www.nadimsdesign.com</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -137,23 +135,23 @@
                                         <div class="card-body pt-md-1 pt-0">
                                             <ul class="db-social-parent mb-0">
                                                 <li class="db-social-parent__item">
-                                                    <a class="color-facebook hover-facebook wh-44 fs-22" href="#">
+                                                    <a class="color-facebook hover-facebook wh-44 fs-22" href="{{$contact->facebook}}" target="_blank">
                                                         <i class="lab la-facebook-f"></i>
                                                     </a>
                                                 </li>
                                                 <li class="db-social-parent__item">
-                                                    <a class="color-twitter hover-twitter wh-44 fs-22" href="#">
-                                                        <i class="lab la-twitter"></i>
+                                                    <a class="color-ruby hover-ruby  wh-44 fs-22" href="{{$contact->instagram}}" target="_blank">
+                                                        <i class="la la-instagram"></i>
                                                     </a>
                                                 </li>
                                                 <li class="db-social-parent__item">
-                                                    <a class="color-ruby hover-ruby  wh-44 fs-22" href="#">
-                                                        <i class="las la-basketball-ball"></i>
+                                                    <a class="color-instagram hover-instagram wh-44 fs-22" href="{{$contact->behance}}" target="_blank">
+                                                        <i class="la la-behance-square"></i>
                                                     </a>
                                                 </li>
                                                 <li class="db-social-parent__item">
-                                                    <a class="color-instagram hover-instagram wh-44 fs-22" href="#">
-                                                        <i class="lab la-instagram"></i>
+                                                    <a class="color-twitter hover-twitter wh-44 fs-22" href="{{$contact->fiverr}}" target="_blank">
+                                                        <i class="fa fa-briefcase"></i>
                                                     </a>
                                                 </li>
                                             </ul>

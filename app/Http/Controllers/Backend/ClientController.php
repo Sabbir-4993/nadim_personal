@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Client;
 use App\Http\Controllers\Controller;
+use File;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -47,7 +48,7 @@ class ClientController extends Controller
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $name = date('Y-m-d'). "." .time(). "." .'client'. "." .$image->getClientOriginalExtension();
+            $name = ($request->name). "." .date('Y-m-d'). "." .time(). "." .'client'. "." .$image->getClientOriginalExtension();
             $destination = public_path('/storage/uploads/client');
             $image->move($destination, $name);
             $image_url = $name;
@@ -103,6 +104,13 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
+
+        $image = Client::findOrFail($id);
+        $image_path = public_path("storage/uploads/client/{$image->image}");
+
+        if (File::exists($image_path)) {
+            unlink($image_path);
+        }
 
         $team = Client::find($id);
         $team->delete();

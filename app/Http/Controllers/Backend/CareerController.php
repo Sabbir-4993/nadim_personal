@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Career;
 use App\Http\Controllers\Controller;
+use File;
 use Illuminate\Http\Request;
 
 class CareerController extends Controller
@@ -82,6 +83,15 @@ class CareerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $file = Career::findOrFail($id);
+        $file_path = public_path("storage/uploads/CV/{$file->image}");
+
+        if (File::exists($file_path)) {
+            unlink($file_path);
+        }
+
+        $cv = Career::find($id);
+        $cv->delete();
+        return redirect()->back()->with('message', 'CV Deleted Successfully');
     }
 }

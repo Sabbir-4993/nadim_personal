@@ -78,7 +78,7 @@
                                                         $portfolio = \App\Portfolio::where('id',$row->portfolio_id)->first();
                                                     @endphp
                                                     <div class="userDatatable-content">
-                                                        {{ $portfolio->category_name }}
+                                                        {{  $portfolio->category_name }}
                                                     </div>
                                                 </td>
                                                 <td>
@@ -88,7 +88,7 @@
                                                 </td>
                                                 <td>
                                                     <div class="userDatatable-content">
-                                                        {{ $row->created_at }}
+                                                        {{ $row->created_at->diffForHumans() }}
                                                     </div>
                                                 </td>
                                                 <td>

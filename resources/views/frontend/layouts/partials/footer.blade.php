@@ -4,21 +4,23 @@
             <div class="row">
                 <div class="col-md-3 dsn-col-footer">
                     <div class="footer-block">
+                        @php
+                            $contact = \App\Contact::all();
+                        @endphp
+                        @foreach($contact as $key=>$row)
                         <div class="footer-logo">
-                            <a href="{{route('home')}}"><img src="{{asset('frontend/assets/img/logo.png')}}" alt=""></a>
+                            <a href="{{route('index')}}"><img src="{{asset('storage/uploads/Logo/')}}/{{$row->image}}" alt="Logo"></a>
                         </div>
 
                         <div class="footer-social">
-
                             <ul>
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-behance"></i></a></li>
-                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-
+                                <li><a href="{{$row->facebook}}"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="{{$row->instagram}}"><i class="fab fa-instagram"></i></a></li>
+                                <li><a href="{{$row->behance}}"><i class="fab fa-behance"></i></a></li>
+                                <li><a href="{{$row->fiverr}}"><i class="fas fa-briefcase"></i></a></li>
                             </ul>
-
                         </div>
+                        @endforeach
                     </div>
                 </div>
 
@@ -36,10 +38,7 @@
                         </nav>
                     </div>
                 </div>
-                @php
-                $address = \App\Contact::all();
-                @endphp
-                @foreach($address as $key=>$row)
+                @foreach($contact as $key=>$row)
                 <div class="col-md-3 dsn-col-footer">
                     <div class="footer-block col-contact">
                         <h4 class="footer-title">Contact</h4>

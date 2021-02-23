@@ -70,17 +70,20 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
         $this->validate($request,[
             'name' => 'required',
             'email' => 'required',
             'password' => 'required',
+            'designation' => 'required',
+            'bio' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,bmp,gif,svg|max:2048',
         ]);
 
         $data = $request->all();
 
+        $user = User::find($id);
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $name = ($request->name). "." .date('Y-m-d'). "." .time(). "." .'user'. "." .$image->getClientOriginalExtension();
@@ -93,8 +96,8 @@ class UserController extends Controller
         $data['password'] = bcrypt($request->password);
         $data['image'] = $image_url;
 
-        User::update($data);
-        return redirect()->back()->with('message','Client Added Successfully');
+        $user->update($data);
+        return redirect()->back()->with('message','Profile Update Successfully');
     }
 
     /**

@@ -52,6 +52,9 @@
                                                 <span class="userDatatable-title">URL</span>
                                             </th>
                                             <th>
+                                                <span class="userDatatable-title">Created at</span>
+                                            </th>
+                                            <th>
                                                 <span class="userDatatable-title float-right">action</span>
                                             </th>
                                         </tr>
@@ -86,52 +89,45 @@
                                                     </div>
                                                 </td>
                                                 <td>
+                                                    <div class="userDatatable-content">
+                                                        {{ $row->created_at->diffForHumans() }}
+                                                    </div>
+                                                </td>
+                                                <td>
                                                     <ul class="orderDatatable_actions mb-0 d-flex flex-wrap">
                                                         <li>
-                                                            <a href="#" class="view">
-                                                                <span data-feather="eye"></span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="edit">
-                                                                <span data-feather="edit"></span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="remove" data-toggle="modal" data-target="#modal-sm">
+                                                            <a href="#" class="remove" data-toggle="modal" data-target="#modal-info-confirmed{{$row->id}}">
                                                                 <span data-feather="trash-2"></span>
                                                             </a>
                                                         </li>
-                                                        <!-- /.modal -->
-                                                        <div class="modal fade" id="modal-sm">
-                                                            <div class="modal-dialog modal-sm">
+                                                        <!-- /.modal delete -->
+                                                        <div class="modal-info-confirmed modal fade show" id="modal-info-confirmed{{$row->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                                                            <div class="modal-dialog modal-sm modal-info" role="document">
                                                                 <form action="{{route('admin.client.destroy',[$row->id])}}" method="post">
                                                                     @csrf
                                                                     {{method_field('DELETE')}}
                                                                     <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <h4 class="modal-title">Delete Confirm!!</h4>
-                                                                            <button type="button" class="close" data-dismiss="modal"
-                                                                                    aria-label="Close">
-                                                                                <span aria-hidden="true">&times;</span>
-                                                                            </button>
-                                                                        </div>
                                                                         <div class="modal-body">
-                                                                            <p>Do you Want to Delete ?</p>
+                                                                            <div class="modal-info-body d-flex">
+                                                                                <div class="modal-info-icon warning">
+                                                                                    <span data-feather="info"></span>
+                                                                                </div>
+
+                                                                                <div class="modal-info-text">
+                                                                                    <p>Do you Want to Delete ?</p>
+                                                                                </div>
+
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="modal-footer justify-content-between">
-                                                                            <button type="button" class="btn btn-default" data-dismiss="modal">
-                                                                                Close
-                                                                            </button>
-                                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-danger btn-outlined btn-sm" data-dismiss="modal">No</button>
+                                                                            <button type="submit" class="btn btn-success btn-outlined btn-sm">Yes</button>
                                                                         </div>
                                                                     </div>
                                                                 </form>
-                                                                <!-- /.modal-content -->
                                                             </div>
-                                                            <!-- /.modal-dialog -->
                                                         </div>
-                                                        <!-- /.modal End -->
+                                                        <!-- ends: .modal-info-confirmed -->
                                                     </ul>
                                                 </td>
                                             </tr>

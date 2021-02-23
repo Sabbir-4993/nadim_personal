@@ -3,11 +3,6 @@
         <div class="navbar-left">
             <a href="#" class="sidebar-toggle">
                 <img class="svg" src="{{ asset('backend/assets/img/svg/bars.svg')}}" alt="img"></a>
-            <a class="navbar-brand" href="#"><img class="svg dark" src="img/logo_Dark.html" alt=""><img class="light" src="{{ asset('backend/assets/img/Logo_white.png')}}" alt=""></a>
-            <form action="https://demo.jsnorm.com/" class="search-form">
-                <span data-feather="search"></span>
-                <input class="form-control mr-sm-2 box-shadow-none" type="search" placeholder="Search..." aria-label="Search">
-            </form>
         </div>
         <!-- ends: navbar-left -->
 
@@ -18,23 +13,21 @@
                         <i class="la la-search"></i>
                         <i class="la la-times"></i>
                     </a>
-                    <form action="https://demo.jsnorm.com/" class="search-form-topMenu">
-                        <span class="search-icon" data-feather="search"></span>
-                        <input class="form-control mr-sm-2 box-shadow-none" type="search" placeholder="Search..." aria-label="Search">
-                    </form>
                 </li>
-
+                @php
+                    $user = \App\User::all()->first();
+                @endphp
                 <li class="nav-author">
                     <div class="dropdown-custom">
-                        <a href="javascript:;" class="nav-item-toggle"><img src="{{ asset('backend/assets/img/author-nav.jpg')}}" alt="" class="rounded-circle"></a>
+                        <a href="javascript:;" class="nav-item-toggle"><img src="{{ asset('storage/uploads/User')}}/{{$user->image}}" alt="" class="rounded-circle"></a>
                         <div class="dropdown-wrapper">
                             <div class="nav-author__info">
                                 <div class="author-img">
-                                    <img src="{{ asset('backend/assets/img/author-nav.jpg')}}" alt="" class="rounded-circle">
+                                    <img src="{{ asset('storage/uploads/User')}}/{{$user->image}}" alt="" class="rounded-circle">
                                 </div>
                                 <div>
                                     <h6>{{auth()->user()->name}}</h6>
-                                    <span>Graphics Designer</span>
+                                    <span>{{$user->designation}}</span>
                                 </div>
                             </div>
                             <div class="nav-author__options">
@@ -52,7 +45,6 @@
                                    onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                                     <span data-feather="log-out"></span>
-
                                     Sign Out
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Team;
+use File;
 use Illuminate\Http\Request;
 
 class TeamController extends Controller
@@ -103,6 +104,13 @@ class TeamController extends Controller
      */
     public function destroy($id)
     {
+        $image = Team::findOrFail($id);
+        $image_path = public_path("storage/uploads/team/{$image->image}");
+
+        if (File::exists($image_path)) {
+            unlink($image_path);
+        }
+
         $team = Team::find($id);
 
         $team->delete();

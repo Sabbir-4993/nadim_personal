@@ -18,6 +18,11 @@ class CreateContactsTable extends Migration
             $table->string('email');
             $table->string('phone');
             $table->string('address');
+            $table->string('image');
+            $table->string('instagram');
+            $table->string('facebook');
+            $table->string('behance');
+            $table->string('fiverr');
             $table->timestamps();
         });
     }

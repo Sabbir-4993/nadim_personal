@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Contact;
 use App\Http\Controllers\Controller;
+use File;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -41,9 +42,26 @@ class ContactController extends Controller
             'email' => 'required',
             'phone' => 'required',
             'address' => 'required',
+            'instagram' => 'required',
+            'facebook' => 'required',
+            'behance' => 'required',
+            'fiverr' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,bmp,gif,svg|max:2048',
         ]);
 
         $data = $request->all();
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name = date('Y-m-d'). "." .time(). "." .'logo'. "." .$image->getClientOriginalExtension();
+            $destination = public_path('/storage/uploads/Logo');
+            $image->move($destination, $name);
+            $image_url = $name;
+        }else{
+            $image = 'logo.png';
+        }
+
+        $data['image'] = $image_url;
 
         Contact::create($data);
         return redirect()->back()->with('message','Contact Added Successfully');
@@ -91,8 +109,15 @@ class ContactController extends Controller
      */
     public function destroy($id)
     {
+        $image = Contact::findOrFail($id);
+        $image_path = public_path("storage/uploads/Logo/{$image->image}");
+
+        if (File::exists($image_path)) {
+            unlink($image_path);
+        }
+
         $contact = Contact::find($id);
         $contact->delete();
-        return redirect()->back()->with('message', 'Contact Deleted Successfully');
+        return redirect()->back()->with('message','Contact Deleted Successfully');
     }
 }

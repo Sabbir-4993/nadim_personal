@@ -30,7 +30,7 @@
                         </div>
                         <div class="card-body pb-md-30">
                             <div class="Vertical-form">
-                                <form class="" action="{{ route('admin.contact.store') }}" method="POST">
+                                <form class="" action="{{ route('admin.contact.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group mb-4">
                                         <label for="email" class="il-gray fs-14 fw-500 align-center">Email Address<span
@@ -52,6 +52,51 @@
                                                 class="text-danger">*</span></label>
                                         <textarea class="form-control" name="address" id="exampleFormControlTextarea1" rows="3"></textarea>
                                     </div>
+
+                                    <div class="form-group mb-4">
+                                        <label for="instagram" class="il-gray fs-14 fw-500 align-center">Instagram<span
+                                                class="text-danger">*</span>
+                                        </label>
+                                        <input type="text" id="instagram" name="instagram" class="form-control form-control-lg"
+                                               placeholder="Enter instagram URL" required="">
+                                    </div>
+
+                                    <div class="form-group mb-4">
+                                        <label for="facebook" class="il-gray fs-14 fw-500 align-center">Facebook<span
+                                                class="text-danger">*</span>
+                                        </label>
+                                        <input type="text" id="facebook" name="facebook" class="form-control form-control-lg"
+                                               placeholder="Enter facebook URL" required="">
+                                    </div>
+
+                                    <div class="form-group mb-4">
+                                        <label for="behance" class="il-gray fs-14 fw-500 align-center">Behance<span
+                                                class="text-danger">*</span>
+                                        </label>
+                                        <input type="text" id="behance" name="behance" class="form-control form-control-lg"
+                                               placeholder="Enter behance URL" required="">
+                                    </div>
+
+                                    <div class="form-group mb-4">
+                                        <label for="fiverr" class="il-gray fs-14 fw-500 align-center">Fiverr<span
+                                                class="text-danger">*</span>
+                                        </label>
+                                        <input type="text" id="fiverr" name="fiverr" class="form-control form-control-lg"
+                                               placeholder="Enter fiverr URL" required="">
+                                    </div>
+
+                                    <div class="form-group mb-4 atbd-tag-wrap">
+                                        <div class="atbd-upload">
+                                            <div class="atbd-upload-avatar">
+                                                <label for="tag2" class="il-gray fs-14 fw-500 align-center">Upload Logo [Image Resolution (290x100px)]<span class="text-danger">*</span></label>
+                                                <img class="avatrSrc" src="{{asset('backend/assets/img/gallery.png')}}" alt="Avatar Upload">
+                                            </div>
+                                            <div class="avatar-up">
+                                                <input type="file" name="image" class="upload-avatar-input" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div class="layout-button mt-25 float-right">
                                         <button type="button" class="btn btn-default btn-squared border-normal bg-normal px-20 ">cancel</button>
                                         <button type="submit" class="btn btn-primary btn-default btn-squared px-30">save</button>
@@ -89,6 +134,36 @@
                                                 <div class="page-info__single">
                                                     <span class="info-title il-gray fw-500 ">Address:</span>
                                                     <span class="info-text"><h6>{{$row->address}}</h6></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group mb-4">
+                                                <div class="page-info__single">
+                                                    <span class="info-title il-gray fw-500 ">Instagram:</span>
+                                                    <span class="info-text"><h6>{{$row->instagram}}</h6></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group mb-4">
+                                                <div class="page-info__single">
+                                                    <span class="info-title il-gray fw-500 ">Facebook:</span>
+                                                    <span class="info-text"><h6>{{$row->facebook}}</h6></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group mb-4">
+                                                <div class="page-info__single">
+                                                    <span class="info-title il-gray fw-500 ">Behance:</span>
+                                                    <span class="info-text"><h6>{{$row->behance}}</h6></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group mb-4">
+                                                <div class="page-info__single">
+                                                    <span class="info-title il-gray fw-500 ">Fiverr:</span>
+                                                    <span class="info-text"><h6>{{$row->fiverr}}</h6></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group mb-4">
+                                                <div class="page-info__single">
+                                                    <span class="info-title il-gray fw-500 ">Image:</span>
+                                                    <img class="" src="{{asset('storage/uploads/Logo')}}/{{$row->image}}" alt="logo" style="height: 300px; width: 300px">
                                                 </div>
                                             </div>
                                         </div>

@@ -3,7 +3,7 @@
         <div class="preloader-after"></div>
         <div class="preloader-before"></div>
         <div class="preloader-block">
-            <div class="title">Droow</div>
+            <div class="title">Nadim's Design</div>
             <div class="percent">0</div>
             <div class="loading">loading...</div>
         </div>
@@ -45,19 +45,25 @@
 
 @section('footer')
     <footer>
+        @php
+            $contact = \App\Contact::all();
+        @endphp
         <div class="info">
+            @foreach($contact as $key=>$row)
             <div class="contact-footer">
-                <a href="tel:010" class="phone">012.345.6789</a>
-                <a href="#" class="email">info@dsngrid</a>
+                <a href="tel:{{$row->phone}}" class="phone">{{$row->phone}}</a>
+                <a href="mailto:{{$row->email}}" class="email">{{$row->email}}</a>
             </div>
             <div class="copyright-social">
-                <p>© 2019 Design Grid</p>
+                <p>© 2021 Nadim's Design</p>
                 <ul>
-                    <li><a href="#" target="_blank">Instagram</a></li>
-                    <li><a href="#" target="_blank">Facebook</a></li>
-                    <li><a href="#" target="_blank">Linkedin</a></li>
+                    <li><a href="{{$row->facebook}}" target="_blank">Facebook</a></li>
+                    <li><a href="{{$row->instagram}}" target="_blank">Instagram</a></li>
+                    <li><a href="{{$row->behance}}" target="_blank">Behance</a></li>
+                    <li><a href="{{$row->fiverr}}" target="_blank">Fiverr</a></li>
                 </ul>
             </div>
+            @endforeach
         </div>
     </footer>
 @endsection

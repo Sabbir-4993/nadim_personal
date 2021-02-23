@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Portfolio;
+use App\PortfolioDetails;
+use DB;
 use File;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
@@ -74,8 +76,7 @@ class PortfolioController extends Controller
      */
     public function show($id)
     {
-//        $portfolio = Portfolio::orderBy('id','desc')->get();
-//        return view('backend.portfolio', compact('portfolio'));
+        //
     }
 
     /**
@@ -86,7 +87,8 @@ class PortfolioController extends Controller
      */
     public function edit($id)
     {
-        //
+        $portfolio = Portfolio::find($id);
+        return view('backend.portfolio_edit', compact('portfolio'));
     }
 
     /**
@@ -107,29 +109,30 @@ class PortfolioController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,bmp,gif,svg|max:2048',
         ]);
 
-//        $data = $request->all();
+        $data = $request->all();
+        $portfolio = Portfolio::find($id);
 
         $image = Portfolio::findOrFail($id);
         $image_path = public_path("storage/uploads/portfolios/{$image->image}");
 
         if (File::exists($image_path)) {
             unlink($image_path);
-        } elseif($request->hasFile('image')){
-        $image = $request->file('image');
-        $name = ($request->category_name). "." . date('Y-m-d') . "." . time() . "." . 'portfolio' . "." . $image->getClientOriginalExtension();
-        $destination = public_path('/storage/uploads/portfolios');
-        $image->move($destination, $name);
-        $image_url = $name;
-    }else{
+            if ($request->hasFile('image')){
+                $image = $request->file('image');
+                $name = ($request->category_name). "." . date('Y-m-d') . "." . time() . "." . 'portfolio' . "." . $image->getClientOriginalExtension();
+                $destination = public_path('/storage/uploads/portfolios');
+                $image->move($destination, $name);
+                $image_url = $name;
+            }
+        }else{
         $image = 'portfolio-sample.png';
     }
 
         $data['image'] = $image_url;
 
 
-//     dd($data);
-        Portfolio::update($request->all());
-        return redirect()->back()->with('message', 'Portfolio Updated Successfully');
+        $portfolio->update($data);
+        return redirect()->route('admin.portfolio.index')->with('message', 'Portfolio Updated Successfully');
 
 
 }
@@ -150,8 +153,15 @@ class PortfolioController extends Controller
             unlink($image_path);
         }
 
-        $portfolio = Portfolio::find($id);
-        $portfolio->delete();
+        $portfolio = Portfolio::findOrFail($id);
+
+        $portfoliodetails = PortfolioDetails::where('portfolio_id', $portfolio->id)->get();
+        foreach ($portfoliodetails as $row) {
+            DB::table('portfoliodetails')->where('portfolio_id', $row->id)->delete();
+        }
+
+        Portfolio::where('id', $portfolio->id)->delete();
+
         return redirect()->back()->with('message', 'Portfolio Deleted Successfully');
     }
 

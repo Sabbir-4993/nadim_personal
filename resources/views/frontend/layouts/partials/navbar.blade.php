@@ -24,8 +24,13 @@
         <div class="header-container">
             <div class="logo main-logo">
                 <a href="{{route('index')}}">
-                    <img class="dark-logo" src="{{asset('frontend/assets/img/logo-dark.png')}}" alt=""/>
-                    <img class="light-logo" src="{{asset('frontend/assets/img/logo.png')}}" alt=""/>
+                    @php
+                        $logo = \App\Contact::all();
+                    @endphp
+                    @foreach($logo as $key=>$row)
+                    <img class="dark-logo" src="{{asset('storage/uploads/Logo/')}}/{{$row->image}}" style="height: 70px; width: 70px;" alt="logo"/>
+                    <img class="light-logo" src="{{asset('storage/uploads/Logo/')}}/{{$row->image}}" style="height: 70px; width: 70px;" alt=""/>
+                    @endforeach
                 </a>
             </div>
 
@@ -58,13 +63,19 @@
                 <div class="inner-content">
                     @foreach($contact as $key=>$row)
                     <address class="v-middle">
+                        <span><a href="{{route('index')}}"><img src="{{asset('storage/uploads/Logo/')}}/{{$row->image}}" alt="logo" style="height: 80px; width: 80px"></a></span>
                         <span>{{$row->email}}</span>
                         <span>{{$row->address}}</span>
                         <span>{{$row->phone}}</span>
+                        <div class="row p-0 m-0 ">
+                            <span class="pr-5"><a href="{{$row->facebook}}"><i class="fab fa-facebook-f"></i></a></span>
+                            <span class="pr-5"><a href="{{$row->instagram}}"><i class="fab fa-instagram"></i></a></span>
+                            <span class="pr-5"><a href="{{$row->behance}}"><i class="fab fa-behance"></i></a></span>
+                            <span class="pr-5"><a href="{{$row->fiverr}}"><i class="fas fa-briefcase"></i></a></span>
+                        </div>
                     </address>
                     @endforeach
                 </div>
-
             </div>
         </div>
     </div>

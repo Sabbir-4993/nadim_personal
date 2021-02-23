@@ -38,7 +38,6 @@
                                             <th>
                                                 <div class="d-flex align-items-center">
                                                     <div class="custom-checkbox  check-all">
-                                                        <input class="checkbox" type="checkbox" id="check-3">
                                                         <label for="check-3">
                                                             <span class="checkbox-text userDatatable-title">Image</span>
                                                         </label>
@@ -49,7 +48,16 @@
                                                 <span class="userDatatable-title">Name</span>
                                             </th>
                                             <th>
+                                                <span class="userDatatable-title">Designation</span>
+                                            </th>
+                                            <th>
+                                                <span class="userDatatable-title">Bio</span>
+                                            </th>
+                                            <th>
                                                 <span class="userDatatable-title">Email</span>
+                                            </th>
+                                            <th>
+                                                <span class="userDatatable-title">Created</span>
                                             </th>
                                             <th>
                                                 <span class="userDatatable-title float-right">action</span>
@@ -62,14 +70,7 @@
                                                 <td>
                                                     <div class="d-flex">
                                                         <div class="userDatatable__imgWrapper d-flex align-items-center">
-                                                            <div class="checkbox-group-wrapper">
-                                                                <div class="checkbox-group d-flex">
-                                                                    <div class="checkbox-theme-default custom-checkbox checkbox-group__single d-flex">
-                                                                        <input class="checkbox" type="checkbox" id="check-grp-12">
-                                                                        <label for="check-grp-12"></label>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+
                                                             <a href="#" class="profile-image rounded-circle d-block m-0 wh-80" style="background-image:url('{{asset('storage/uploads/User')}}/{{$row->image}}'); background-size: cover;"></a>
                                                         </div>
                                                     </div>
@@ -82,7 +83,23 @@
                                                 </td>
                                                 <td>
                                                     <div class="userDatatable-content">
+                                                        {{ $row->designation }}
+
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="userDatatable-content">
+                                                        {!! \Illuminate\Support\Str::limit($row->bio, 40)  !!}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="userDatatable-content">
                                                         {{ $row->email }}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="userDatatable-content">
+                                                        {{ $row->updated_at->diffForHumans() }}
                                                     </div>
                                                 </td>
                                                 <td>
@@ -112,6 +129,25 @@
                                                                                 </div>
                                                                                 <div class="form-group row mb-25">
                                                                                     <div class="col-sm-3 d-flex aling-items-center">
+                                                                                        <label for="inputNameIcon" class="col-form-label color-dark fs-14 fw-500 align-center">Designation</label>
+                                                                                    </div>
+                                                                                    <div class="col-sm-9">
+                                                                                        <div class="with-icon">
+                                                                                            <span class="la-user lar color-gray"></span>
+                                                                                            <input type="text" name="designation" class="form-control  ih-medium ip-gray radius-xs b-light" id="inputNameIcon" value="{{$row->designation}}">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group row mb-25">
+                                                                                    <div class="col-sm-3 d-flex aling-items-center">
+                                                                                        <label for="inputNameIcon" class="col-form-label color-dark fs-14 fw-500 align-center">Bio</label>
+                                                                                    </div>
+                                                                                    <div class="col-sm-9">
+                                                                                        <textarea class="form-control" name="bio" id="inputNameIcon" cols="10" rows="5" placeholder="Optional">{{$row->bio}}</textarea>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group row mb-25">
+                                                                                    <div class="col-sm-3 d-flex aling-items-center">
                                                                                         <label for="inputEmailIcon" class=" col-form-label color-dark fs-14 fw-500 align-center">Email
                                                                                             Address</label>
                                                                                     </div>
@@ -133,21 +169,24 @@
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
+
                                                                                 <div class="form-group row mb-25">
                                                                                     <div class="col-sm-3 d-flex aling-items-center">
                                                                                         <label for="inputEmailIcon" class=" col-form-label color-dark fs-14 fw-500 align-center">Update Image</label>
                                                                                     </div>
+
                                                                                     <div class="col-sm-9">
                                                                                         <div class="atbd-tag-wrap">
                                                                                             <div class="atbd-upload">
                                                                                                 <div class="atbd-upload-avatar">
-                                                                                                    <img class="avatrSrc" src="{{asset('backend/assets/img/gallery.png')}}" alt="Avatar Upload">
+                                                                                                    <img class="avatrSrc" src="{{asset('storage/uploads/User')}}/{{$row->image}}" alt="Avatar Upload">
                                                                                                 </div>
                                                                                                 <div class="avatar-up">
-                                                                                                    <input type="file" name="image" class="upload-avatar-input" required="">
+                                                                                                    <input type="file" name="image" class="upload-avatar-input">
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
+
                                                                                     </div>
                                                                                 </div>
                                                                             </div>

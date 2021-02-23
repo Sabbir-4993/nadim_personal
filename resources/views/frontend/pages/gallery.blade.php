@@ -56,12 +56,12 @@
             <div class="container">
                 <div class="c-wapp">
                     <a href="{{route('contact')}}" class="effect-ajax">
-                                <span class="hiring">
-                                    Contact With us
-                                </span>
+                        <span class="hiring">
+                            Contact With us
+                        </span>
                         <span class="career">
-                                    Dare and contact us immediately!
-                                </span>
+                            Dare and contact us immediately!
+                        </span>
                     </a>
                 </div>
             </div>

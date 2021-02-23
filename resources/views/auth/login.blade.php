@@ -15,7 +15,7 @@
                         </div><!-- End: .signUP-overlay  -->
                         <div class="signUP-admin-left__content">
                             <div class="text-capitalize mb-md-30 mb-15 d-flex align-items-center justify-content-md-start justify-content-center">
-                                <a class="wh-36 bg-primary text-white radius-md mr-10 content-center" href="#">a</a>
+                                <a class="wh-36 bg-primary text-white radius-md mr-10 content-center" href="{{route('login')}}">a</a>
                                 <span class="text-dark">admin</span>
                             </div>
                             <h1>Welcome Back Admin</h1>
@@ -53,7 +53,7 @@
                                                     <div class="form-group mb-15">
                                                         <label for="password-field">password</label>
                                                         <div class="position-relative">
-                                                            <input id="password password-field" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" value="12345678">
+                                                            <input id="password password-field" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
 
                                                             @error('password')
                                                             <span class="invalid-feedback" role="alert">
@@ -70,27 +70,11 @@
                                                                 <span class="checkbox-text" >Keep me logged in</span>
                                                             </label>
                                                         </div>
-                                                        <a href="{{route('password.request')}}">forget password</a>
                                                     </div>
                                                     <div class="button-group d-flex pt-1 justify-content-md-start justify-content-center">
                                                         <button class="btn btn-primary btn-default btn-squared mr-15 text-capitalize lh-normal px-50 py-15 signIn-createBtn ">
                                                             sign in
                                                         </button>
-                                                    </div>
-                                                    <p class="social-connector text-center mb-sm-25 mb-15  mt-sm-30 mt-20"><span>Or</span></p>
-                                                    <div class="button-group d-flex align-items-center justify-content-md-start justify-content-center">
-                                                        <ul class="signUp-socialBtn">
-                                                            <li>
-                                                                <button class="btn text-dark px-30"><img class="svg" src="{{ asset('backend/assets/img/svg/google.svg')}}" alt="img" /> Sign up with
-                                                                    Google</button>
-                                                            </li>
-                                                            <li>
-                                                                <button class=" radius-md wh-48 content-center"><img class="svg" src="{{ asset('backend/assets/img/svg/facebook.svg')}}" alt="img" /></button>
-                                                            </li>
-                                                            <li>
-                                                                <button class="radius-md wh-48 content-center"><img class="svg" src="{{ asset('backend/assets/img/svg/twitter.svg')}}" alt="img" /></button>
-                                                            </li>
-                                                        </ul>
                                                     </div>
                                                 </div>
                                             </form>
