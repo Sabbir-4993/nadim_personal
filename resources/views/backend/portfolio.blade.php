@@ -136,8 +136,7 @@
                                                                         <img class="" src="{{asset('storage/uploads/portfolios')}}/{{$portfolio->image}}" alt="{{$portfolio->title}}" style="height: 200px; width: 300px">
                                                                     </div>
                                                                     <div class="modal-footer">
-                                                                        <button type="submit" class="btn btn-primary btn-sm">Save changes</button>
-                                                                        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
+                                                                        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -249,7 +248,7 @@
                                     <div class="form-group mb-4">
                                         <label for="select-2" class="il-gray fs-14 fw-500 align-center">Select Status<span class="text-danger">*</span></label>
                                         <div class="atbd-select ">
-                                            <select name="status"  id="select-3" class="form-control" required="">
+                                            <select name="status"  id="select-3" class="form-control">
                                                 <option value="0" disabled selected>Select Status</option>
                                                 <option value="Active">Active</option>
                                                 <option value="Inactive">Inactive</option>
@@ -264,7 +263,7 @@
                                                 <img class="avatrSrc" src="{{asset('backend/assets/img/gallery.png')}}" alt="Avatar Upload">
                                             </div>
                                             <div class="avatar-up">
-                                                <input type="file" name="image" class="upload-avatar-input" required="">
+                                                <input type="file" name="image" class="upload-avatar-input">
                                             </div>
                                         </div>
                                     </div>

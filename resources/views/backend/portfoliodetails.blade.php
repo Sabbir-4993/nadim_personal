@@ -83,7 +83,7 @@
                                                 </td>
                                                 <td>
                                                     <div class="userDatatable-content">
-                                                        {{ $row->portfolio_id }}
+                                                        {{ $portfolio->title }}
                                                     </div>
                                                 </td>
                                                 <td>

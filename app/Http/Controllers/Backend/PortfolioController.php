@@ -147,26 +147,29 @@ class PortfolioController extends Controller
      */
     public function destroy($id)
     {
+        $portfolio = Portfolio::where('id',$id)->first();
 
-        $image = Portfolio::findOrFail($id);
-        $image_path = public_path("storage/uploads/portfolios/{$image->image}");
+        $image_path = public_path("storage/uploads/portfolios/{$portfolio->image}");
 
         if (File::exists($image_path)) {
             unlink($image_path);
         }
 
-        $portfolio = Portfolio::findOrFail($id);
-
         $portfoliodetails = PortfolioDetails::where('portfolio_id', $portfolio->id)->get();
         foreach ($portfoliodetails as $row) {
-            DB::table('portfoliodetails')->where('portfolio_id', $row->id)->delete();
+            PortfolioDetails::where('portfolio_id', $row->portfolio_id)->delete();
+
+            $portfolio_image_path = public_path("storage/uploads/portfolio-images/{$row->image}");
+
+            if (File::exists($portfolio_image_path)) {
+                unlink($portfolio_image_path);
+            }
         }
 
         Portfolio::where('id', $portfolio->id)->delete();
 
         return redirect()->back()->with('message', 'Portfolio Deleted Successfully');
     }
-
 
 
 }

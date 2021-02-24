@@ -64,6 +64,17 @@
                                         <input type="text" id="url" name="url" class="form-control form-control-lg" placeholder="Enter Url" value="{{$portfolio->url}}">
                                     </div>
 
+                                    <div class="form-group mb-4">
+                                        <label for="select-2" class="il-gray fs-14 fw-500 align-center">Select Status<span class="text-danger">*</span></label>
+                                        <div class="atbd-select ">
+                                            <select name="status" id="select-3" class="form-control" required="">
+                                                <option value="0" disabled selected>Select Status</option>
+                                                <option value="Active">Active</option>
+                                                <option value="Inactive">Inactive</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
                                     <div class="col-sm-9">
                                         <div class="atbd-tag-wrap">
                                             <div class="atbd-upload">
@@ -72,7 +83,7 @@
                                                     <img class="avatrSrc" src="{{asset('storage/uploads/portfolios')}}/{{$portfolio->image}}" alt="Avatar Upload">
                                                 </div>
                                                 <div class="avatar-up">
-                                                    <input type="file" name="image" class="upload-avatar-input" required="">
+                                                    <input type="file" name="image" class="upload-avatar-input" >
                                                 </div>
                                             </div>
                                         </div>

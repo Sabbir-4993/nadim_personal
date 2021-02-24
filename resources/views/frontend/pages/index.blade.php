@@ -134,22 +134,25 @@
 
                             <h2 data-dsn-grid="move-section" data-dsn-move="-30" data-dsn-duration="100%"
                                 data-dsn-opacity="1.2" data-dsn-responsive="tablet">
-                                Hello we are, <br/> Dsn Grid
+                                Hello we are, <br/> Nadimsdesign
                             </h2>
 
-                            <p data-dsn-animate="text">Founded in 2000, Dsn Grid has become one of the best
-                                Digital
-                                Agency in
-                                ThemeForest.
-                                Blue money going forward, but deploy to production. C-suite. First-order optimal
-                                strategies build on a culture of contribution and inclusion so those options</p>
+                            <p data-dsn-animate="text">We are a creative agency, passionate about building and designing brands that will stand the test of time.
+                                Our core design services include Apparel design, Logo design, Branding, Social media, Banner, Cover photo, Add template,
+                                Digital template, Business card, Flyer, Web template design. We are a team of passionate creatives that thrive on building great
+                                relationships with our clients.</p>
 
-                            <h6 data-dsn-animate="text">SALVADOR DALI</h6>
-                            <small data-dsn-animate="text">Digital Artisit</small>
-
+                            <h6 data-dsn-animate="text">Nazmul Nadim</h6>
+                            <small data-dsn-animate="text">Graphics Designer & CEO</small>
+                            <p>
+                                We pride ourselves on being dynamic and distinctive in setting you apart from your competitors.
+                                We believe in the power of collaboration and take the time to get to know you and your business to create design outcomes that are
+                                well-suited to your values and echo your strategic plans for growth. We measure ourselves against our client’s success.
+                                We’re driven by results and our restless ambition to succeed is what pushes us to continually innovate.
+                            </p>
                             <div class="exper">
                                 <div class="numb-ex">
-                                    <span class="word" data-dsn-animate="text">25</span>
+                                    <span class="word" data-dsn-animate="text">10+</span>
                                 </div>
 
                                 <h4 data-dsn-animate="up">YEARS OF <br> DIGITAL EXPERIENCE</h4>
@@ -177,7 +180,7 @@
                     <div class="title-sub-container">
                         <p class="title-sub">Our Servcies</p>
                     </div>
-                    <h2 class="title-main">New Branding Agency</h2>
+                    <h2 class="title-main">Apparel design</h2>
                 </div>
 
                 <div class="row">
@@ -189,7 +192,7 @@
                                 <img src="{{asset('frontend/assets/img/services/1.png')}}" alt="">
                             </div>
                             <div class="services-header">
-                                <h3>DIGITAL PRODUCTS</h3>
+                                <h3>Graphics design</h3>
                             </div>
                             <p>Web design encompasses many different skills and disciplines in the production of
                                 all
@@ -205,7 +208,7 @@
                                 <img src="{{asset('frontend/assets/img/services/2.png')}}" alt="">
                             </div>
                             <div class="services-header">
-                                <h3>UI-UX DESIGN</h3>
+                                <h3>Branding</h3>
                             </div>
                             <p>Web design encompasses many different skills and disciplines in the production of
                                 all
