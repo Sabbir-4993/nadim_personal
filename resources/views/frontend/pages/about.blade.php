@@ -9,8 +9,7 @@
                     <div class="col-lg-12">
                         <div class="contenet-hero">
                             <h1>THE ART OF LUXURY APPAREL</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis mollitia libero
-                                quis odio unde ab officia est dolor.</p>
+                            <p>Our core design services include Apparel design, Logo design, Branding, Social media, Banner, Cover photo, Add template, Digital template, Business card, Flyer, Web template design.</p>
                             <a href="#" class="view-case scroll-down scroll-to">Scroll Down <img
                                     src="{{asset('frontend/assets/img/arrow-right-wight.png')}}" alt=""></a>
                         </div>
@@ -28,14 +27,11 @@
                         <img src="{{asset('frontend/assets/img/pexels.jpg')}}" alt="" data-dsn-y="30%" data-dsn-scale="1">
                     </div>
                     <div class="pro-text">
-                        <h3 data-dsn-animate="up">Hello we are, <br> Dsn Grid.</h3>
-                        <p data-dsn-animate="up">Founded in 2000, Dsn Grid has become one of the best
-                            Digital
-                            Agency in
-                            ThemeForest.
-                            Blue money going forward, but deploy to production. C-suite. First-order optimal
-                            strategies build on a culture of contribution and inclusion so those options
-
+                        <h3 data-dsn-animate="up">Hello we are, <br> Nadimsdesign.</h3>
+                        <p data-dsn-animate="up">
+                            We are a creative agency, passionate about building and designing brands that will stand the test of time. Our core design services include Apparel design, Logo design, Branding, Social media, Banner, Cover photo, Add template, Digital template, Business card, Flyer, Web template design.
+                            <br>We are a team of passionate creatives that thrive on building great relationships with our clients. We pride ourselves on being dynamic and distinctive in setting you apart from your competitors. We believe in the power of collaboration and take the time to get to know you and your business to create design outcomes that are well-suited to your values and echo your strategic plans for growth.
+                            <br>We measure ourselves against our client’s success. We’re driven by results and our restless ambition to succeed is what pushes us to continually innovate.
                         </p>
                     </div>
                 </div>
@@ -63,7 +59,6 @@
                                     and
                                     once in all of
                                     Europe.</p>
-
                             </div>
                         </div>
                     </div>
@@ -74,7 +69,7 @@
                 <div class="container">
                     <div class="one-title" data-dsn-animate="up">
                         <div class="title-sub-container">
-                            <p class="title-sub">OUR SERVCIES</p>
+                            <p class="title-sub">OUR SERVICES</p>
                         </div>
                         <h2 class="title-main">New Branding Agency</h2>
                     </div>
@@ -83,42 +78,35 @@
                         <div class="col-md-6">
                             <div class="services-item">
                                 <div class="line-before"></div>
-                                <h4 class="subtitle">Brand Identity</h4>
-                                <p>As Vintage decided to have a closer look into fast-paced New York web design
-                                    realm in person, we get to acquaint with most diverse and exceptionally
-                                    captivating personalities. </p>
+                                <h4 class="subtitle">Apparel design</h4>
+                                <p>An apparel designer is to keep an eye on the evolving or trending fashion statements and to predict the upcoming ones.</p>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="services-item">
                                 <div class="line-before"></div>
-                                <h4 class="subtitle">Brand Identity</h4>
-                                <p>As Vintage decided to have a closer look into fast-paced New York web design
-                                    realm in person, we get to acquaint with most diverse and exceptionally
-                                    captivating personalities. </p>
+                                <h4 class="subtitle">Graphics Design</h4>
+                                <p>Creates the graphics primarily for published, printed, or electronic media, such as brochures (sometimes) and advertising.</p>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="services-item">
                                 <div class="line-before"></div>
-                                <h4 class="subtitle">Brand Identity</h4>
-                                <p>As Vintage decided to have a closer look into fast-paced New York web design
-                                    realm in person, we get to acquaint with most diverse and exceptionally
-                                    captivating personalities. </p>
+                                <h4 class="subtitle">Branding</h4>
+                                <p>Branding in store can be very different to online branding as in store you have to worry about positioning of products.</p>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="services-item">
                                 <div class="line-before"></div>
-                                <h4 class="subtitle">Brand Identity</h4>
-                                <p>As Vintage decided to have a closer look into fast-paced New York web design
-                                    realm in person, we get to acquaint with most diverse and exceptionally
-                                    captivating personalities. </p>
+                                <h4 class="subtitle">Visualization</h4>
+                                <p>Visualization or visualisation is any technique for creating images, diagrams, or animations to communicate a message. Visualization through visual imagery has been an effective way to communicate both abstract and concrete ideas since the dawn of humanity.</p>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </section>

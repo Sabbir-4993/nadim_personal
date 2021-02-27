@@ -99,7 +99,7 @@
 
                                     <div class="layout-button mt-25 float-right">
                                         <button type="button" class="btn btn-default btn-squared border-normal bg-normal px-20 ">cancel</button>
-                                        <button type="submit" class="btn btn-primary btn-default btn-squared px-30">save</button>
+                                        <button type="submit" class="btn btn-primary btn-default btn-squared px-30" disabled="">save</button>
                                     </div>
                                 </form>
                             </div>
@@ -168,41 +168,12 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
+
                                             <div class="float-right">
-                                                <a href="#" class="remove" data-toggle="modal" data-target="#modal-sm">
-                                                    <span data-feather="trash"></span>
+                                                <a href="{{route('admin.contact.edit',[$row->id])}}" class="edit">
+                                                    <span data-feather="edit"></span>
                                                 </a>
                                             </div>
-                                            <!-- /.modal -->
-                                            <div class="modal fade" id="modal-sm">
-                                                <div class="modal-dialog modal-sm">
-                                                    <form action="{{route('admin.contact.destroy',[$row->id])}}" method="post">
-                                                        @csrf
-                                                        {{method_field('DELETE')}}
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h4 class="modal-title">Delete Confirm!!</h4>
-                                                                <button type="button" class="close" data-dismiss="modal"
-                                                                        aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <p>Do you Want to Delete ?</p>
-                                                            </div>
-                                                            <div class="modal-footer justify-content-between">
-                                                                <button type="button" class="btn btn-default" data-dismiss="modal">
-                                                                    Close
-                                                                </button>
-                                                                <button type="submit" class="btn btn-danger">Delete</button>
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                    <!-- /.modal-content -->
-                                                </div>
-                                                <!-- /.modal-dialog -->
-                                            </div>
-                                            <!-- /.modal End -->
                                         </div>
                                     </div>
                                     <hr class="p-0 m-0">

@@ -15,7 +15,7 @@ class PortfolioDetailsController extends Controller
     }
     public function store(Request $request)
     {
-        $this->validate($request,[web
+        $this->validate($request,[
             'portfolio_id' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,bmp,gif,svg|max:2048',
         ]);

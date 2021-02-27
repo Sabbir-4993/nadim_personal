@@ -18,7 +18,7 @@ Route::get('/', 'PageController@index')->name('index');
 Route::get('/about', 'PageController@about')->name('about');
 Route::get('/portfolio', 'PageController@portfolio')->name('portfolio');
 Route::get('/portfolio-details/{id}', 'PageController@portfoliodetails')->name('portfolio_details');
-Route::resource('/gallery', 'Frontend\GalleryController@index');
+Route::resource('/gallery', 'Frontend\GalleryController');
 Route::get('/contact', 'Frontend\ContactController@contact')->name('contact');
 Route::post('/message', 'Frontend\ContactController@store')->name('message');
 Route::get('/career', 'Frontend\CareerController@index')->name('career');

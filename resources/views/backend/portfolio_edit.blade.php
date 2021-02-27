@@ -77,7 +77,7 @@
 
                                     <div class="col-sm-9">
                                         <div class="atbd-tag-wrap">
-                                            <div class="atbd-upload">
+                                            <div class="atbd-upload">we
                                                 <div class="atbd-upload-avatar">
                                                     <label for="url" class="il-gray fs-14 fw-500 align-center">Upload New Image<span class="text-danger">*</span></label>
                                                     <img class="avatrSrc" src="{{asset('storage/uploads/portfolios')}}/{{$portfolio->image}}" alt="Avatar Upload">
@@ -92,7 +92,7 @@
 
                                     <div class="layout-button mt-25 float-right">
                                         <button type="button" class="btn btn-default btn-squared border-normal bg-normal px-20 ">cancel</button>
-                                        <button type="submit" class="btn btn-primary btn-default btn-squared px-30">save</button>
+                                        <button type="submit" class="btn btn-primary btn-default btn-squared px-30">Update</button>
                                     </div>
                                 </form>
                             </div>

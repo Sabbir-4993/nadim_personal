@@ -58,7 +58,7 @@
                         </div>
                     </div>
                     <div class="content">
-                        <p>0{{$key+1}}</p>
+                        <p>{{$key+1}}</p>
                     </div>
                 </div>
                 @endforeach
@@ -78,25 +78,29 @@
                         </div>
                     </div>
                 </div>
+                @php
+                    $contact = \App\Contact::first();
+                @endphp
                 <ul class="social-network">
                     <li>
-                        <a href="#">
+                        <a href="{{$contact->facebook}}">
                             <i class="fab fa-facebook-f"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
+                        <a href="{{$contact->instagram}}">
                             <i class="fab fa-instagram"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
-                            <i class="fab fa-linkedin-in"></i>
+                        <a href="{{$contact->behance}}">
+                            <i class="fab fa-behance"></i>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{$contact->fiverr}}">
+                            <i class="fas fa-briefcase"></i>
                         </a>
                     </li>
                 </ul>
@@ -152,7 +156,7 @@
                             </p>
                             <div class="exper">
                                 <div class="numb-ex">
-                                    <span class="word" data-dsn-animate="text">10+</span>
+                                    <span class="word" data-dsn-animate="text">7</span>
                                 </div>
 
                                 <h4 data-dsn-animate="up">YEARS OF <br> DIGITAL EXPERIENCE</h4>
@@ -178,7 +182,7 @@
             <div class="container">
                 <div class="one-title" data-dsn-animate="up">
                     <div class="title-sub-container">
-                        <p class="title-sub">Our Servcies</p>
+                        <p class="title-sub">Our Services</p>
                     </div>
                     <h2 class="title-main">Apparel design</h2>
                 </div>
@@ -192,11 +196,9 @@
                                 <img src="{{asset('frontend/assets/img/services/1.png')}}" alt="">
                             </div>
                             <div class="services-header">
-                                <h3>Graphics design</h3>
+                                <h3>Apparel design</h3>
                             </div>
-                            <p>Web design encompasses many different skills and disciplines in the production of
-                                all
-                                web.</p>
+                            <p>An apparel designer is to keep an eye on the evolving or trending fashion statements and to predict the upcoming ones</p>
                         </div>
                     </div>
 
@@ -208,11 +210,9 @@
                                 <img src="{{asset('frontend/assets/img/services/2.png')}}" alt="">
                             </div>
                             <div class="services-header">
-                                <h3>Branding</h3>
+                                <h3>Graphics Design</h3>
                             </div>
-                            <p>Web design encompasses many different skills and disciplines in the production of
-                                all
-                                web.</p>
+                            <p>Creates the graphics primarily for published, printed, or electronic media, such as brochures (sometimes) and advertising</p>
                         </div>
                     </div>
 
@@ -224,10 +224,9 @@
                                 <img src="{{asset('frontend/assets/img/services/3.png')}}" alt="">
                             </div>
                             <div class="services-header">
-                                <h3>WEB DEVELOPMENT</h3>
+                                <h3>Branding</h3>
                             </div>
-                            <p>Web design encompasses many different skills and disciplines in the production of
-                                all web.</p>
+                            <p>Branding in store can be very different to online branding as in store you have to worry about positioning of products</p>
                         </div>
                     </div>
                 </div>
@@ -240,12 +239,14 @@
                     <img data-dsn-scale="1" data-dsn-y="30%" src="{{asset('frontend/assets/img/project/project2/3.jpg')}}" alt="">
                 </div>
                 <div class="pro-text">
-                    <h3> How is your<br> visual identity?</h3>
-                    <p>A system that young people around the world with a club culture and techno
-                        enthusiasts feel identified. We generated a simple logo that is the basis for
-                        generating a geometric and liquid system. </p>
+                    <h3> Why Us?</h3>
+                    <p>Fully custom made, original, unique and Trendy designs <br>
+                        Professional customer support 24/7 <br>
+                        High Quality work <br>
+                        100% money back policy if not satisfied
+                    </p>
                     <div class="link-custom">
-                        <a class="image-zoom effect-ajax" href="#" data-dsn="parallax">
+                        <a class="image-zoom effect-ajax" href="{{route('about')}}" data-dsn="parallax">
                             <span>Learn More</span>
                         </a>
                     </div>
@@ -276,7 +277,7 @@
 
                                             <h5 class="cat">{{$row->category_name}}</h5>
                                             <h4>{{$row->title}}</h4>
-                                            <span><span>Veiw Project</span></span>
+                                            <span><span>View Project</span></span>
                                         </a>
 
                                     </div>
@@ -296,7 +297,7 @@
                 <div class="row align-items-center h-100">
                     <div class="col-lg-6 ">
                         <div class="box-im" data-dsn-grid="move-up">
-                            <img class="has-top-bottom" src="{{asset('frontend/assets/img/project/project9/7.jpg')}}" alt=""
+                            <img class="has-top-bottom" src="{{asset('frontend/assets/img/service.png')}}" alt=""
                                  data-dsn-move="20%">
                         </div>
                     </div>
@@ -307,25 +308,20 @@
                         <div class="box-info">
 
                             <div class="vertical-title" data-dsn-animate="up">
-                                <h2>Time Tag Watch.</h2>
+                                <h2>WHAT WILL YOU GET</h2>
                             </div>
 
-                            <h6 data-dsn-animate="up">Sometimes, we need to check the time, wondering when our
-                                work
-                                or meeting will finish, without getting caught by others.</h6>
-
-                            <p data-dsn-animate="up">To avoid your boss’s
-                                staring eye, you should not roll your eyes to check the time. The Time Tag Watch
-                                is
-                                a consummately appropriate for it.
-                                Those tags do the role of the hands of the watch. By rotating the face of the
-                                watch
-                                not the hands, it gets harder to be damaged. It provides you with experience to
-                                feel
-                                the time at the end of your finger without damaging your watch.</p>
+                            <p data-dsn-animate="up">
+                                Clean and Professional Designs <br>
+                                Final files will be JPEG, PDF, PNG, AI, EPS and PSD format. <br>
+                                Mock up presentation. <br>
+                                Unlimited Revisions. <br>
+                                Delivery in less than Time. <br>
+                                Outstanding customer support.
+                            </p>
 
                             <div class="link-custom" data-dsn-animate="up">
-                                <a class="image-zoom effect-ajax" href="#" data-dsn="parallax">
+                                <a class="image-zoom effect-ajax" href="{{route('portfolio')}}" data-dsn="parallax">
                                     <span>Learn More</span>
                                 </a>
                             </div>
@@ -368,74 +364,6 @@
                             </div>
                             @endforeach
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="our-news section-margin">
-            <div class="container">
-                <div class="one-title" data-dsn-animate="up">
-                    <div class="title-sub-container">
-                        <p class="title-sub">Latest News</p>
-                    </div>
-                    <h2 class="title-main">Latest and greatest post</h2>
-                </div>
-                <div class="custom-container">
-                    <div class="slick-slider">
-                        <div class="item-new slick-slide">
-                            <div class="image" data-overlay="5">
-                                <img src="{{asset('frontend/assets/img/blog/1.jpg')}}" alt="">
-                            </div>
-                            <div class="content">
-                                <div class="background"></div>
-                                <h5>Web , Brand</h5>
-
-                                <div class="cta">
-                                    <a href="#">Digital Photography Tips</a>
-                                </div>
-
-                                <p>Simple point-and-shoot digital cameras can give surprising quality when they
-                                    have the right lenses and sensors.</p>
-
-                            </div>
-                        </div>
-
-                        <div class="item-new slick-slide">
-                            <div class="image" data-overlay="5">
-                                <img src="{{asset('frontend/assets/img/blog/2.jpg')}}" alt="">
-                            </div>
-                            <div class="content">
-                                <div class="background"></div>
-                                <h5>Web , Brand</h5>
-
-                                <div class="cta">
-                                    <a href="#">Digital Photography Tips</a>
-                                </div>
-
-                                <p>Simple point-and-shoot digital cameras can give surprising quality when they
-                                    have the right lenses and sensors.</p>
-                            </div>
-                        </div>
-
-                        <div class="item-new slick-slide">
-                            <div class="image" data-overlay="5">
-                                <img src="{{asset('frontend/assets/img/blog/3.jpg')}}" alt="">
-                            </div>
-                            <div class="content">
-                                <div class="background"></div>
-                                <h5>Web , Brand</h5>
-
-                                <div class="cta">
-                                    <a href="#">Digital Photography Tips</a>
-                                </div>
-
-                                <p>Simple point-and-shoot digital cameras can give surprising quality when they
-                                    have the right lenses and sensors.</p>
-
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>

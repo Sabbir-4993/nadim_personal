@@ -24,8 +24,7 @@
                         <div class="box-info-contact">
                             <h3>Start a new project?</h3>
                             <h5>Visit our studio at</h5>
-                            <p>Sed ut perspiciatis unde omnis iste natus error sit vo
-                                luptatem accusantium natus error sit omnis iste natus</p>
+                            <p>Got a question or need graphical support? Drop us a line.</p>
                             @php
                                 $address = \App\Contact::all();
                             @endphp

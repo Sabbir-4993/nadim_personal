@@ -18,8 +18,6 @@
     <div class="wrapper">
         <div class="root-contact">
             <div class="container-fluid ">
-{{--                <div class="map-custom" id="map" data-dsn-lat="30.0489206" data-dsn-len="31.258553" data-dsn-zoom="14">--}}
-{{--                </div>--}}
                 <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d29207.842898731247!2d90.39651324086427!3d23.78371361846642!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1612430194090!5m2!1sen!2sbd" width="100%" height="650" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
             </div>
 
@@ -29,8 +27,7 @@
                         <div class="box-info-contact">
                             <h3>Start a new project?</h3>
                             <h5>Visit our studio at</h5>
-                            <p>Sed ut perspiciatis unde omnis iste natus error sit vo
-                                luptatem accusantium natus error sit omnis iste natus</p>
+                            <p>Got a question or need graphical support? Drop us a line.</p>
                             @php
                             $address = \App\Contact::all();
                             @endphp

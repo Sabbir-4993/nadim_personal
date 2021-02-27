@@ -86,7 +86,8 @@ class ContactController extends Controller
      */
     public function edit($id)
     {
-        //
+        $contact = Contact::find($id);
+        return view('backend.contact_edit', compact('contact'));
     }
 
     /**
@@ -98,7 +99,20 @@ class ContactController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'email' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+            'facebook' => 'required',
+            'instagram' => 'required',
+            'behance' => 'required',
+            'fiverr' => 'required',
+        ]);
+
+        $data = $request->all();
+        $contact = Contact::find($id);
+        $contact->update($data);
+        return redirect()->route('admin.contact.index')->with('message', 'Contact Updated Successfully');
     }
 
     /**

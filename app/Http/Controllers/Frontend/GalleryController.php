@@ -15,7 +15,6 @@ class GalleryController extends Controller
      */
     public function index()
     {
-
         $gallery = DB::table('portfoliodetails')
             ->join('portfolios','portfolios.id','=','portfoliodetails.portfolio_id')
             ->select('portfolios.category_name','portfolios.title','portfolios.id','portfoliodetails.*')
