@@ -6,40 +6,44 @@
             <div class="slide-inner">
                 <div class="swiper-wrapper">
                     @foreach($portfolios as $key=>$row)
-                    <div class="slide-item swiper-slide">
-                        <div class="slide-content">
-                            <div class="slide-content-inner">
-                                <div class="project-metas">
-                                    <div class="project-meta-box project-work cat">
-                                        <span>{{$row->category_name}}</span>
+                        @if($row->status=='Active')
+                            <div class="slide-item swiper-slide">
+                            <div class="slide-content">
+                                <div class="slide-content-inner">
+                                    <div class="project-metas">
+                                        <div class="project-meta-box project-work cat">
+                                            <span>{{$row->category_name}}</span>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="title-text-header">
-                                    <div class="title-text-header-inner">
-                                        <a href="#" class="effect-ajax" data-dsn-ajax="slider">
-                                            {{$row->title}}
+                                    <div class="title-text-header">
+                                        <div class="title-text-header-inner">
+                                            <a href="#" class="effect-ajax" data-dsn-ajax="slider">
+                                                {{$row->title}}
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <p>{{$row->description}}</p>
+                                    <div class="link-custom">
+                                        <a href="{{route('portfolio_details',($row->id))}} " class="image-zoom effect-ajax" data-dsn="parallax"
+                                           data-dsn-ajax="slider">
+                                            <span>View Case</span>
                                         </a>
                                     </div>
-                                </div>
 
-                                <p>{{$row->description}}</p>
-                                <div class="link-custom">
-                                    <a href="{{route('portfolio_details',($row->id))}} " class="image-zoom effect-ajax" data-dsn="parallax"
-                                       data-dsn-ajax="slider">
-                                        <span>View Case</span>
-                                    </a>
                                 </div>
-
+                            </div>
+                            <div class="image-container">
+                                <div class="image-bg cover-bg" data-image-src="{{asset('storage/uploads/portfolios')}}/{{$row->image}}"
+                                     data-overlay="0">
+                                    <img src="{{asset('storage/uploads/portfolios')}}/{{$row->image}}" alt="">
+                                </div>
                             </div>
                         </div>
-                        <div class="image-container">
-                            <div class="image-bg cover-bg" data-image-src="{{asset('storage/uploads/portfolios')}}/{{$row->image}}"
-                                 data-overlay="0">
-                                <img src="{{asset('storage/uploads/portfolios')}}/{{$row->image}}" alt="">
-                            </div>
-                        </div>
-                    </div>
+                        @elseif($row->status=='Inactive')
+
+                        @endif
                     @endforeach
                 </div>
             </div>
@@ -51,16 +55,18 @@
         <div class="nav-slider">
             <div class="swiper-wrapper" role="navigation">
                 @foreach($portfolios as $key=>$row)
-                <div class="swiper-slide">
-                    <div class="image-container">
-                        <div class="image-bg cover-bg" data-image-src="{{asset('storage/uploads/portfolios')}}/{{$row->image}}"
-                             data-overlay="2">
+                    @if($row->status=='Active')
+                        <div class="swiper-slide">
+                            <div class="image-container">
+                                <div class="image-bg cover-bg" data-image-src="{{asset('storage/uploads/portfolios')}}/{{$row->image}}"
+                                     data-overlay="2">
+                                </div>
+                            </div>
+
                         </div>
-                    </div>
-                    <div class="content">
-                        <p>{{$key+1}}</p>
-                    </div>
-                </div>
+                    @elseif($row->status=='Inactive')
+
+                    @endif
                 @endforeach
             </div>
         </div>
@@ -268,20 +274,21 @@
                     <div class="col-lg-9 offset-lg-3">
                         <div class="work-container">
                             <div class="slick-slider">
+
                                 @foreach($portfolios as $key=>$row)
-                                <div class="work-item slick-slide">
-                                    <img class="has-top-bottom" src="{{asset('storage/uploads/portfolios')}}/{{$row->image}}" alt="">
-                                    <div class="item-border"></div>
-                                    <div class="item-info">
-                                        <a href="{{route('portfolio_details',($row->id))}}" data-dsn-grid="move-up" class="effect-ajax">
+                                    <div class="work-item slick-slide">
+                                        <img class="has-top-bottom" src="{{asset('storage/uploads/portfolios')}}/{{$row->image}}" alt="">
+                                        <div class="item-border"></div>
+                                        <div class="item-info">
+                                            <a href="{{route('portfolio_details',($row->id))}}" data-dsn-grid="move-up" class="effect-ajax">
 
-                                            <h5 class="cat">{{$row->category_name}}</h5>
-                                            <h4>{{$row->title}}</h4>
-                                            <span><span>View Project</span></span>
-                                        </a>
+                                                <h5 class="cat">{{$row->category_name}}</h5>
+                                                <h4>{{$row->title}}</h4>
+                                                <span><span>View Project</span></span>
+                                            </a>
 
+                                        </div>
                                     </div>
-                                </div>
                                 @endforeach
                             </div>
 

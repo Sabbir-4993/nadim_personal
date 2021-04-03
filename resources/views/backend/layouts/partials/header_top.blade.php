@@ -26,7 +26,7 @@
                                     <img src="{{ asset('storage/uploads/User')}}/{{$user->image}}" alt="" class="rounded-circle">
                                 </div>
                                 <div>
-                                    <h6>{{auth()->user()->name}}</h6>
+                                    <h6>{{$user->name}}</h6>
                                     <span>{{$user->designation}}</span>
                                 </div>
                             </div>

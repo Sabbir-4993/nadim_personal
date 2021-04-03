@@ -105,7 +105,7 @@ class TeamController extends Controller
     public function destroy($id)
     {
         $image = Team::findOrFail($id);
-        $image_path = public_path("storage/uploads/team/{$image->image}");
+        $image_path = public_path("/storage/uploads/team/{$image->image}");
 
         if (File::exists($image_path)) {
             unlink($image_path);

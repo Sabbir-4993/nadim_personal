@@ -16,38 +16,19 @@
     </header>
 
     <div class="wrapper">
-        <div class="root-work">
-            <div class="box-title" data-dsn-title="cover">
-                <h2 class="title-cover" data-dsn-grid="move-section" data-dsn-move="-70">Portfolio</h2>
-            </div>
-
-            <div class="filterings">
-                <div class="filtering-wrap">
-                    <div class="filtering">
-                        <div class="selector"></div>
-                        <button type="button" data-filter="*" class="active">
-                            All
-                        </button>
-                        @php
-                            $portfolios = \Illuminate\Support\Facades\DB::table('portfolios')->get();
-                        @endphp
-                        @foreach($portfolios as $key=>$row)
-                            <button type="button" data-filter=".{{$row->category_name}}">{{$row->category_name}}</button>
-                        @endforeach
+        <div class="root-project">
+            <div class="gallery-portfolio section-margin">
+                @php
+                    $portfolios = \Illuminate\Support\Facades\DB::table('portfolios')->get();
+                @endphp
+                @foreach($portfolios as $key=>$row)
+                <a class="link-pop" href="{{asset('storage/uploads/portfolio-images')}}/{{$row->image}}"
+                   data-source="{{asset('storage/uploads/portfolio-images')}}/{{$row->image}}">
+                    <img src="{{asset('storage/uploads/portfolio-images')}}/{{$row->image}}" alt="">
+                    <div class="cap">
+                        <span>Web Design</span>
                     </div>
-                </div>
-            </div>
-
-            <div class="projects-list gallery">
-                @foreach($gallery as $key=>$row)
-                    <div class="item {{$row->category_name}}">
-                        <div class="image-zoom" data-dsn="parallax">
-                            <a href="{{asset('storage/uploads/portfolio-images')}}/{{$row->image}}" class="single-image" data-dsn-ajax="work" data-dsn-grid="move-up">
-                                <img class="has-top-bottom" src="{{asset('storage/uploads/portfolio-images')}}/{{$row->image}}" alt="{{$row->category_name}}.{{$row->title}}" />
-                                <div class="item-border"></div>
-                            </a>
-                        </div>
-                    </div>
+                </a>
                 @endforeach
             </div>
         </div>

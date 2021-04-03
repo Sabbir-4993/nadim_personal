@@ -94,6 +94,11 @@
                                                 <td>
                                                     <ul class="orderDatatable_actions mb-0 d-flex flex-wrap">
                                                         <li>
+                                                            <a href="{{route('admin.portfolio-details.edit',[$row->id])}}" class="edit">
+                                                                <span data-feather="edit"></span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
                                                             <a href="#" class="remove" data-toggle="modal" data-target="#modal-info-confirmed{{$row->id}}">
                                                                 <span data-feather="trash-2"></span>
                                                             </a>
@@ -101,7 +106,7 @@
                                                         <!-- /.modal -->
                                                         <div class="modal-info-confirmed modal fade show" id="modal-info-confirmed{{$row->id}}" tabindex="-1" aria-hidden="false">
                                                             <div class="modal-dialog modal-sm modal-info" role="document">
-                                                                <form action="{{route('admin.portfolio.details.destroy',$row->id)}}" method="post">
+                                                                <form action="{{route('admin.portfolio-details.destroy',$row->id)}}" method="post">
                                                                     @csrf
                                                                     <div class="modal-content">
                                                                         <div class="modal-body">
@@ -142,7 +147,7 @@
 
         <div class="modal-basic modal fade show" id="modal-basic" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-md" role="document">
-                <form class="mt-4" action="{{ route('admin.portfolio.details.store') }}" method="POST" enctype="multipart/form-data">
+                <form class="mt-4" action="{{ route('admin.portfolio-details.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @php
                         $portfolio = \App\Portfolio::all();

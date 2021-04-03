@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Portfolio;
 use App\PortfolioDetails;
+use Carbon\Carbon;
 use DB;
 use File;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -101,43 +102,47 @@ class PortfolioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
+        $this->validate($request,[
             'category_name' => 'required',
             'title' => 'required',
             'date' => 'required',
             'url' => 'required',
             'status' => 'required',
             'description' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,bmp,gif,svg|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,bmp,gif,svg|max:2048',
         ]);
 
-        $data = $request->all();
+
         $portfolio = Portfolio::find($id);
 
-        $image = Portfolio::findOrFail($id);
-        $image_path = public_path("storage/uploads/portfolios/{$image->image}");
-
-        if (File::exists($image_path)) {
-            unlink($image_path);
-            if ($request->hasFile('image')){
-                $image = $request->file('image');
-                $name = ($request->category_name). "." . date('Y-m-d') . "." . time() . "." . 'portfolio' . "." . $image->getClientOriginalExtension();
-                $destination = public_path('/storage/uploads/portfolios');
-                $image->move($destination, $name);
-                $image_url = $name;
+        if($request->image != '') {
+            $path = public_path('/storage/uploads/portfolios/');
+            //code for remove old file
+            if ($portfolio->image != '' && $portfolio->image != null) {
+                $file_old = $path . $portfolio->image;
+                unlink($file_old);
             }
-        }else{
-        $image = 'portfolio-sample.png';
-    }
+            //upload new file
+            $file = $request->image;
+            $filename = ($request->category_name) . "." . date('Y-m-d') . "." . time() . "." . 'portfolio' . "." . $file->getClientOriginalExtension();
 
-        $data['image'] = $image_url;
+            $file->move($path, $filename);
+            //for update in table
+            $portfolio->update(['image' => $filename]);
+        }
+        $portfolio->update([
+            'category_name' => $request->category_name,
+            'title' => $request->title,
+            'date' => $request->date,
+            'url' => $request->url,
+            'status' => $request->status,
+            'description' => $request->description,
+            'created_at' => Carbon::now(),
+        ]);
 
-
-        $portfolio->update($data);
-        return redirect()->route('admin.portfolio.index')->with('message', 'Portfolio Updated Successfully');
-
-
+        return redirect()->route('admin.portfolio.index')->with('message','Portfolio Added Successfully');
 }
+
 
     /**
      * Remove the specified resource from storage.

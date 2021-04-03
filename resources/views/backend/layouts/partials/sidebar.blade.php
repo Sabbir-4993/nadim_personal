@@ -24,7 +24,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('admin.portfolio.details')}}" class="">
+                        <a href="{{route('admin.portfolio-details.index')}}" class="">
                             <span data-feather="plus-circle" class="nav-icon"></span>
                             <span class="menu-text">Add Portfolio Image</span>
                         </a>

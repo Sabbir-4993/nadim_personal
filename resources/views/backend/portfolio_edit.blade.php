@@ -33,6 +33,7 @@
                                 <form action="{{route('admin.portfolio.update',[$portfolio->id])}}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('PATCH')
+                                    <input type="hidden" name="id" value="{{$portfolio->id}}">
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1" class="il-gray fs-14 fw-500 align-center">Category</label>
                                         <select name="category_name"  id="select-3" class="form-control" required="">
@@ -68,22 +69,21 @@
                                         <label for="select-2" class="il-gray fs-14 fw-500 align-center">Select Status<span class="text-danger">*</span></label>
                                         <div class="atbd-select ">
                                             <select name="status" id="select-3" class="form-control" required="">
-                                                <option value="0" disabled selected>Select Status</option>
-                                                <option value="Active">Active</option>
-                                                <option value="Inactive">Inactive</option>
+                                                <option value="Active" {{(($portfolio->status=='Active')? 'selected' : '')}}>Active</option>
+                                                <option value="Inactive" {{(($portfolio->status=='Inactive')? 'selected' : '')}}>Inactive</option>
                                             </select>
                                         </div>
                                     </div>
 
                                     <div class="col-sm-9">
                                         <div class="atbd-tag-wrap">
-                                            <div class="atbd-upload">we
+                                            <div class="atbd-upload">
                                                 <div class="atbd-upload-avatar">
                                                     <label for="url" class="il-gray fs-14 fw-500 align-center">Upload New Image<span class="text-danger">*</span></label>
-                                                    <img class="avatrSrc" src="{{asset('storage/uploads/portfolios')}}/{{$portfolio->image}}" alt="Avatar Upload">
+                                                    <img class="avatrSrc" src="{{asset('storage/uploads/portfolios')}}/{{$portfolio->image}}" alt="{{$portfolio->title}}">
                                                 </div>
                                                 <div class="avatar-up">
-                                                    <input type="file" name="image" class="upload-avatar-input" >
+                                                    <input type="file" name="image" class="upload-avatar-input" value="{{$portfolio->image}}">
                                                 </div>
                                             </div>
                                         </div>
