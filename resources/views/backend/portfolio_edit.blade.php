@@ -33,13 +33,14 @@
                                 <form action="{{route('admin.portfolio.update',[$portfolio->id])}}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('PATCH')
-                                    <input type="hidden" name="id" value="{{$portfolio->id}}">
+                                    <input type="hidden" name="id" value="{{$portfolio->id}}"   >
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1" class="il-gray fs-14 fw-500 align-center">Category</label>
                                         <select name="category_name"  id="select-3" class="form-control" required="">
                                             <option @if($portfolio->category_name == 'Brand') selected @endif value="Brand">Brand</option>
                                             <option @if($portfolio->category_name == 'Design') selected @endif value="Design">Design</option>
                                             <option @if($portfolio->category_name == 'Art') selected @endif  value="Art">Art</option>
+                                            <option @if($portfolio->category_name == 'Illustration') selected @endif  value="Illustration">Illustration</option>
                                             <option @if($portfolio->category_name == 'Photography') selected @endif  value="Photography">Photography</option>
                                             <option @if($portfolio->category_name == 'Video') selected @endif  value="Video">Video</option>
                                             <option @if($portfolio->category_name == '3D') selected @endif  value="3D">3D</option>
@@ -80,7 +81,7 @@
                                             <div class="atbd-upload">
                                                 <div class="atbd-upload-avatar">
                                                     <label for="url" class="il-gray fs-14 fw-500 align-center">Upload New Image<span class="text-danger">*</span></label>
-                                                    <img class="avatrSrc" src="{{asset('storage/uploads/portfolios')}}/{{$portfolio->image}}" alt="{{$portfolio->title}}">
+                                                    <img style="border: 1px solid #ddd; border-radius: 4px; padding: 5px; max-width: 100%; height: auto;" class="avatrSrc" src="{{asset('storage/uploads/portfolios')}}/{{$portfolio->image}}" alt="{{$portfolio->title}}">
                                                 </div>
                                                 <div class="avatar-up">
                                                     <input type="file" name="image" class="upload-avatar-input" value="{{$portfolio->image}}">

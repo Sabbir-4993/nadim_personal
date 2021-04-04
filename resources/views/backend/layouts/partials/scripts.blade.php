@@ -16,6 +16,7 @@
     <!-- inject:js-->
     <script src="{{asset('backend/assets/js/plugins.min.js')}}"></script>
     <script src="{{asset('backend/assets/js/script.min.js')}}"></script>
+
     <!-- endinject-->
     @yield('custom_js')
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Contact;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use File;
 use Illuminate\Http\Request;
 
@@ -53,7 +54,7 @@ class ContactController extends Controller
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $name = date('Y-m-d'). "." .time(). "." .'logo'. "." .$image->getClientOriginalExtension();
+            $name = 'logo'. "." .$image->getClientOriginalExtension();
             $destination = public_path('/storage/uploads/Logo');
             $image->move($destination, $name);
             $image_url = $name;
@@ -86,8 +87,8 @@ class ContactController extends Controller
      */
     public function edit($id)
     {
-        $contact = Contact::find($id);
-        return view('backend.contact_edit', compact('contact'));
+        $contact_edit = Contact::find($id);
+        return view('backend.contact_edit', compact('contact_edit'));
     }
 
     /**
@@ -99,19 +100,47 @@ class ContactController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'email' => 'required',
-            'phone' => 'required',
-            'address' => 'required',
-            'facebook' => 'required',
-            'instagram' => 'required',
-            'behance' => 'required',
-            'fiverr' => 'required',
+        $this->validate($request,[
+            'email' => '',
+            'phone' => '',
+            'address' => '',
+            'facebook' => '',
+            'instagram' => '',
+            'behance' => '',
+            'fiverr' => '',
+            'image' => 'image|mimes:jpeg,png,jpg,bmp,gif,svg|max:2048',
         ]);
 
-        $data = $request->all();
-        $contact = Contact::find($id);
-        $contact->update($data);
+
+        $contact_edit = Contact::find($id);
+
+        if($request->image != '') {
+            $path = public_path('/storage/uploads/Logo/');
+            //code for remove old file
+            if ($contact_edit->image != '' && $contact_edit->image != null) {
+                $file_old = $path . $contact_edit->image;
+                unlink($file_old);
+            }
+            //upload new file
+            $file = $request->image;
+            $filename = 'Logo' . "." . $file->getClientOriginalExtension();
+
+            $file->move($path, $filename);
+            //for update in table
+            $contact_edit->update(['image' => $filename]);
+        }
+        $contact_edit->update([
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'facebook' => $request->facebook,
+            'instagram' => $request->instagram,
+            'behance' => $request->behance,
+            'fiverr' => $request->fiverr,
+
+            'updated_at' => Carbon::now(),
+        ]);
+
         return redirect()->route('admin.contact.index')->with('message', 'Contact Updated Successfully');
     }
 

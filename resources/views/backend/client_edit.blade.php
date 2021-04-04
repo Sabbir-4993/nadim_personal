@@ -8,7 +8,7 @@
                 <div class="col-lg-12">
 
                     <div class="breadcrumb-main">
-                        <h4 class="text-capitalize breadcrumb-title">Portfolio Details Update</h4>
+                        <h4 class="text-capitalize breadcrumb-title">Client Profile Update</h4>
                         <div class="breadcrumb-action justify-content-center flex-wrap">
                             <div class="action-btn">
                                 <button type="button" disabled class="btn btn-sm btn-primary btn-add" data-toggle="modal" data-target="#modal-basic"><i class="la la-plus"></i> Add New</button>
@@ -26,36 +26,30 @@
                 <div class="container col-lg-12">
                     <div class="card card-Vertical card-default card-md mb-4">
                         <div class="card-header">
-                            <h6>Portfolio Update</h6>
+                            <h6>Update Client Profile</h6>
                         </div>
                         <div class="card-body pb-md-30">
                             <div class="Vertical-form">
-                                <form action="{{route('admin.portfolio-details.update',[$portfolio_details->id])}}" method="POST" enctype="multipart/form-data">
+                                <form action="{{route('admin.client.update',[$client_details->id])}}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('PATCH')
-                                    @php
-                                        $portfolio = \App\Portfolio::all();
-                                    @endphp
-                                    <input type="hidden" name="id" value="{{$portfolio_details->id}}">
-                                    <div class="form-group">
-                                        <label for="exampleFormControlSelect1" class="il-gray fs-14 fw-500 align-center">Select Portfolio<span class="text-danger">*</span></label>
-                                        <select name="portfolio_id"  id="select-3" class="form-control" required="">
-                                            <option value="0" disabled selected>Select Portfolio</option>
-                                            @foreach($portfolio as $key=>$row)
-                                                <option @if($row->id == $portfolio_details->portfolio_id) selected @endif value="{{$row->id}}">{{$row->title}}</option>
-{{--                                                <option value="{{$row->id}}"> {{$row->title}}</option>--}}
-                                            @endforeach
-                                        </select>
+                                    <input type="hidden" name="id" value="{{$client_details->id}}">
 
+                                    <div class="form-group mb-4">
+                                        <label for="name" class="il-gray fs-14 fw-500 align-center">Client Name<span class="text-danger">*</span></label>
+                                        <input type="text" id="name" name="name" class="form-control form-control-lg" placeholder="Enter Full Name" value="{{$client_details->name}}">
+                                    </div>
 
-
+                                    <div class="form-group mb-4">
+                                        <label for="url" class="il-gray fs-14 fw-500 align-center">URL<span class="text-danger">*</span></label>
+                                        <input type="text" id="url" name="url" class="form-control form-control-lg" placeholder="Enter URL" value="{{$client_details->url}}">
                                     </div>
 
                                     <div class="atbd-tag-wrap">
                                         <div class="atbd-upload">
                                             <div class="atbd-upload-avatar">
                                                 <label for="tag2" class="il-gray fs-14 fw-500 align-center">Upload New Image [Image Resolution (1800x1200px)]<span class="text-danger">*</span></label>
-                                                <img style="border: 1px solid #ddd; border-radius: 4px; padding: 5px; max-width: 100%; height: auto;" class="avatrSrc" src="{{asset('storage/uploads/portfolio-images')}}/{{$portfolio_details->image}}" alt="portfolio_details_images">
+                                                <img style="border: 1px solid #ddd; border-radius: 4px; padding: 5px; width: 350px; max-width: 100%; height: auto;" class="avatrSrc" src="{{asset('storage/uploads/client')}}/{{$client_details->image}}" alt="{{$client_details->name}}">
                                             </div>
                                             <div class="avatar-up">
                                                 <input type="file" name="image" class="upload-avatar-input">

@@ -137,7 +137,7 @@ class PortfolioController extends Controller
             'url' => $request->url,
             'status' => $request->status,
             'description' => $request->description,
-            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
 
         return redirect()->route('admin.portfolio.index')->with('message','Portfolio Added Successfully');

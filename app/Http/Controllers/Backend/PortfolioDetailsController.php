@@ -100,34 +100,29 @@ class PortfolioDetailsController extends Controller
         ]);
 
 
-        $portfolio = PortfolioDetails::find($id);
+        $portfolio_details = PortfolioDetails::find($id);
 
         if($request->image != '') {
-            $path = public_path('/storage/uploads/portfolios/');
+            $path = public_path('/storage/uploads/portfolio-images/');
             //code for remove old file
-            if ($portfolio->image != '' && $portfolio->image != null) {
-                $file_old = $path . $portfolio->image;
+            if ($portfolio_details->image != '' && $portfolio_details->image != null) {
+                $file_old = $path . $portfolio_details->image;
                 unlink($file_old);
             }
             //upload new file
             $file = $request->image;
-            $filename = ($request->category_name) . "." . date('Y-m-d') . "." . time() . "." . 'portfolio' . "." . $file->getClientOriginalExtension();
+            $filename = date('Y-m-d') . "." . time() . "." . 'portfolio' . "." . $file->getClientOriginalExtension();
 
             $file->move($path, $filename);
             //for update in table
-            $portfolio->update(['image' => $filename]);
+            $portfolio_details->update(['image' => $filename]);
         }
-        $portfolio->update([
-            'category_name' => $request->category_name,
-            'title' => $request->title,
-            'date' => $request->date,
-            'url' => $request->url,
-            'status' => $request->status,
-            'description' => $request->description,
-            'created_at' => Carbon::now(),
+        $portfolio_details->update([
+            'portfolio_id' => $request->portfolio_id,
+            'updated_at' => Carbon::now(),
         ]);
 
-        return redirect()->route('admin.portfolio.index')->with('message','Portfolio Added Successfully');
+        return redirect()->route('admin.portfolio-details.index')->with('message','Portfolio Image Updated Successfully');
     }
 
     /**

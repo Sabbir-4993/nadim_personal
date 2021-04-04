@@ -41,7 +41,7 @@
                     <div class="item {{$row->category_name}}">
                         <a href="{{route('portfolio_details',($row->id))}}" class="effect-ajax" data-dsn-ajax="work"
                            data-dsn-grid="move-up">
-                            <img class="has-top-bottom" src="{{asset('storage/uploads/portfolios')}}/{{$row->image}}" alt="" />
+                            <img class="has-top-bottom" src="{{asset('storage/uploads/portfolios')}}/{{$row->image}}" alt="{{$row->title}}" />
                             <div class="item-border"></div>
                             <div class="item-info">
                                 <h5 class="cat">{{$row->category_name}}</h5>

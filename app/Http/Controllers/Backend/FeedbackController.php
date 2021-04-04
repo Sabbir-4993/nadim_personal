@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Feedback;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class FeedbackController extends Controller
@@ -82,7 +83,8 @@ class FeedbackController extends Controller
      */
     public function edit($id)
     {
-        //
+        $feedback_details = Feedback::find($id);
+        return view('backend.feedback_edit', compact('feedback_details'));
     }
 
     /**
@@ -94,7 +96,41 @@ class FeedbackController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'name' => '',
+            'designation' => '',
+            'company' => '',
+            'feedback' => '',
+            'image' => 'image|mimes:jpeg,png,jpg,bmp,gif,svg|max:2048',
+        ]);
+
+
+        $feedback_details = Feedback::find($id);
+
+        if($request->image != '') {
+            $path = public_path('/storage/uploads/feedback/');
+            //code for remove old file
+            if ($feedback_details->image != '' && $feedback_details->image != null) {
+                $file_old = $path . $feedback_details->image;
+                unlink($file_old);
+            }
+            //upload new file
+            $file = $request->image;
+            $filename = ($request->name) . "." . date('Y-m-d') . "." . 'feedback' . "." . $file->getClientOriginalExtension();
+
+            $file->move($path, $filename);
+            //for update in table
+            $feedback_details->update(['image' => $filename]);
+        }
+        $feedback_details->update([
+            'name' => $request->name,
+            'designation' => $request->designation,
+            'company' => $request->company,
+            'feedback' => $request->feedback,
+            'updated_at' => Carbon::now(),
+        ]);
+
+        return redirect()->route('admin.feedback.index')->with('message','Feedback Updated Successfully');
     }
 
     /**

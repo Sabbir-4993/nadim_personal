@@ -55,7 +55,7 @@
                 <a href="mailto:{{$row->email}}" class="email">{{$row->email}}</a>
             </div>
             <div class="copyright-social">
-                <p>© 2021 Nadim's Design</p>
+                <p>© <span id="year"></span> Nadim's Design</p>
                 <ul>
                     <li><a href="{{$row->facebook}}" target="_blank">Facebook</a></li>
                     <li><a href="{{$row->instagram}}" target="_blank">Instagram</a></li>

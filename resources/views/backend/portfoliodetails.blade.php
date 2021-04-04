@@ -54,7 +54,10 @@
                                                 <span class="userDatatable-title">Published</span>
                                             </th>
                                             <th>
-                                                <span class="userDatatable-title float-right">action</span>
+                                                <span class="userDatatable-title">Updated</span>
+                                            </th>
+                                            <th>
+                                                <span class="userDatatable-title float-right">Action</span>
                                             </th>
                                         </tr>
                                         </thead>
@@ -89,6 +92,12 @@
                                                 <td>
                                                     <div class="userDatatable-content">
                                                         {{ $row->created_at->diffForHumans() }}
+                                                    </div>
+                                                </td>
+
+                                                <td>
+                                                    <div class="userDatatable-content">
+                                                        {{ $row->updated_at->diffForHumans() }}
                                                     </div>
                                                 </td>
                                                 <td>

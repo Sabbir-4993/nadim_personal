@@ -8,10 +8,10 @@
                 <div class="row align-items-center h-100">
                     <div class="col-lg-12">
                         <div class="contenet-hero">
-                            <h1>THE ART OF LUXURY APPAREL</h1>
+                            <h1>THE ART OF LUXURY</h1>
                             <p>Our core design services include Apparel design, Logo design, Branding, Social media, Banner, Cover photo, Add template, Digital template, Business card, Flyer, Web template design.</p>
                             <a href="#" class="view-case scroll-down scroll-to">Scroll Down <img
-                                    src="{{asset('frontend/assets/img/arrow-right-wight.png')}}" alt=""></a>
+                                    src="{{asset('frontend/assets/img/arrow-right-wight.png')}}" alt="About Nadims Design"></a>
                         </div>
                     </div>
                 </div>
@@ -24,7 +24,7 @@
             <div class="box-seat box-seat-full">
                 <div class="container-fluid">
                     <div class="inner-img" data-dsn-grid="move-up">
-                        <img src="{{asset('frontend/assets/img/pexels.jpg')}}" alt="" data-dsn-y="30%" data-dsn-scale="1">
+                        <img src="{{asset('frontend/assets/img/About us.jpg')}}" alt="About Nadims Design" data-dsn-y="30%" data-dsn-scale="1">
                     </div>
                     <div class="pro-text">
                         <h3 data-dsn-animate="up">Hello we are, <br> Nadimsdesign.</h3>
@@ -128,7 +128,7 @@
                             @foreach($team as $key=>$row)
                             <div class="team-item slick-slide">
                                 <div class="box-img">
-                                    <img src="{{asset('storage/uploads/team')}}/{{$row->image}}" alt="">
+                                    <img src="{{asset('storage/uploads/team')}}/{{$row->image}}" alt="{{$row->name}}">
                                 </div>
 
                                 <div class="box-content">
@@ -183,7 +183,7 @@
                         @endphp
                         @foreach($client as $key=>$row)
                         <div class="logo-box">
-                            <img src="{{asset('storage/uploads/client')}}/{{$row->image}}" alt="">
+                            <img src="{{asset('storage/uploads/client')}}/{{$row->image}}" alt="{{$row->name}}">
 
                             <div class="info">
                                 <div class="content">

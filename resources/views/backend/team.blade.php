@@ -52,6 +52,12 @@
                                                 <span class="userDatatable-title">Designation</span>
                                             </th>
                                             <th>
+                                                <span class="userDatatable-title">Published</span>
+                                            </th>
+                                            <th>
+                                                <span class="userDatatable-title">Updated</span>
+                                            </th>
+                                            <th>
                                                 <span class="userDatatable-title float-right">action</span>
                                             </th>
                                         </tr>
@@ -79,7 +85,22 @@
                                                     </div>
                                                 </td>
                                                 <td>
+                                                    <div class="userDatatable-content">
+                                                        {{ $row->created_at->diffForHumans() }}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="userDatatable-content">
+                                                        {{ $row->updated_at->diffForHumans() }}
+                                                    </div>
+                                                </td>
+                                                <td>
                                                     <ul class="orderDatatable_actions mb-0 d-flex flex-wrap">
+                                                        <li>
+                                                            <a href="{{route('admin.team.edit',[$row->id])}}" class="edit">
+                                                                <span data-feather="edit"></span>
+                                                            </a>
+                                                        </li>
                                                         <li>
                                                             <a href="#" class="remove" data-toggle="modal" data-target="#modal-info-confirmed{{$row->id}}">
                                                                 <span data-feather="trash-2"></span>
@@ -155,7 +176,7 @@
                                         <div class="atbd-upload">
                                             <div class="atbd-upload-avatar">
                                                 <label for="tag2" class="il-gray fs-14 fw-500 align-center">Upload Image [Image Resolution (584x570px)]<span class="text-danger">*</span></label>
-                                                <img class="avatrSrc" src="{{asset('backend/assets/img/gallery.png')}}" alt="Avatar Upload">
+                                                <img style="border: 1px solid #ddd; border-radius: 4px; padding: 5px; max-width: 100%; height: auto;" class="avatrSrc" src="{{asset('backend/assets/img/gallery.png')}}" alt="Avatar Upload">
                                             </div>
                                             <div class="avatar-up">
                                                 <input type="file" name="image" class="upload-avatar-input" required="">

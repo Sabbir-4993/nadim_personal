@@ -37,7 +37,7 @@
                             <div class="image-container">
                                 <div class="image-bg cover-bg" data-image-src="{{asset('storage/uploads/portfolios')}}/{{$row->image}}"
                                      data-overlay="0">
-                                    <img src="{{asset('storage/uploads/portfolios')}}/{{$row->image}}" alt="">
+                                    <img src="{{asset('storage/uploads/portfolios')}}/{{$row->image}}" alt="{{$row->title}}, {{$row->description}}">
                                 </div>
                             </div>
                         </div>
@@ -89,23 +89,23 @@
                 @endphp
                 <ul class="social-network">
                     <li>
-                        <a href="{{$contact->facebook}}">
+                        <a href="https://www.facebook.com/sharer.php?u={{route('index')}}" target="_blank">
                             <i class="fab fa-facebook-f"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="{{$contact->instagram}}">
+                        <a href="{{$contact->instagram}}" target="_blank">
                             <i class="fab fa-instagram"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="{{$contact->behance}}">
+                        <a href="https://www.facebook.com/sharer.php?u={{$contact->behance}}" target="_blank">
                             <i class="fab fa-behance"></i>
                         </a>
                     </li>
 
                     <li>
-                        <a href="{{$contact->fiverr}}">
+                        <a href="https://www.facebook.com/sharer.php?u={{$contact->fiverr}}" target="_blank">
                             <i class="fas fa-briefcase"></i>
                         </a>
                     </li>
@@ -153,7 +153,7 @@
                                 relationships with our clients.</p>
 
                             <h6 data-dsn-animate="text">Nazmul Nadim</h6>
-                            <small data-dsn-animate="text">Graphics Designer & CEO</small>
+                            <small data-dsn-animate="text">CEO & Graphics Designer</small>
                             <p>
                                 We pride ourselves on being dynamic and distinctive in setting you apart from your competitors.
                                 We believe in the power of collaboration and take the time to get to know you and your business to create design outcomes that are
@@ -177,7 +177,7 @@
                 <div class="img-box">
                     <div class="img-cent" data-dsn-grid="move-up">
                         <div class="img-container">
-                            <img data-dsn-y="30%" src="{{asset('frontend/assets/img/bgg.jpg')}}" alt="">
+                            <img data-dsn-y="30%" src="{{asset('frontend/assets/img/Hello we are.jpg')}}" alt="Hello we are, Nadimsdesign">
                         </div>
                     </div>
                 </div>
@@ -199,7 +199,7 @@
                             <div class="corner corner-top"></div>
                             <div class="corner corner-bottom"></div>
                             <div class="icon">
-                                <img src="{{asset('frontend/assets/img/services/1.png')}}" alt="">
+                                <img src="{{asset('frontend/assets/img/services/1.png')}}" alt="Apparel design services">
                             </div>
                             <div class="services-header">
                                 <h3>Apparel design</h3>
@@ -213,7 +213,7 @@
                             <div class="corner corner-top"></div>
                             <div class="corner corner-bottom"></div>
                             <div class="icon">
-                                <img src="{{asset('frontend/assets/img/services/2.png')}}" alt="">
+                                <img src="{{asset('frontend/assets/img/services/2.png')}}" alt="Graphics Design services">
                             </div>
                             <div class="services-header">
                                 <h3>Graphics Design</h3>
@@ -227,7 +227,7 @@
                             <div class="corner corner-top"></div>
                             <div class="corner corner-bottom"></div>
                             <div class="icon">
-                                <img src="{{asset('frontend/assets/img/services/3.png')}}" alt="">
+                                <img src="{{asset('frontend/assets/img/services/3.png')}}" alt="Branding services">
                             </div>
                             <div class="services-header">
                                 <h3>Branding</h3>
@@ -242,7 +242,7 @@
         <div class="box-seat box-seat-full section-margin">
             <div class="container-fluid">
                 <div class="inner-img" data-dsn-grid="move-up">
-                    <img data-dsn-scale="1" data-dsn-y="30%" src="{{asset('frontend/assets/img/project/project2/3.jpg')}}" alt="">
+                    <img data-dsn-scale="1" data-dsn-y="30%" src="{{asset('frontend/assets/img/Why-us.jpg')}}" alt="why choose us">
                 </div>
                 <div class="pro-text">
                     <h3> Why Us?</h3>
@@ -277,7 +277,7 @@
 
                                 @foreach($portfolios as $key=>$row)
                                     <div class="work-item slick-slide">
-                                        <img class="has-top-bottom" src="{{asset('storage/uploads/portfolios')}}/{{$row->image}}" alt="">
+                                        <img class="has-top-bottom" src="{{asset('storage/uploads/portfolios')}}/{{$row->image}}" alt="{{$row->title}}">
                                         <div class="item-border"></div>
                                         <div class="item-info">
                                             <a href="{{route('portfolio_details',($row->id))}}" data-dsn-grid="move-up" class="effect-ajax">
@@ -304,7 +304,7 @@
                 <div class="row align-items-center h-100">
                     <div class="col-lg-6 ">
                         <div class="box-im" data-dsn-grid="move-up">
-                            <img class="has-top-bottom" src="{{asset('frontend/assets/img/service.png')}}" alt=""
+                            <img class="has-top-bottom" src="{{asset('frontend/assets/img/What-will-you-get.jpg')}}" alt="Clean and Professional Designs"
                                  data-dsn-move="20%">
                         </div>
                     </div>
@@ -391,7 +391,7 @@
                     @endphp
                     @foreach($client as $key=>$row)
                     <div class="logo-box">
-                        <img src="{{asset('storage/uploads/client')}}/{{$row->image}}" alt="">
+                        <img src="{{asset('storage/uploads/client')}}/{{$row->image}}" alt="{{$row->name}}">
 
                         <div class="info">
                             <div class="content" onclick="javascript:void(0);">

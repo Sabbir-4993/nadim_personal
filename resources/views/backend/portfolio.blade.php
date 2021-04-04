@@ -218,6 +218,7 @@
                                                 <option value="Brand">Brand</option>
                                                 <option value="Design">Design</option>
                                                 <option value="Art">Art</option>
+                                                <option value="Illustration">Illustration</option>
                                                 <option value="Photography">Photography</option>
                                                 <option value="Video">Video</option>
                                                 <option value="3D">3D</option>
@@ -260,7 +261,7 @@
                                         <div class="atbd-upload">
                                             <div class="atbd-upload-avatar">
                                                 <label for="tag2" class="il-gray fs-14 fw-500 align-center">Upload Image [Image Resolution (1800x1200px)]<span class="text-danger">*</span></label>
-                                                <img class="avatrSrc" src="{{asset('backend/assets/img/gallery.png')}}" alt="Avatar Upload">
+                                                <img style="border: 1px solid #ddd; border-radius: 4px; padding: 5px; max-width: 100%; height: auto;" class="avatrSrc" src="{{asset('backend/assets/img/gallery.png')}}" alt="Avatar Upload">
                                             </div>
                                             <div class="avatar-up">
                                                 <input type="file" name="image" class="upload-avatar-input">

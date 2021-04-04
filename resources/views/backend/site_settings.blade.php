@@ -179,7 +179,7 @@
                                                                                         <div class="atbd-tag-wrap">
                                                                                             <div class="atbd-upload">
                                                                                                 <div class="atbd-upload-avatar">
-                                                                                                    <img class="avatrSrc" src="{{asset('storage/uploads/User')}}/{{$row->image}}" alt="Avatar Upload">
+                                                                                                    <img style="border: 1px solid #ddd; border-radius: 4px; padding: 5px; max-width: 100%; height: auto;" class="avatrSrc" src="{{asset('storage/uploads/User')}}/{{$row->image}}" alt="Avatar Upload">
                                                                                                 </div>
                                                                                                 <div class="avatar-up">
                                                                                                     <input type="file" name="image" class="upload-avatar-input">

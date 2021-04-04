@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Client;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use File;
 use Illuminate\Http\Request;
 
@@ -81,7 +82,8 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-        //
+        $client_details = Client::find($id);
+        return view('backend.client_edit', compact('client_details'));
     }
 
     /**
@@ -93,7 +95,37 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'name' => '',
+            'url' => '',
+            'image' => 'image|mimes:jpeg,png,jpg,bmp,gif,svg|max:2048',
+        ]);
+
+
+        $client_details = Client::find($id);
+
+        if($request->image != '') {
+            $path = public_path('/storage/uploads/client/');
+            //code for remove old file
+            if ($client_details->image != '' && $client_details->image != null) {
+                $file_old = $path . $client_details->image;
+                unlink($file_old);
+            }
+            //upload new file
+            $file = $request->image;
+            $filename = ($request->name) . "." . date('Y-m-d') . "." . 'client' . "." . $file->getClientOriginalExtension();
+
+            $file->move($path, $filename);
+            //for update in table
+            $client_details->update(['image' => $filename]);
+        }
+        $client_details->update([
+            'name' => $request->name,
+            'url' => $request->url,
+            'updated_at' => Carbon::now(),
+        ]);
+
+        return redirect()->route('admin.client.index')->with('message','Client Updated Successfully');
     }
 
     /**

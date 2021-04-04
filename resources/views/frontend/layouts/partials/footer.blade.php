@@ -30,6 +30,7 @@
                         <nav>
                             <ul>
                                 <li><a href="{{route('portfolio')}}">Portfolio</a></li>
+                                <li><a href="{{route('gallery.index')}}">Gallery</a></li>
                                 <li><a href="{{route('about')}}">About</a></li>
                                 <li><a href="{{route('career')}}">Career</a></li>
                                 <li><a href="{{route('contact')}}">Contact</a>
@@ -42,7 +43,7 @@
                 <div class="col-md-3 dsn-col-footer">
                     <div class="footer-block col-contact">
                         <h4 class="footer-title">Contact</h4>
-                        <p><strong>T</strong> <span>:</span>{{$row->phone}}</p>
+                        <p><strong>T</strong> <span>:</span><a href="tel:{{$row->phone}}">{{$row->phone}}</a></p>
                         <p class="over-hidden"><strong>E</strong> <span>:</span>
                             <a class="link-hover" data-hover-text="{{$row->email}}" href="mailto:{{$row->email}}">{{$row->email}}</a>
                         </p>
@@ -61,7 +62,7 @@
 
         <div class="copyright">
             <div class="text-center">
-                <p>© 2021 Nadim's Design</p>
+                <p>© <span id="year"></span> Nadim's Design</p>
                 <div class="copright-text over-hidden">Designed & Developed by
                     <a class="link-hover" data-hover-text="DSN Grid" href="https://www.mrsabbir.website/" target="_blank">Sabbir Ahmed</a>
                 </div>
@@ -79,6 +80,9 @@
 <script src="{{asset('frontend/assets/js/plugins.js')}}"></script>
 <script src="{{asset('frontend/assets/js/dsn-grid.js')}}"></script>
 <script src="{{asset('frontend/assets/js/custom.js')}}"></script>
+<script>
+    document.getElementById("year").innerHTML = new Date().getFullYear();
+</script>
 </body>
 
 

@@ -3,7 +3,10 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="footer-copyright">
-                    <p>2020 @<a href="{{route('index')}}" target="_blank">Nadim's Design</a>
+                    <p> <script>
+                            var CurrentYear = new Date().getFullYear()
+                            document.write(CurrentYear)
+                        </script> <a href="{{route('index')}}" target="_blank">Nadim's Design</a>
                     </p>
                 </div>
             </div>
@@ -26,3 +29,4 @@
         </div>
     </div>
 </footer>
+

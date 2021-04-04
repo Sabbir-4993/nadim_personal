@@ -11,7 +11,7 @@
                         <h4 class="text-capitalize breadcrumb-title">Contact</h4>
                         <div class="breadcrumb-action justify-content-center flex-wrap">
                             <div class="action-btn">
-                                <button type="button" class="btn btn-sm btn-primary btn-add" data-toggle="modal" data-target="#modal-basic"><i class="la la-plus"></i> Add New</button>
+                                <button type="button" disabled="" class="btn btn-sm btn-primary btn-add" data-toggle="modal" data-target="#modal-basic"><i class="la la-plus"></i> Add New</button>
                             </div>
                         </div>
                     </div>
@@ -89,7 +89,7 @@
                                         <div class="atbd-upload">
                                             <div class="atbd-upload-avatar">
                                                 <label for="tag2" class="il-gray fs-14 fw-500 align-center">Upload Logo [Image Resolution (290x100px)]<span class="text-danger">*</span></label>
-                                                <img class="avatrSrc" src="{{asset('backend/assets/img/gallery.png')}}" alt="Avatar Upload">
+                                                <img style="border: 1px solid #ddd; border-radius: 4px; padding: 5px; max-width: 100%; height: auto;" class="avatrSrc" src="{{asset('backend/assets/img/gallery.png')}}" alt="Avatar Upload">
                                             </div>
                                             <div class="avatar-up">
                                                 <input type="file" name="image" class="upload-avatar-input" required="">
@@ -163,7 +163,7 @@
                                             <div class="form-group mb-4">
                                                 <div class="page-info__single">
                                                     <span class="info-title il-gray fw-500 ">Image:</span>
-                                                    <img class="" src="{{asset('storage/uploads/Logo')}}/{{$row->image}}" alt="logo" style="height: 300px; width: 300px">
+                                                    <img style="border: 1px solid #ddd; border-radius: 4px; padding: 5px; max-width: 100%; height: auto;" class="" src="{{asset('storage/uploads/Logo')}}/{{$row->image}}" alt="logo" style="height: 300px; width: 300px">
                                                 </div>
                                             </div>
                                         </div>
